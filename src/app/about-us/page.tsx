@@ -1,5 +1,5 @@
-const AboutUs = () => {
-  return <div>AboutUs</div>;
-};
+import AboutUs from "@/pages/About-us";
 
-export default AboutUs;
+export default function Page() {
+  return <AboutUs />;
+}
