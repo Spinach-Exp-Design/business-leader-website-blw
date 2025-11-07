@@ -10,6 +10,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Breakpoints */
+  /* Mobile - use max-md (covers 0-767px) */
+  /* Tablet - use max-lg (covers 768-1023px) */
+  /* small laptops - use max-xl (covers 1024-1279px) */
+  /* Desktop - use xl (covers 1280px and above) */
 }
 
 @media (prefers-color-scheme: dark) {
