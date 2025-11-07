@@ -1,15 +1,10 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-general-sans);
+  --font-playfair-display: var(--font-playfair-display);
 
   /* Primary Colors */
   --color-primary-dark: #0a192a;
@@ -26,31 +21,26 @@
   --text-desktop-heading-h1: 5rem;
   --text-desktop-heading-h1--line-height: 5.5rem;
   --text-desktop-heading-h1--font-weight: 500;
-  --text-desktop-heading-h1--font-style: italic;
 
   /* Desktop/Heading/H2 */
   --text-desktop-heading-h2: 4.5rem;
   --text-desktop-heading-h2--line-height: 5rem;
   --text-desktop-heading-h2--font-weight: 500;
-  --text-desktop-heading-h2--font-style: italic;
 
   /* Desktop/Heading/H3 */
   --text-desktop-heading-h3: 4rem;
   --text-desktop-heading-h3--line-height: 4.5rem;
   --text-desktop-heading-h3--font-weight: 500;
-  --text-desktop-heading-h3--font-style: italic;
 
   /* Desktop/Heading/H4 */
   --text-desktop-heading-h4: 3.5rem;
   --text-desktop-heading-h4--line-height: 4rem;
   --text-desktop-heading-h4--font-weight: 500;
-  --text-desktop-heading-h4--font-style: italic;
 
   /* Desktop/Heading/H5 */
   --text-desktop-heading-h5: 1.5rem;
   --text-desktop-heading-h5--line-height: 2rem;
   --text-desktop-heading-h5--font-weight: 500;
-  --text-desktop-heading-h5--font-style: italic;
 
   /* Desktop/Sub-Heading/S1 */
   --text-desktop-subheading-s1: 1.5rem;
@@ -126,19 +116,16 @@
   --text-desktop-quote-1: 4rem;
   --text-desktop-quote-1--line-height: 5.25rem;
   --text-desktop-quote-1--font-weight: 500;
-  --text-desktop-quote-1--font-style: italic;
 
   /* Desktop/Quote/2 */
   --text-desktop-quote-2: 2.5rem;
   --text-desktop-quote-2--line-height: 3rem;
   --text-desktop-quote-2--font-weight: 500;
-  --text-desktop-quote-2--font-style: italic;
 
   /* Desktop/Quote/3 */
   --text-desktop-quote-3: 2rem;
   --text-desktop-quote-3--line-height: 2.75rem;
   --text-desktop-quote-3--font-weight: 500;
-  --text-desktop-quote-3--font-style: italic;
 
   /* Desktop/Caption/C1 */
   --text-desktop-caption-c1: 0.875rem;
@@ -154,19 +141,16 @@
   --text-mobile-heading-h1: 2.5rem;
   --text-mobile-heading-h1--line-height: 3rem;
   --text-mobile-heading-h1--font-weight: 500;
-  --text-mobile-heading-h1--font-style: italic;
 
   /* Mobile/Heading/H2 */
   --text-mobile-heading-h2: 2rem;
   --text-mobile-heading-h2--line-height: 2.5rem;
   --text-mobile-heading-h2--font-weight: 500;
-  --text-mobile-heading-h2--font-style: italic;
 
   /* Mobile/Heading/H3 */
   --text-mobile-heading-h3: 1.25rem;
   --text-mobile-heading-h3--line-height: 1.5rem;
   --text-mobile-heading-h3--font-weight: 500;
-  --text-mobile-heading-h3--font-style: italic;
 
   /* Mobile/Sub-Heading/S1 */
   --text-mobile-subheading-s1: 1.25rem;
@@ -207,13 +191,11 @@
   --text-mobile-quote-1: 2rem;
   --text-mobile-quote-1--line-height: 2.5rem;
   --text-mobile-quote-1--font-weight: 500;
-  --text-mobile-quote-1--font-style: italic;
 
   /* Mobile/Quote/2 */
   --text-mobile-quote-2: 1.75rem;
   --text-mobile-quote-2--line-height: 2rem;
   --text-mobile-quote-2--font-weight: 500;
-  --text-mobile-quote-2--font-style: italic;
 
   /* Mobile/Caption/C1 */
   --text-mobile-caption-c1: 0.75rem;
@@ -224,17 +206,4 @@
   --text-mobile-functional-f1: 0.875rem;
   --text-mobile-functional-f1--line-height: 1.25rem;
   --text-mobile-functional-f1--font-weight: 500;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
