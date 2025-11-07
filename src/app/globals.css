@@ -138,6 +138,81 @@
   --text-desktop-functional-f1: 0.875rem;
   --text-desktop-functional-f1--line-height: 1.375rem;
   --text-desktop-functional-f1--font-weight: 500;
+
+  /* Mobile/Heading/H1 */
+  --text-mobile-heading-h1: 2.5rem;
+  --text-mobile-heading-h1--line-height: 3rem;
+  --text-mobile-heading-h1--font-weight: 500;
+  --text-mobile-heading-h1--font-style: italic;
+
+  /* Mobile/Heading/H2 */
+  --text-mobile-heading-h2: 2rem;
+  --text-mobile-heading-h2--line-height: 2.5rem;
+  --text-mobile-heading-h2--font-weight: 500;
+  --text-mobile-heading-h2--font-style: italic;
+
+  /* Mobile/Heading/H3 */
+  --text-mobile-heading-h3: 1.25rem;
+  --text-mobile-heading-h3--line-height: 1.5rem;
+  --text-mobile-heading-h3--font-weight: 500;
+  --text-mobile-heading-h3--font-style: italic;
+
+  /* Mobile/Sub-Heading/S1 */
+  --text-mobile-subheading-s1: 1.25rem;
+  --text-mobile-subheading-s1--line-height: 1.625rem;
+  --text-mobile-subheading-s1--font-weight: 500;
+
+  /* Mobile/Sub-Heading/S2 */
+  --text-mobile-subheading-s2: 1.125rem;
+  --text-mobile-subheading-s2--line-height: 1.375rem;
+  --text-mobile-subheading-s2--font-weight: 500;
+
+  /* Mobile/Sub-Heading/S3 */
+  --text-mobile-subheading-s3: 0.875rem;
+  --text-mobile-subheading-s3--line-height: 1.25rem;
+  --text-mobile-subheading-s3--font-weight: 400;
+
+  /* Mobile/Paragraph/P1 */
+  --text-mobile-paragraph-p1: 1rem;
+  --text-mobile-paragraph-p1--line-height: 1.375rem;
+  --text-mobile-paragraph-p1--font-weight: 400;
+
+  /* Mobile/Paragraph/P2 */
+  --text-mobile-paragraph-p2: 0.875rem;
+  --text-mobile-paragraph-p2--line-height: 1.25rem;
+  --text-mobile-paragraph-p2--font-weight: 400;
+
+  /* Mobile/Paragraph/P4 */
+  --text-mobile-paragraph-p4: 0.875rem;
+  --text-mobile-paragraph-p4--line-height: 1.25rem;
+  --text-mobile-paragraph-p4--font-weight: 300;
+
+  /* Mobile/Paragraph/P5 */
+  --text-mobile-paragraph-p5: 0.75rem;
+  --text-mobile-paragraph-p5--line-height: 1rem;
+  --text-mobile-paragraph-p5--font-weight: 300;
+
+  /* Mobile/Quote/1 */
+  --text-mobile-quote-1: 2rem;
+  --text-mobile-quote-1--line-height: 2.5rem;
+  --text-mobile-quote-1--font-weight: 500;
+  --text-mobile-quote-1--font-style: italic;
+
+  /* Mobile/Quote/2 */
+  --text-mobile-quote-2: 1.75rem;
+  --text-mobile-quote-2--line-height: 2rem;
+  --text-mobile-quote-2--font-weight: 500;
+  --text-mobile-quote-2--font-style: italic;
+
+  /* Mobile/Caption/C1 */
+  --text-mobile-caption-c1: 0.75rem;
+  --text-mobile-caption-c1--line-height: 1rem;
+  --text-mobile-caption-c1--font-weight: 600;
+
+  /* Mobile/Functional/F1 */
+  --text-mobile-functional-f1: 0.875rem;
+  --text-mobile-functional-f1--line-height: 1.25rem;
+  --text-mobile-functional-f1--font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
