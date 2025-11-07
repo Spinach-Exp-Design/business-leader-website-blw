@@ -38,7 +38,7 @@ export const Navbar = () => {
               >
                 {link.name}
                 {isActive && (
-                  <span className="absolute -bottom-5 left-0 right-0 h-[2px] bg-primary-yellow" />
+                  <span className="absolute -bottom-[1.219rem] left-0 right-0 h-px bg-primary-yellow" />
                 )}
               </Link>
             );
