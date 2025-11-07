@@ -12,7 +12,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="pt-4 pl-[1.37rem] pb-1 pr-60 border-b border-neutral-light">
+    <nav className="pt-4 pl-[1.37rem] max-lg:pl-8 max-lg:pr-9 max-md:pl-6 max-md:pr-5 pb-1 pr-60 border-b border-neutral-light">
       <div className="flex items-center justify-between">
         {/* Logo/Brand */}
         <Link
@@ -23,15 +23,17 @@ export const Navbar = () => {
         </Link>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 max-md:gap-2">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-desktop-subheading-s6 w-22.25 text-center ${
-                  isActive ? "text-primary-dark" : "text-neutral-medium"
+                className={`relative text-desktop-subheading-s6 max-lg:text-mobile-subheading-s3 w-22.25 max-md:w-16 max-md:text-mobile-subheading-s3 text-center ${
+                  isActive
+                    ? "text-primary-dark font-medium"
+                    : "text-neutral-medium"
                 }`}
               >
                 {link.name}
