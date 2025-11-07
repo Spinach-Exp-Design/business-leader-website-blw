@@ -10,6 +10,134 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Desktop/Heading/H1 */
+  --text-desktop-heading-h1: 5rem;
+  --text-desktop-heading-h1--line-height: 5.5rem;
+  --text-desktop-heading-h1--font-weight: 500;
+  --text-desktop-heading-h1--font-style: italic;
+
+  /* Desktop/Heading/H2 */
+  --text-desktop-heading-h2: 4.5rem;
+  --text-desktop-heading-h2--line-height: 5rem;
+  --text-desktop-heading-h2--font-weight: 500;
+  --text-desktop-heading-h2--font-style: italic;
+
+  /* Desktop/Heading/H3 */
+  --text-desktop-heading-h3: 4rem;
+  --text-desktop-heading-h3--line-height: 4.5rem;
+  --text-desktop-heading-h3--font-weight: 500;
+  --text-desktop-heading-h3--font-style: italic;
+
+  /* Desktop/Heading/H4 */
+  --text-desktop-heading-h4: 3.5rem;
+  --text-desktop-heading-h4--line-height: 4rem;
+  --text-desktop-heading-h4--font-weight: 500;
+  --text-desktop-heading-h4--font-style: italic;
+
+  /* Desktop/Heading/H5 */
+  --text-desktop-heading-h5: 1.5rem;
+  --text-desktop-heading-h5--line-height: 2rem;
+  --text-desktop-heading-h5--font-weight: 500;
+  --text-desktop-heading-h5--font-style: italic;
+
+  /* Desktop/Sub-Heading/S1 */
+  --text-desktop-subheading-s1: 1.5rem;
+  --text-desktop-subheading-s1--line-height: 2rem;
+  --text-desktop-subheading-s1--font-weight: 500;
+
+  /* Desktop/Sub-Heading/S2 */
+  --text-desktop-subheading-s2: 1.5rem;
+  --text-desktop-subheading-s2--line-height: 2rem;
+  --text-desktop-subheading-s2--font-weight: 400;
+
+  /* Desktop/Sub-Heading/S3 */
+  --text-desktop-subheading-s3: 1.375rem;
+  --text-desktop-subheading-s3--line-height: 1.625rem;
+  --text-desktop-subheading-s3--font-weight: 500;
+
+  /* Desktop/Sub-Heading/S4 */
+  --text-desktop-subheading-s4: 1.375rem;
+  --text-desktop-subheading-s4--line-height: 1.625rem;
+  --text-desktop-subheading-s4--font-weight: 400;
+
+  /* Desktop/Sub-Heading/S5 */
+  --text-desktop-subheading-s5: 1.125rem;
+  --text-desktop-subheading-s5--line-height: 1.5rem;
+  --text-desktop-subheading-s5--font-weight: 400;
+
+  /* Desktop/Sub-Heading/S6 */
+  --text-desktop-subheading-s6: 0.875rem;
+  --text-desktop-subheading-s6--line-height: 1.375rem;
+  --text-desktop-subheading-s6--font-weight: 500;
+
+  /* Desktop/Paragraph/P1 */
+  --text-desktop-paragraph-p1: 1.25rem;
+  --text-desktop-paragraph-p1--line-height: 1.75rem;
+  --text-desktop-paragraph-p1--font-weight: 400;
+
+  /* Desktop/Paragraph/P2 */
+  --text-desktop-paragraph-p2: 1.125rem;
+  --text-desktop-paragraph-p2--line-height: 1.5rem;
+  --text-desktop-paragraph-p2--font-weight: 400;
+
+  /* Desktop/Paragraph/P3 */
+  --text-desktop-paragraph-p3: 1.125rem;
+  --text-desktop-paragraph-p3--line-height: 1.5rem;
+  --text-desktop-paragraph-p3--font-weight: 300;
+
+  /* Desktop/Paragraph/P4 */
+  --text-desktop-paragraph-p4: 1rem;
+  --text-desktop-paragraph-p4--line-height: 1.5rem;
+  --text-desktop-paragraph-p4--font-weight: 400;
+
+  /* Desktop/Paragraph/P5 */
+  --text-desktop-paragraph-p5: 1rem;
+  --text-desktop-paragraph-p5--line-height: 1.25rem;
+  --text-desktop-paragraph-p5--font-weight: 400;
+
+  /* Desktop/Paragraph/P6 */
+  --text-desktop-paragraph-p6: 0.875rem;
+  --text-desktop-paragraph-p6--line-height: 1.375rem;
+  --text-desktop-paragraph-p6--font-weight: 500;
+
+  /* Desktop/Paragraph/P7 */
+  --text-desktop-paragraph-p7: 0.875rem;
+  --text-desktop-paragraph-p7--line-height: 1.125rem;
+  --text-desktop-paragraph-p7--font-weight: 400;
+
+  /* Desktop/Paragraph/P8 */
+  --text-desktop-paragraph-p8: 0.75rem;
+  --text-desktop-paragraph-p8--line-height: 1rem;
+  --text-desktop-paragraph-p8--font-weight: 300;
+
+  /* Desktop/Quote/1 */
+  --text-desktop-quote-1: 4rem;
+  --text-desktop-quote-1--line-height: 5.25rem;
+  --text-desktop-quote-1--font-weight: 500;
+  --text-desktop-quote-1--font-style: italic;
+
+  /* Desktop/Quote/2 */
+  --text-desktop-quote-2: 2.5rem;
+  --text-desktop-quote-2--line-height: 3rem;
+  --text-desktop-quote-2--font-weight: 500;
+  --text-desktop-quote-2--font-style: italic;
+
+  /* Desktop/Quote/3 */
+  --text-desktop-quote-3: 2rem;
+  --text-desktop-quote-3--line-height: 2.75rem;
+  --text-desktop-quote-3--font-weight: 500;
+  --text-desktop-quote-3--font-style: italic;
+
+  /* Desktop/Caption/C1 */
+  --text-desktop-caption-c1: 0.875rem;
+  --text-desktop-caption-c1--line-height: 1.375rem;
+  --text-desktop-caption-c1--font-weight: 600;
+
+  /* Desktop/Functional/F1 */
+  --text-desktop-functional-f1: 0.875rem;
+  --text-desktop-functional-f1--line-height: 1.375rem;
+  --text-desktop-functional-f1--font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
