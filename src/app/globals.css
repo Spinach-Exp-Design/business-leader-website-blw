@@ -6,6 +6,12 @@
   --font-sans: var(--font-general-sans);
   --font-playfair-display: var(--font-playfair-display);
 
+  /* Breakpoints */
+  /* Mobile - use max-md (covers 0-767px) */
+  /* Tablet - use max-lg (covers 768-1023px) */
+  /* small laptops - use max-xl (covers 1024-1279px) */
+  /* Desktop - use xl (covers 1280px and above) */
+
   /* Primary Colors */
   --color-primary-dark: #0a192a;
   --color-primary-yellow: #ffbe0b;
