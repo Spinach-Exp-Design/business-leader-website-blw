@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Navbar } from "@/components/Navbar";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -36,6 +37,13 @@ const generalSans = localFont({
   variable: "--font-general-sans",
 });
 
+const allison = localFont({
+  src: "../fonts/Allison/Allison-Regular.ttf",
+  variable: "--font-allison",
+  weight: "400",
+  style: "normal",
+});
+
 export const metadata: Metadata = {
   title: "BLW | Business Leader Website",
   description: "BLW | Business Leader Website",
@@ -49,9 +57,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${generalSans.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${generalSans.variable} ${allison.variable} antialiased`}
         suppressHydrationWarning
       >
+        <Navbar />
         {children}
       </body>
     </html>
