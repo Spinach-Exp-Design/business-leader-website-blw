@@ -1,0 +1,79 @@
+import Image from "next/image";
+import { decodeSectionData } from "../../data/homepageData";
+import PrimaryButton from "../../components/Buttons/PrimaryButton";
+import TextAnimation from "@/components/TextAnimation";
+
+const DecodeSection = () => {
+  return (
+    <section className="w-full relative">
+      <div className="w-px h-full bg-neutral-light top-0 left-36 absolute z-[-1] max-lg:hidden" />
+      <div className="w-px h-full bg-neutral-light bottom-0 right-36 absolute z-[-1] max-lg:hidden" />
+      {/* Top Content Section */}
+      <div className="pt-36 pl-65 pr-40 max-lg:px-8 max-md:px-6 max-lg:pt-16 max-lg:flex max-lg:gap-4 max-md:flex-col max-md:gap-10">
+        <div>
+          <TextAnimation
+            text={decodeSectionData.titleFirst}
+            tag="h2"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1"
+          />
+          <TextAnimation
+            text={decodeSectionData.titleFirst}
+            tag="h2"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1"
+          />
+          <div className="shrink-0 hidden max-lg:flex mt-4">
+            {[1, 2, 3, 4].map((_, index) => (
+              <img
+                key={index}
+                src="/assets/icons/spiral.svg"
+                alt="Spiral decoration"
+                className="w-18 h-18 max-lg:w-10 max-lg:h-10"
+              />
+            ))}
+          </div>
+        </div>
+        <div className="pt-8 flex gap-10 pl-[20.8rem] max-lg:pl-0 max-lg:pt-0">
+          <div className="flex shrink-0 max-lg:hidden">
+            {[1, 2, 3, 4].map((_, index) => (
+              <Image
+                key={index}
+                src="/assets/icons/spiral.svg"
+                alt="Spiral decoration"
+                width={64}
+                height={64}
+                className="w-18 h-18 "
+              />
+            ))}
+          </div>
+          <div className="w-86 max-lg:w-86">
+            <TextAnimation
+              text={decodeSectionData.description}
+              tag="p"
+              className="text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1"
+            />
+            <PrimaryButton
+              variant="secondary"
+              onClick={() => console.log("Start one now clicked")}
+              className="mt-6"
+            >
+              Start one now
+            </PrimaryButton>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Image Section with Geometric Blocks */}
+      <div className="mt-20 max-lg:mt-16 w-245 h-136 max-lg:w-162 max-lg:h-106 max-md:w-86 max-md:h-56 relative pb-16 max-lg:pb-6 max-md:pb-4">
+        <img
+          src={decodeSectionData.image}
+          alt="Rajesh Krishnamoorthy speaking"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute top-22 max-lg:top-16 -right-[8.9rem] w-36 max-lg:w-6 max-md:w-4 max-md:-right-4 max-lg:-right-6 max-lg:h-90 max-md:h-40 h-114 bg-primary-yellow z-[-1]" />
+        <div className="absolute bottom-0 right-0 w-full h-16 bg-primary-yellow z-[-1]" />
+      </div>
+    </section>
+  );
+};
+
+export default DecodeSection;
