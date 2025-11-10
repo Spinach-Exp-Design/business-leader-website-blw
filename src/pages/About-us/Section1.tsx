@@ -7,7 +7,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 const Section1 = () => {
   const { isTablet, isMobile } = useDeviceType();
   return (
-    <div className={clsx("lg:mb-[14.938rem] max-lg:mb-34 max-md:mb-34")}>
+    <div className={clsx("lg:mb-[3.029rem] max-lg:mb-34 max-md:mb-34")}>
       <h1
         className={clsx(
           "font-playfair-display italic text-primary-dark",
