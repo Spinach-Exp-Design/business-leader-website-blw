@@ -9,12 +9,12 @@ const SocialButton = ({ icon }: { icon: string }) => {
   return (
     <button
       className={clsx(
-        "cursor-pointer rounded-full p-2 transition-all duration-500 ease-in-out",
+        "cursor-pointer rounded-full p-2 transition-all duration-500 ease-in-out border",
         isClicked
-          ? "bg-[#CC9809]"
+          ? "bg-[#CC9809] border-[#CC9809]"
           : isHovered
-          ? "bg-primary-yellow"
-          : "bg-primary-dark outline outline-white"
+          ? "bg-primary-yellow border-primary-yellow"
+          : "bg-primary-dark border-white"
       )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => {
