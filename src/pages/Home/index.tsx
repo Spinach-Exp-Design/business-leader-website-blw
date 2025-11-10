@@ -1,10 +1,14 @@
+"use client";
 import React from "react";
+import DecodeSection from "./DecodeSection";
 
 const HomePage = () => {
   return (
-    <div className="text-desktop-heading-h1 font-playfair-display italic text-center">
-      HomePage
-    </div>
+    <>
+      <section>
+        <DecodeSection />
+      </section>
+    </>
   );
 };
 

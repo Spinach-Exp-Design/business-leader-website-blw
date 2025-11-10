@@ -212,3 +212,15 @@
   --text-mobile-functional-f1--line-height: 1.25rem;
   --text-mobile-functional-f1--font-weight: 500;
 }
+
+@media (min-width: 90.0625rem) {
+  :root {
+    font-size: calc(1vw + 0.125rem) !important;
+  }
+}
+
+@media (min-width: 64rem) and (max-width: 89.938rem) {
+  :root {
+    font-size: calc(1vw + 0.125rem) !important;
+  }
+}

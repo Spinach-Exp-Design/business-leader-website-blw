@@ -12,7 +12,13 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="pt-4 pl-[1.37rem] max-lg:pl-8 max-lg:pr-9 max-md:pl-6 max-md:pr-5 pb-1 pr-60 border-b border-neutral-light">
+    <nav className="pt-4 pl-[1.37rem] max-lg:pl-8 max-lg:pr-9 max-md:pl-6 max-md:pr-5 pb-1 pr-60 border-b border-neutral-light relative">
+      {pathname === "/" && (
+        <>
+          <div className="w-px h-full bg-neutral-light top-0 left-36 absolute z-[-1] max-lg:hidden" />
+          <div className="w-px h-full bg-neutral-light bottom-0 right-36 absolute z-[-1] max-lg:hidden" />
+        </>
+      )}
       <div className="flex items-center justify-between">
         {/* Logo/Brand */}
         <Link
