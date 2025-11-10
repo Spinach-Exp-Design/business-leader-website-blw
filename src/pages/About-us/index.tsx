@@ -1,9 +1,9 @@
-import React from "react";
+import Section1 from "./Section1";
 
 const AboutUs = () => {
   return (
-    <div className="text-desktop-heading-h1 font-playfair-display italic text-center">
-      AboutUs
+    <div>
+      <Section1 />
     </div>
   );
 };
