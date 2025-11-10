@@ -14,6 +14,7 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
   ]),
   {
+    // Disable img tag warning for entire project
     rules: {
       "@next/next/no-img-element": "off",
     },
