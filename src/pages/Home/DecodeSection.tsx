@@ -14,12 +14,12 @@ const DecodeSection = () => {
           <TextAnimation
             text={decodeSectionData.titleFirst}
             tag="h2"
-            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem]"
           />
           <TextAnimation
             text={decodeSectionData.titleFirst}
             tag="h2"
-            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem]"
           />
           <div className="shrink-0 hidden max-lg:flex mt-4">
             {[1, 2, 3, 4].map((_, index) => (

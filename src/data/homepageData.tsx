@@ -27,18 +27,24 @@ export const noJorgonSectionData = {
       description:
         "He guides high-stakes decisions, leadership transitions and resilient governance to thrive through strategic inflection points.",
       image: "/assets/images/boardroom.png",
+      tabletImage: "/assets/images/boardroom-tablet.png",
+      mobileImage: "/assets/images/boardroom-mobile.png",
     },
     {
       title: "Organisation-wide Interventions",
       description:
         "He accelerates change from within - by embedding purpose, aligning leadership, and transforming culture, to unlock lasting, scalable impact.",
       image: "/assets/images/organisation.png",
+      tabletImage: "/assets/images/organisation-tablet.png",
+      mobileImage: "/assets/images/organisation-mobile.png",
     },
     {
       title: "Systems Thinking for Strategic Change",
       description:
         "He tackles complexity with clarity using the systems-based approach to untangle interdependencies, and drive agile and sustainable growth.",
       image: "/assets/images/system.png",
+      tabletImage: "/assets/images/system-tablet.png",
+      mobileImage: "/assets/images/system-mobile.png",
     },
   ],
 };
