@@ -3,6 +3,7 @@ import React from "react";
 import DecodeSection from "./DecodeSection";
 import LocalSection from "./LocalSection";
 import useDeviceType from "@/hooks/useDeviceType";
+import SolutionSection from "./SolutionSection";
 
 const HomePage = () => {
   const { isMobile, isTablet } = useDeviceType();
@@ -28,6 +29,9 @@ const HomePage = () => {
         }}
       >
         <LocalSection />
+      </section>
+      <section className="-mt-8 max-lg:mt-0">
+        <SolutionSection />
       </section>
     </>
   );
