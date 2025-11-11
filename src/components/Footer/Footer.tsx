@@ -1,11 +1,11 @@
 "use client";
-import React from "react";
 import useDeviceType from "@/hooks/useDeviceType";
 import Link from "next/link";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SocialButton from "../Buttons/SocialButton";
 import { footerData } from "@/data/footerData";
 import { useRouter } from "next/navigation";
+import TextAnimation from "../TextAnimation";
 
 const Footer = () => {
   const { isTablet, isMobile } = useDeviceType();
@@ -45,9 +45,16 @@ const Footer = () => {
         </div>
 
         {/* title */}
-        <h3 className="font-playfair-display italic lg:text-desktop-heading-h3 max-lg:text-mobile-heading-h2 text-primary-yellow text-center mb-8">
-          Ready for a dialogue <br /> that matters?
-        </h3>
+        <TextAnimation
+          text={"Ready for a dialogue"}
+          tag="h3"
+          className="font-playfair-display italic lg:text-desktop-heading-h3 max-lg:text-mobile-heading-h2 text-primary-yellow text-center"
+        />
+        <TextAnimation
+          text={"that matters?"}
+          tag="h3"
+          className="font-playfair-display italic lg:text-desktop-heading-h3 max-lg:text-mobile-heading-h2 text-primary-yellow text-center mb-8"
+        />
 
         {/* button */}
         <PrimaryButton

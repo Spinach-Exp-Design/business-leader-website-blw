@@ -1,6 +1,8 @@
 import { section2Data } from "@/data/aboutpageData";
 import React, { useState, useEffect, useRef } from "react";
 import QuoteIcon from "./Icons/QuoteIcon";
+import TextAnimation from "@/components/TextAnimation";
+import { motion } from "framer-motion";
 
 const Section2 = () => {
   const [isLastItemVisible, setIsLastItemVisible] = useState(false);
@@ -71,17 +73,25 @@ const Section2 = () => {
         </div>
       </div>
 
-      <div className="-mt-3.5">
+      <motion.div
+        initial={{ opacity: 0, y: 70 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="-mt-3.5"
+      >
         <div className="bg-white  lg:py-18 lg:pl-14 lg:pr-47 lg:ml-50 flex items-start gap-14 relative z-1">
           <span className="w-27 h-27 shrink-0 block">
             <QuoteIcon />
           </span>
-          <h3 className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]">
-            {section2Data?.quote}
-          </h3>
+          <TextAnimation
+            text={section2Data?.quote || ""}
+            tag="h3"
+            className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
+          />
         </div>
         <div className="bg-primary-yellow h-[17.938rem] ml-40 -mt-[15.45rem]"></div>
-      </div>
+      </motion.div>
     </div>
   );
 };

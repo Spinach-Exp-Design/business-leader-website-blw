@@ -2,6 +2,7 @@ import { section3Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
 import clsx from "clsx";
 import CardIcons from "./Icons/CardIcons";
+import TextAnimation from "@/components/TextAnimation";
 
 export const Card = ({
   index,
@@ -24,12 +25,17 @@ export const Card = ({
       <span className="lg:h-12 max-lg:h-8 lg:w-29.5 max-lg:w-[4.266rem] block">
         {<CardIcons index={index} />}
       </span>
-      <h3 className="font-sans text-desktop-subheading-s1 max-lg:text-mobile-subheading-s1 lg:mt-10 max-lg:mt-6 text-primary-dark">
-        {title}
-      </h3>
-      <p className="text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-md:text-mobile-paragraph-p1 max-lg:tracking-[-0.02rem] max-md:tracking-[-0.02rem] lg:w-133.5 lg:mt-4 max-lg:mt-2 text-primary-dark lg:pr-[1.688rem]">
-        {description}
-      </p>
+      <TextAnimation
+        text={title || ""}
+        tag="h3"
+        className="font-sans text-desktop-subheading-s1 max-lg:text-mobile-subheading-s1 lg:mt-10 max-lg:mt-6 text-primary-dark"
+      />
+
+      <TextAnimation
+        text={description || ""}
+        tag="p"
+        className="text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-md:text-mobile-paragraph-p1 max-lg:tracking-[-0.02rem] max-md:tracking-[-0.02rem] lg:w-133.5 lg:mt-4 max-lg:mt-2 text-primary-dark lg:pr-[1.688rem]"
+      />
     </div>
   );
 };
@@ -41,13 +47,17 @@ const Section3 = () => {
       <div className="lg:pt-45 lg:pl-40 lg:pr-6 max-lg:mb-14">
         <div className="flex flex-col max-lg:flex-row max-md:flex-col gap-6 max-lg:gap-4">
           {/* title */}
-          <h2 className="text-desktop-heading-h2 max-lg:text-mobile-heading-h2 font-playfair-display italic text-primary-dark max-lg:w-1/2 max-md:w-full">
-            {section3Data.title}
-          </h2>
+          <TextAnimation
+            text={section3Data?.title || ""}
+            tag="h2"
+            className="text-desktop-heading-h2 max-lg:text-mobile-heading-h2 font-playfair-display italic text-primary-dark max-lg:w-1/2 max-md:w-full"
+          />
           {/* description */}
-          <p className="text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] text-primary-dark lg:pl-28 lg:pr-27 lg:mb-6 max-lg:w-1/2 max-md:w-full">
-            {section3Data.description}
-          </p>
+          <TextAnimation
+            text={section3Data?.description || ""}
+            tag="p"
+            className="text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] text-primary-dark lg:pl-28 lg:pr-27 lg:mb-6 max-lg:w-1/2 max-md:w-full"
+          />
         </div>
         {/* swirl icon */}
         <div className="w-[26.188rem] max-lg:w-[11.188rem] h-20 max-lg:h-12 lg:pl-28 max-lg:mt-6">
