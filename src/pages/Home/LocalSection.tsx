@@ -5,9 +5,9 @@ import React from "react";
 
 const LocalSection = () => {
   return (
-    <div className="pt-120 pl-40 pr-26 pb-64 max-lg:px-8 max-lg:pt-52 max-lg:pb-8 max-md:px-0 max-md:pt-44 max-md:pb-4">
+    <div className="pt-120 pl-40 pr-26 pb-64 max-lg:px-8 max-lg:pt-52 max-lg:pb-8 max-md:pt-44 max-md:pb-4 max-md:px-2">
       <div className="flex flex-col max-lg:flex-row max-lg:gap-20 max-md:flex-col max-md:gap-4 gap-0">
-        <div className="max-md:px-4">
+        <div className="max-md:px-2">
           <TextAnimation
             text={localSectionData.titleFirst}
             tag="h2"
@@ -19,7 +19,7 @@ const LocalSection = () => {
             className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h2 text-neutral-white ml-28 max-lg:ml-0"
           />
         </div>
-        <div className="mt-4 ml-28 flex gap-36 max-lg:flex-col max-lg:gap-16 max-lg:mt-0 max-lg:ml-0  max-md:px-4">
+        <div className="mt-4 ml-28 flex gap-36 max-lg:flex-col max-lg:gap-16 max-lg:mt-0 max-lg:ml-0  max-md:px-2">
           <div className="pt-4 max-lg:pt-0">
             <TextAnimation
               text={localSectionData.description}
