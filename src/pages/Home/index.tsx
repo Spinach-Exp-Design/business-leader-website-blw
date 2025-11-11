@@ -10,7 +10,7 @@ const HomePage = () => {
         <DecodeSection />
       </section>
       <section
-        className="-mt-80"
+        className="-mt-80 max-lg:-mt-32 max-md:-mt-24"
         style={{
           backgroundImage: "url('/assets/images/Pattern_Desktop.png')",
           backgroundSize: "cover",

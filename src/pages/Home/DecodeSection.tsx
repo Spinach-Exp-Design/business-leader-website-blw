@@ -70,7 +70,7 @@ const DecodeSection = () => {
           className="w-full h-full object-cover"
         />
         <div className="absolute top-22 max-lg:top-16 -right-36 w-36 max-lg:w-6 max-md:w-4 max-md:-right-4 max-lg:-right-6 max-lg:h-90 max-md:h-40 h-114 bg-primary-yellow z-0" />
-        <div className="absolute bottom-0 right-0 w-full h-16 bg-primary-yellow z-0" />
+        <div className="absolute bottom-0 right-0 w-full h-16 max-lg:h-6 max-md:h-4 bg-primary-yellow z-0" />
       </div>
     </div>
   );
