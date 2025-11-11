@@ -30,7 +30,7 @@ const HomePage = () => {
       >
         <LocalSection />
       </section>
-      <section>
+      <section className="-mt-8">
         <SolutionSection />
       </section>
     </>

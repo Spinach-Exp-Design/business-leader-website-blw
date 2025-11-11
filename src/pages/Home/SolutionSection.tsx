@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import useDeviceType from "@/hooks/useDeviceType";
 import TextAnimation from "@/components/TextAnimation";
+import SpiralIcon from "./icons/SpiralIcon";
 
 const SolutionSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,7 +15,7 @@ const SolutionSection = () => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex pb-24">
         {/* Left Section */}
         <div className="flex flex-col justify-center space-y-8 pl-40 pt-50 pr-18 pb-20">
           {/* Title */}
@@ -22,12 +23,12 @@ const SolutionSection = () => {
             <TextAnimation
               text={noJorgonSectionData.firstTitle}
               tag="h2"
-              className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1"
+              className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.135rem]"
             />
             <TextAnimation
               text={noJorgonSectionData.secondTitle}
               tag="h2"
-              className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 ml-28"
+              className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h1 ml-28 tracking-[-0.135rem]"
             />
           </div>
 
@@ -39,36 +40,28 @@ const SolutionSection = () => {
           />
 
           {/* Interactive List */}
-          <div className="space-y-6 ml-12">
+          <div className="ml-12 divide-y divide-neutral-light">
             {noJorgonSectionData.cards.map((card, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`flex items-center gap-4 text-left transition-all duration-300 group w-full ${
+                className={`flex items-center gap-4 text-left transition-all duration-300 py-4 group w-full ${
                   activeIndex === index ? "opacity-100" : "opacity-40"
                 }`}
               >
                 {/* Spiral Icon */}
                 <div
-                  className={`shrink-0 transition-transform duration-300 ${
-                    activeIndex === index ? "scale-100" : "scale-75"
-                  }`}
+                  className={`shrink-0 transition-transform duration-300 h-8 w-8`}
                 >
-                  <Image
-                    src="/assets/icons/spiral.svg"
-                    alt=""
-                    width={isMobile ? 40 : 50}
-                    height={isMobile ? 40 : 50}
-                    className={`transition-opacity duration-300 ${
-                      activeIndex === index ? "opacity-100" : "opacity-50"
-                    }`}
-                  />
+                  <SpiralIcon isActive={activeIndex === index} />
                 </div>
 
                 {/* Title */}
                 <h3
-                  className={`text-xl md:text-2xl font-normal transition-all duration-300 ${
-                    activeIndex === index ? "font-medium" : ""
+                  className={`transition-all duration-300 ${
+                    activeIndex === index
+                      ? "text-desktop-subheading-s1 color-[#0A192A]"
+                      : "text-desktop-subheading-s2 color-[#717782]"
                   }`}
                 >
                   {card.title}
@@ -79,24 +72,18 @@ const SolutionSection = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-col gap-6 lg:gap-8">
-          {/* Image Container */}
-          <div className="relative w-full aspect-4/3 overflow-hidden bg-gray-800 rounded-lg">
-            <Image
-              key={activeIndex}
-              src={activeCard.image}
-              alt={activeCard.title}
-              fill
-              className="object-cover transition-opacity duration-500 ease-in-out animate-fadeIn"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-            />
-          </div>
-
+        <div className="relative w-164.5 h-205 shrink-0">
+          <img
+            key={activeIndex}
+            src={activeCard.image}
+            alt={activeCard.title}
+            className="object-cover h-full w-full transition-opacity duration-500 ease-in-out animate-fadeIn"
+          />
           {/* Description Box */}
-          <div className="bg-[#FFBE0B] text-gray-900 p-6 md:p-8 rounded-lg">
+          <div className="bg-primary-yellow p-12 absolute -bottom-6 left-10 w-154.5">
             <p
               key={`desc-${activeIndex}`}
-              className="text-base md:text-lg leading-relaxed animate-fadeIn"
+              className="text-desktop-paragraph-p3 font-sans animate-fadeIn"
             >
               {activeCard.description}
             </p>
