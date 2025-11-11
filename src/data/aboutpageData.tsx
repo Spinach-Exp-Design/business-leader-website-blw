@@ -22,17 +22,17 @@ export const section3Data = {
     {
       title: "Strategy of Patience",
       description:
-        "Instead of rushing decisions, he creates space for reflection - because some of the most important answers need stillness to emerge.",
+        "He’s taking ethics out of policy documents and into everyday decisions, shaping cultures, systems and leadership norms.",
     },
     {
       title: "Systemic clarity over noise",
       description:
-        "He helps leaders zoom out, to see patterns where others see only problems – because clarity isn’t about speed – it’s about perspective.",
+        "He’s priming organisations to encourage employees to step up and take ethical action as an ongoing, daily practice. ",
     },
     {
       title: "Integrity as Presence",
       description:
-        "He believes that presence speaks louder than posture – because in rooms that matter, it’s often quiet conviction, not volume, that builds trust.",
+        "He’s creating workplace cultures where speaking up about ethical concerns is the norm, rather than the exception; and where retribution is replaced by receptivity.",
     },
   ],
 };

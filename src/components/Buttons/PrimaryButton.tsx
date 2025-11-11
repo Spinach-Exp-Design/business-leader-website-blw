@@ -80,7 +80,7 @@ const PrimaryButton = ({
     >
       <div
         className={clsx(
-          "lg:text-desktop-functional-f1 max-lg:text-mobile-functional-f1 flex items-center justify-center rounded-md transition-all duration-500 ease-in-out border border-r-0 font-sans px-6 py-3",
+          "lg:text-desktop-functional-f1 max-lg:text-mobile-functional-f1 flex items-center justify-center rounded-md transition-all duration-500 ease-in-out border border-r-0 font-sans px-6 py-3 h-12",
           styles?.bg,
           styles?.text,
           styles?.border
@@ -90,7 +90,7 @@ const PrimaryButton = ({
       </div>
       <span
         className={clsx(
-          "w-12 h-12 rounded-md transition-all duration-500 ease-in-out border border-l-0 flex items-center justify-center",
+          "w-12 h-12 rounded-md transition-all duration-500 ease-in-out border border-l-0 flex items-center justify-center -mr-px",
           styles?.bg || "bg-transparent",
           styles?.border
         )}

@@ -2,6 +2,7 @@
 import { section2Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
 import QuoteIcon from "./Icons/QuoteIcon";
+import TextAnimation from "@/components/TextAnimation";
 
 const Section2TabMobile = () => {
   const { isTablet, isMobile } = useDeviceType();
@@ -40,9 +41,11 @@ const Section2TabMobile = () => {
             <span className="shrink-0 block w-[4.27rem] h-[4.27rem] mb-4">
               <QuoteIcon />
             </span>
-            <h3 className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]">
-              {section2Data?.quote}
-            </h3>
+            <TextAnimation
+              text={section2Data?.quote || ""}
+              tag="h3"
+              className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
+            />
           </div>
           <div className="bg-primary-yellow h-74 max-lg:ml-4 max-lg:-mt-69"></div>
         </div>
