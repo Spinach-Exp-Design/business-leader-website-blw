@@ -1,0 +1,72 @@
+"use client";
+
+import { section4Data } from "@/data/aboutpageData";
+import useDeviceType from "@/hooks/useDeviceType";
+import React from "react";
+
+const Card = ({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) => {
+  return (
+    <div className="text-white flex flex-col gap-4 max-lg:gap-2">
+      <h3 className="text-desktop-subheading-s1 max-lg:text-mobile-subheading-s2">
+        {title}
+      </h3>
+      <p className="font-sans text-desktop-paragraph-p3 max-lg:text-mobile-paragraph-p2 max-lg:tracking-[-0.018rem]">
+        {description}
+      </p>
+    </div>
+  );
+};
+
+const Section4 = () => {
+  const { isTablet, isMobile } = useDeviceType();
+  const yellowCardImage = isTablet
+    ? "/AboutUS/section4-Image-tablet.png"
+    : isMobile
+    ? "/AboutUS/section4-Image-desktop.png"
+    : "/AboutUS/section4-Image-desktop.png";
+
+  return (
+    <div className="bg-primary-dark flex lg:flex-row flex-col lg:pb-40 max-lg:pr-8 max-md:pr-4">
+      {/* yellow card */}
+      <div className="bg-primary-yellow h-[46.313rem] w-207 max-lg:h-full max-md:h-full max-lg:w-full shrink-0">
+        <div className="">
+          <img
+            src={yellowCardImage}
+            alt=""
+            className="w-full h-118.5 lg:pr-12 max-lg:h-60 max-lg:pr-[7.313rem] max-md:pr-6 max-md:h-[12.688rem] object-cover relative -top-[7.563rem] max-lg:-top-[3.063rem] max-md:-top-[1.813rem]"
+          />
+          <div className="lg:py-14 lg:pr-12 lg:-mt-[7.563rem] flex flex-col items-end max-lg:items-start max-lg:pl-8 max-lg:pr-[7.313rem] max-md:pl-4 max-md:pr-6 max-lg:pb-[3.188rem] max-md:pb-8">
+            <div className="flex flex-col max-lg:flex-row max-md:flex-col items-end max-lg:items-start max-lg:gap-2 max-md:gap-0">
+              <h3 className="text-desktop-heading-h2 max-lg:text-mobile-heading-h2 font-playfair-display italic text-primary-dark lg:pr-15">
+                {section4Data.title1}
+              </h3>
+              <h3 className="text-desktop-heading-h2 max-lg:text-mobile-heading-h2 font-playfair-display italic text-primary-dark lg:pr-[5.188rem]">
+                {section4Data.title2}
+              </h3>
+            </div>
+            <p className="font-sans text-desktop-paragraph-p2 max-lg:text-mobile-paragraph-p2 text-primary-dark tracking-[-0.023rem] max-lg:tracking-[-0.018rem] lg:mt-8 max-lg:mt-4 lg:pl-68 lg:pr-16.5">
+              {section4Data.description}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* cards */}
+      <div className="lg:pt-[13.813rem] lg:mr-[7.2rem] lg:ml-22 flex flex-col gap-20 max-lg:gap-10 max-lg:pl-8 max-lg:pr-30 max-md:px-4 max-lg:mt-[2.313rem] max-lg:mb-[3.063rem] max-md:my-14">
+        {section4Data.cards.map((card, index) => (
+          <React.Fragment key={index}>
+            <Card title={card.title} description={card.description} />
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Section4;

@@ -41,7 +41,7 @@ const Section2 = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="flex gap-16 mr-16 relative z-2">
+      <div className="flex gap-16 pr-16 relative z-2">
         <div className="w-137 h-190 -mt-[8.3rem] relative z-3">
           <img src="/aboutUS/section2-profile-desktop.png" alt="" />
         </div>
