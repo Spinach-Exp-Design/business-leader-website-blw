@@ -26,7 +26,7 @@ const DecodeSection = () => {
             className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem] ml-28 max-lg:ml-0"
           />
           <div className="shrink-0 hidden max-lg:flex mt-4">
-            <span className="w-18 h-18 max-lg:w-10 max-lg:h-10">
+            <span className="h-18 max-lg:h-10">
               <SwirlIcon
                 name={
                   isTablet
@@ -40,17 +40,18 @@ const DecodeSection = () => {
           </div>
         </div>
         <div className="pt-8 flex gap-10 pl-[20.8rem] max-lg:pl-0 max-lg:pt-0">
-          <div className="flex shrink-0 max-lg:hidden">
-            {[1, 2, 3, 4].map((_, index) => (
-              <Image
-                key={index}
-                src="/assets/icons/spiral.svg"
-                alt="Spiral decoration"
-                width={64}
-                height={64}
-                className="w-18 h-18 "
+          <div className="max-lg:hidden">
+            <span className="h-18 ">
+              <SwirlIcon
+                name={
+                  isTablet
+                    ? "swirl-tablet"
+                    : isMobile
+                    ? "swirl-mobile"
+                    : "swirl-desktop"
+                }
               />
-            ))}
+            </span>
           </div>
           <div className="w-86 max-lg:w-86">
             <TextAnimation
