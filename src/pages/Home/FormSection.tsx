@@ -53,7 +53,7 @@ const FormSection = () => {
   };
 
   return (
-    <div className="relative pt-36 pb-[13.37rem] pl-40 pr-42 bg-primary-dark max-lg:pt-28 max-lg:pb-20 max-lg:px-8 overflow-hidden max-md:pt-30 max-md:pb-8 max-md:px-4">
+    <div className="relative pt-36 pb-[13.37rem] pl-40 pr-42 max-lg:pt-28 max-lg:pb-20 max-lg:px-8 overflow-hidden max-md:pt-30 max-md:pb-8 max-md:px-4">
       {/* Tabla pattern background */}
       <div
         className="absolute top-20 left-20 w-148 h-full max-lg:w-84 max-lg:h-64 max-lg:-left-2 max-lg:-top-[0.2rem] max-md:top-[-0.2rem] max-md:left-4"
