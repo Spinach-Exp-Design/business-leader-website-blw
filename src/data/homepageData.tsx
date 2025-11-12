@@ -48,3 +48,10 @@ export const noJorgonSectionData = {
     },
   ],
 };
+
+export const formSectionData = {
+  titleFirst: "Pause. Reflect.",
+  titleSecond: "Evolve.",
+  description:
+    "When was the last time you had the courage to slow down – not for rest, but for clarity?",
+};

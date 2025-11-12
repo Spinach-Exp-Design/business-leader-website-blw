@@ -4,6 +4,7 @@ import DecodeSection from "./DecodeSection";
 import LocalSection from "./LocalSection";
 import useDeviceType from "@/hooks/useDeviceType";
 import SolutionSection from "./SolutionSection";
+import FormSection from "./FormSection";
 
 const HomePage = () => {
   const { isMobile, isTablet } = useDeviceType();
@@ -32,6 +33,9 @@ const HomePage = () => {
       </section>
       <section className="-mt-8 max-lg:mt-0">
         <SolutionSection />
+      </section>
+      <section>
+        <FormSection />
       </section>
     </>
   );
