@@ -4,12 +4,10 @@ import Link from "next/link";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import SocialButton from "../Buttons/SocialButton";
 import { footerData } from "@/data/footerData";
-import { useRouter } from "next/navigation";
 import TextAnimation from "../TextAnimation";
 
 const Footer = () => {
   const { isTablet, isMobile } = useDeviceType();
-  const router = useRouter();
   const backgroundImage = isMobile
     ? "url(/footerImages/PatternMobile.png)"
     : isTablet
@@ -59,7 +57,9 @@ const Footer = () => {
         {/* button */}
         <PrimaryButton
           variant="primary"
-          onClick={() => router.push(footerData?.buttonData?.link)}
+          onClick={() =>
+            (window.location.href = `mailto:${footerData?.buttonData?.email}`)
+          }
           className="lg:mb-20 max-lg:mb-14"
         >
           {footerData?.buttonData?.text}

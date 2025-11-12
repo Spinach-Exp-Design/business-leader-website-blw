@@ -1,7 +1,7 @@
 export const footerData = {
   buttonData: {
     text: "Connect 1:1",
-    link: "/connect",
+    email: "rajesh@krishnamoorthy.one",
   },
 
   socialIcons: ["facebook", "instagram", "x", "linkedin", "youtube"],
