@@ -3,8 +3,8 @@
 import TextAnimation from "@/components/TextAnimation";
 import { section4Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const Card = ({
   title,
@@ -32,6 +32,14 @@ const Card = ({
 
 const Section4 = () => {
   const { isTablet, isMobile } = useDeviceType();
+
+  const section4Ref = useRef<HTMLDivElement>(null);
+
+  const inView = useInView(section4Ref, {
+    once: true,
+    amount: 0.25,
+  });
+
   const yellowCardImage = isTablet
     ? "/AboutUS/section4-Image-tablet.png"
     : isMobile
@@ -39,13 +47,15 @@ const Section4 = () => {
     : "/AboutUS/section4-Image-desktop.png";
 
   return (
-    <div className="bg-primary-dark flex lg:flex-row flex-col lg:pb-40 max-lg:pr-8 max-md:pr-4">
+    <div
+      ref={section4Ref}
+      className="bg-primary-dark flex lg:flex-row flex-col lg:pb-40 max-lg:pr-8 max-md:pr-4"
+    >
       {/* yellow card */}
       <motion.div
         initial={{ opacity: 0, y: 70 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.85 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 70 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="bg-primary-yellow h-[46.313rem] w-207 max-lg:h-full max-md:h-full max-lg:w-full shrink-0"
       >
         <div className="">
