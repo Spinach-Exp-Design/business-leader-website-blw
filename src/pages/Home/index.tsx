@@ -39,7 +39,7 @@ const HomePage = () => {
         <FormSection />
       </section>
       <section className="relative">
-        <div className="w-full h-70 bg-primary-dark absolute top-0 left-0 z-0" />
+        <div className="w-full h-70 bg-primary-dark absolute top-0 left-0 z-0 max-lg:hidden" />
         <NoiseSection />
       </section>
     </>
