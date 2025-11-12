@@ -36,13 +36,16 @@ const NoiseSection = () => {
         {/* Main Content: Cards and Image */}
         <div className="mt-14">
           {/* Left Side: Accordion Cards */}
-          <div className="bg-primary-yellow divide-y divide-[#0D1F1] pt-10 pl-8 pb-20 relative -bottom-16">
+          <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16">
             {noiseSectionData.cards.map((card, index) => (
               <div
                 key={index}
                 onClick={() => handleCardClick(index)}
                 className={`py-8 w-78 ${index === 0 && "pt-0"} ${
                   index === noiseSectionData.cards.length - 1 && "pb-0"
+                } ${
+                  index !== noiseSectionData.cards.length - 1 &&
+                  "border-b border-[#0D1F1]"
                 }`}
               >
                 <h3 className="text-desktop-subheading-s3 max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
@@ -66,7 +69,7 @@ const NoiseSection = () => {
               {noiseSectionData.cards.map((card, index) => (
                 <div
                   key={index}
-                  className={`transition-all duration-700 ease-in-out ${
+                  className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                     activeIndex === index
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-95"
