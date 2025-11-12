@@ -8,9 +8,46 @@ const FormSection = () => {
   const { isMobile, isTablet } = useDeviceType();
   const [email, setEmail] = useState("");
   const [response, setResponse] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [emailTouched, setEmailTouched] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (emailTouched && value) {
+      if (!validateEmail(value)) {
+        setEmailError("Please enter a valid email address");
+      } else {
+        setEmailError("");
+      }
+    }
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    if (email && !validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate email before submission
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+      setEmailTouched(true);
+      return;
+    }
+
     // Handle form submission
     console.log({ email, response });
   };
@@ -62,10 +99,18 @@ const FormSection = () => {
                 type="email"
                 placeholder="Email Id"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-transparent border-b border-neutral-medium text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2"
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
+                className={`w-full bg-transparent border-b ${
+                  emailError ? "border-[#FF3A3E]" : "border-neutral-medium"
+                } text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-lg:pb-2`}
                 required
               />
+              {emailError && (
+                <p className="text-[#FF3A3E] text-desktop-paragraph-p8 max-lg:text-mobile-paragraph-p4 mt-2">
+                  {emailError}
+                </p>
+              )}
             </div>
 
             {/* Response Textarea */}
@@ -75,7 +120,7 @@ const FormSection = () => {
                 value={response}
                 onChange={(e) => setResponse(e.target.value)}
                 rows={1}
-                className="w-full bg-transparent border-b border-neutral-medium text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors resize-none text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2"
+                className="w-full bg-transparent border-b border-neutral-medium text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors resize-none text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-lg:pb-2"
                 required
               />
             </div>
