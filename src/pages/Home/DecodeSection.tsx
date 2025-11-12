@@ -2,8 +2,11 @@ import Image from "next/image";
 import { decodeSectionData } from "../../data/homepageData";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
+import useDeviceType from "@/hooks/useDeviceType";
 
 const DecodeSection = () => {
+  const { isTablet, isMobile } = useDeviceType();
+
   return (
     <div className="w-full relative">
       <div className="w-px h-full bg-neutral-light top-0 left-36 absolute z-[-1] max-lg:hidden" />
@@ -22,14 +25,30 @@ const DecodeSection = () => {
             className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem]"
           />
           <div className="shrink-0 hidden max-lg:flex mt-4">
-            {[1, 2, 3, 4].map((_, index) => (
+            <img
+              src={
+                isTablet
+                  ? "/AboutUS/swivel_tablet.png"
+                  : isMobile
+                  ? "/AboutUS/swivel_mobile.png"
+                  : "/AboutUS/swivel_desktop.png"
+              }
+              alt={
+                isTablet
+                  ? "Swivel Tablet"
+                  : isMobile
+                  ? "Swivel Mobile"
+                  : "Swivel Desktop"
+              }
+              className="w-18 h-18 max-lg:w-10 max-lg:h-10"
+            />
+            {/* {[1, 2, 3, 4].map((_, index) => (
               <img
                 key={index}
                 src="/assets/icons/spiral.svg"
                 alt="Spiral decoration"
-                className="w-18 h-18 max-lg:w-10 max-lg:h-10"
               />
-            ))}
+            ))} */}
           </div>
         </div>
         <div className="pt-8 flex gap-10 pl-[20.8rem] max-lg:pl-0 max-lg:pt-0">
