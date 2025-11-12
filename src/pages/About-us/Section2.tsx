@@ -186,9 +186,9 @@ const Section2 = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="-mt-3.5"
+        className="-mt-[0.89rem]"
       >
-        <div className="bg-white  lg:py-18 lg:pl-14 lg:pr-47 lg:ml-50 flex items-start gap-14 relative z-1">
+        <div className="bg-white lg:py-18 lg:pl-14 lg:pr-47 lg:ml-50 flex items-start gap-14 relative z-1">
           <span className="w-27 h-27 shrink-0 block">
             <QuoteIcon />
           </span>
@@ -198,7 +198,7 @@ const Section2 = () => {
             className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
           />
         </div>
-        <div className="bg-primary-yellow h-[17.938rem] ml-40 -mt-[15.45rem]"></div>
+        <div className="bg-primary-yellow h-71.75 ml-40 -mt-[15.45rem] p-10"></div>
       </motion.div>
     </div>
   );

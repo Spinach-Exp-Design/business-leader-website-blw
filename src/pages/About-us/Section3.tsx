@@ -3,6 +3,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 import clsx from "clsx";
 import CardIcons from "./Icons/CardIcons";
 import TextAnimation from "@/components/TextAnimation";
+import SwirlIcon from "./Icons/SwirlIcon";
 
 export const Card = ({
   index,
@@ -43,9 +44,9 @@ export const Card = ({
 const Section3 = () => {
   const { isTablet, isMobile } = useDeviceType();
   return (
-    <div className="flex max-lg:flex-col h-full lg:pb-[7.563rem] max-lg:px-8 max-lg:py-20 max-md:px-4 max-md:pt-20 max-md:pb-21">
+    <div className="flex max-lg:flex-col h-full lg:pb-[7.563rem] max-lg:px-8 max-lg:pt-20 max-lg:pb-[6.31rem] max-md:px-4 max-md:pt-20 max-md:pb-21">
       <div className="lg:pt-45 lg:pl-40 lg:pr-6 max-lg:mb-14">
-        <div className="flex flex-col max-lg:flex-row max-md:flex-col gap-6 max-lg:gap-4">
+        <div className="flex flex-col max-lg:flex-row max-md:flex-col gap-8 max-lg:gap-4">
           {/* title */}
           <TextAnimation
             text={section3Data?.title || ""}
@@ -56,21 +57,19 @@ const Section3 = () => {
           <TextAnimation
             text={section3Data?.description || ""}
             tag="p"
-            className="text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] text-primary-dark lg:pl-28 lg:pr-27 lg:mb-6 max-lg:w-1/2 max-md:w-full"
+            className="text-desktop-paragraph-p1 max-lg:text-mobile-paragraph-p1 font-sans tracking-[-0.025rem] text-primary-dark lg:pl-28 lg:pr-21 lg:mb-6 max-lg:w-1/2 max-md:w-full"
           />
         </div>
         {/* swirl icon */}
-        <div className="w-[26.188rem] max-lg:w-[11.188rem] h-20 max-lg:h-12 lg:pl-28 max-lg:mt-6">
-          <img
-            src={
+        <div className="lg:pl-28 max-lg:mt-6 h-21 max-lg:h-12 w-fit">
+          <SwirlIcon
+            name={
               isTablet
-                ? "/AboutUS/swivel_tablet.png"
+                ? "swirl-tablet"
                 : isMobile
-                ? "/AboutUS/swivel_mobile.png"
-                : "/AboutUS/swivel_desktop.png"
+                ? "swirl-mobile"
+                : "swirl-desktop"
             }
-            alt=""
-            className="w-full h-full object-contain"
           />
         </div>
       </div>
