@@ -6,13 +6,19 @@ import { motion } from "framer-motion";
 
 const Section2 = () => {
   const [isLastItemVisible, setIsLastItemVisible] = useState(false);
+  const [isOverlayInView, setIsOverlayInView] = useState(false);
+  const [isLastLineInView, setIsLastLineInView] = useState(false);
   const lastItemRef = useRef<HTMLDivElement>(null);
+  const lastLineRef = useRef<HTMLParagraphElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const scrollPositionRef = useRef<number>(0);
+  const isLockedRef = useRef<boolean>(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          setIsLastItemVisible(entry.isIntersecting);
+        entries?.forEach((entry) => {
+          setIsLastItemVisible(entry?.isIntersecting);
         });
       },
       {
@@ -21,17 +27,115 @@ const Section2 = () => {
       }
     );
 
-    const currentRef = lastItemRef.current;
+    const currentRef = lastItemRef?.current;
     if (currentRef) {
-      observer.observe(currentRef);
+      observer?.observe(currentRef);
     }
 
     return () => {
       if (currentRef) {
-        observer.unobserve(currentRef);
+        observer?.unobserve(currentRef);
       }
     };
   }, []);
+
+  useEffect(() => {
+    const overlayObserver = new IntersectionObserver(
+      (entries) => {
+        entries?.forEach((entry) => {
+          setIsOverlayInView(entry?.isIntersecting);
+        });
+      },
+      {
+        threshold: 1.0, // Trigger when 100% of the element is visible
+        rootMargin: "0px",
+      }
+    );
+
+    const currentOverlayRef = overlayRef?.current;
+    if (currentOverlayRef) {
+      overlayObserver?.observe(currentOverlayRef);
+    }
+
+    return () => {
+      if (currentOverlayRef) {
+        overlayObserver?.unobserve(currentOverlayRef);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const lastLineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsLastLineInView(entry?.isIntersecting);
+        });
+      },
+      {
+        threshold: 1.0, // Trigger when 100% of the last line is visible
+        rootMargin: "0px",
+      }
+    );
+
+    const currentLastLineRef = lastLineRef?.current;
+    if (currentLastLineRef) {
+      lastLineObserver?.observe(currentLastLineRef);
+    }
+
+    return () => {
+      if (currentLastLineRef) {
+        lastLineObserver?.unobserve(currentLastLineRef);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    const shouldLock =
+      isOverlayInView && !isLastItemVisible && !isLastLineInView;
+
+    if (shouldLock && !isLockedRef.current) {
+      // Lock scroll - transitioning from unlocked to locked
+      scrollPositionRef.current = window?.scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollPositionRef?.current}px`;
+      document.body.style.width = "100%";
+      document.documentElement.style.overflow = "hidden";
+      isLockedRef.current = true;
+    } else if (!shouldLock && isLockedRef?.current) {
+      // Unlock scroll - transitioning from locked to unlocked
+      const savedScrollPosition = scrollPositionRef?.current;
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.documentElement.style.overflow = "";
+      isLockedRef.current = false;
+
+      // Restore scroll position only once when unlocking
+      if (savedScrollPosition > 0) {
+        requestAnimationFrame(() => {
+          window?.scrollTo(0, savedScrollPosition);
+          // Clear the saved position after restoring to prevent future restorations
+          scrollPositionRef.current = 0;
+        });
+      }
+    }
+
+    return () => {
+      // Cleanup on unmount
+      if (isLockedRef?.current) {
+        const savedScrollPosition = scrollPositionRef?.current;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.documentElement.style.overflow = "";
+        if (savedScrollPosition > 0) {
+          requestAnimationFrame(() => {
+            window?.scrollTo(0, savedScrollPosition);
+          });
+        }
+      }
+    };
+  }, [isOverlayInView, isLastItemVisible, isLastLineInView]);
 
   return (
     <div
@@ -54,7 +158,10 @@ const Section2 = () => {
                 index === section2Data.scrollSection.length - 1;
               return (
                 <div key={index} ref={isLastItem ? lastItemRef : null}>
-                  <p className="text-white text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] ">
+                  <p
+                    ref={isLastItem ? lastLineRef : null}
+                    className="text-white text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] "
+                  >
                     {item}
                   </p>
                 </div>
@@ -62,6 +169,7 @@ const Section2 = () => {
             })}
             {!isLastItemVisible && (
               <div
+                ref={overlayRef}
                 className="absolute z-1 bottom-3.5 left-0 w-full h-[18.625em]"
                 style={{
                   background:
@@ -76,7 +184,7 @@ const Section2 = () => {
       <motion.div
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
+        viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="-mt-3.5"
       >
