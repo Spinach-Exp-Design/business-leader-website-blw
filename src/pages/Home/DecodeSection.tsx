@@ -21,9 +21,9 @@ const DecodeSection = () => {
             className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem]"
           />
           <TextAnimation
-            text={decodeSectionData.titleFirst}
+            text={decodeSectionData.titleSecond}
             tag="h2"
-            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem]"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem] ml-28 max-lg:ml-0"
           />
           <div className="shrink-0 hidden max-lg:flex mt-4">
             <span className="w-18 h-18 max-lg:w-10 max-lg:h-10">
