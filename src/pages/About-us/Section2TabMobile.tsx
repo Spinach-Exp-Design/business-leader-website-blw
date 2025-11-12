@@ -3,6 +3,7 @@ import { section2Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
 import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
+import React from "react";
 
 const Section2TabMobile = () => {
   const { isTablet, isMobile } = useDeviceType();
@@ -51,9 +52,11 @@ const Section2TabMobile = () => {
         </div>
         <div className="flex flex-col gap-6 max-lg:px-8 max-lg:pt-16 max-lg:pb-14.5 max-md:px-6 max-md:pb-10.5 ">
           {section2Data?.scrollSection?.map((item, index) => (
-            <div key={index} className="text-white">
-              <p>{item}</p>
-            </div>
+            <React.Fragment key={index}>
+              <p className="text-white font-sans text-mobile-paragraph-p1 tracking-[-0.0225rem]">
+                {item}
+              </p>
+            </React.Fragment>
           ))}
         </div>
       </div>

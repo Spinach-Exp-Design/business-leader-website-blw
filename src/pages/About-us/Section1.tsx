@@ -4,11 +4,12 @@ import { section1Data } from "../../data/aboutpageData";
 import clsx from "clsx";
 import useDeviceType from "@/hooks/useDeviceType";
 import TextAnimation from "@/components/TextAnimation";
+import SwirlIcon from "./Icons/SwirlIcon";
 
 const Section1 = () => {
   const { isTablet, isMobile } = useDeviceType();
   return (
-    <div className={clsx("lg:mb-[3.029rem] max-lg:mb-34 max-md:mb-34")}>
+    <div className={clsx("lg:mb-[3.11rem] max-lg:mb-34 max-md:mb-34")}>
       <TextAnimation
         text={section1Data?.title || ""}
         tag="h1"
@@ -19,25 +20,17 @@ const Section1 = () => {
           "max-md:text-mobile-quote-1 max-md:tracking-[-0.04rem] max-md:px-4 max-md:pt-16 max-md:mb-6"
         )}
       />
-      <div className="lg:mr-[16.324rem] lg:ml-auto lg:w-[19.176rem] lg:h-[5.207rem] max-lg:w-[11.029rem] max-lg:h-12 max-lg:ml-8 max-md:w-[12.015rem] max-md:ml-4">
-        <img
-          src={
+      <span className="block h-21 max-lg:h-12 lg:mr-[16.32rem] lg:ml-auto lg:w-[19.17556rem] lg:h-[5.2065rem] max-lg:w-[11.029rem] max-lg:ml-8 max-md:w-[12.015rem] max-md:ml-4 ">
+        <SwirlIcon
+          name={
             isTablet
-              ? "/AboutUS/swivel_tablet.png"
+              ? "swirl-tablet"
               : isMobile
-              ? "/AboutUS/swivel_mobile.png"
-              : "/AboutUS/swivel_desktop.png"
+              ? "swirl-mobile"
+              : "swirl-desktop"
           }
-          alt={
-            isTablet
-              ? "Swivel Tablet"
-              : isMobile
-              ? "Swivel Mobile"
-              : "Swivel Desktop"
-          }
-          className="w-full h-full object-cover"
         />
-      </div>
+      </span>
     </div>
   );
 };
