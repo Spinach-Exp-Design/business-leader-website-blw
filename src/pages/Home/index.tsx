@@ -35,10 +35,11 @@ const HomePage = () => {
       <section className="-mt-8 max-lg:mt-0">
         <SolutionSection />
       </section>
-      <section className="bg-primary-dark pb-68 max-lg:pb-0">
+      <section className="bg-primary-dark">
         <FormSection />
       </section>
-      <section>
+      <section className="relative">
+        <div className="w-full h-70 bg-primary-dark absolute top-0 left-0 z-0" />
         <NoiseSection />
       </section>
     </>
