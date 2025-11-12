@@ -14,7 +14,7 @@ const SolutionSection = () => {
 
   return (
     <>
-      <div className="flex pb-24 max-lg:pb-6 max-lg:flex-col">
+      <div className="flex pb-24 max-lg:pb-6 max-lg:flex-col overflow-x-hidden">
         {/* Left Section */}
         <div className="flex flex-col space-y-8 pl-40 pt-50 pr-18 pb-20 max-lg:px-8 max-lg:pt-20 max-lg:pb-14 max-lg:flex-row max-lg:gap-4 max-lg:space-y-0 max-md:px-4 max-md:flex-col">
           {/* Title */}
@@ -44,7 +44,7 @@ const SolutionSection = () => {
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`flex items-center gap-4 text-left transition-all duration-300 py-4 group w-full ${
+                className={`flex items-center gap-4 text-left transition-all duration-300 py-4 group w-full cursor-pointer ${
                   activeIndex === index ? "opacity-100" : "opacity-40"
                 }`}
               >
