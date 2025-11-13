@@ -12,10 +12,10 @@ const NoiseSection = () => {
   };
 
   return (
-    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10">
+    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30">
       {isMobile || isTablet ? (
         <>
-          <div className="flex gap-4 pr-8">
+          <div className="flex gap-4 pr-8 max-md:pr-4 max-md:flex-col">
             <div>
               <TextAnimation
                 text={noiseSectionData.titleFirst}
@@ -27,29 +27,39 @@ const NoiseSection = () => {
                 tag="h2"
                 className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h2 text-primary-dark whitespace-nowrap"
               />
-              <TextAnimation
-                text={noiseSectionData.description}
-                tag="p"
-                className="max-lg:text-mobile-paragraph-p2 text-primary-dark self-end mt-2"
-              />
             </div>
+            <TextAnimation
+              text={noiseSectionData.description}
+              tag="p"
+              className="max-lg:text-mobile-paragraph-p2 text-primary-dark self-end"
+            />
           </div>
-          <div className="bg-primary-yellow mt-14 pl-8 py-8">
-            <div>
-              <h3 className="max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
-                {noiseSectionData.cards[0].title}
-              </h3>
-              <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
-                {noiseSectionData.cards[0].description}
-              </p>
-              <div className="h-75 w-full mt-6">
-                <img
-                  src={noiseSectionData.cards[0].image}
-                  alt={noiseSectionData.cards[0].title}
-                  className="w-full h-full object-cover"
-                />
+          <div className="bg-primary-yellow mt-14 pl-8 py-8 flex flex-col gap-12 max-md:pb-28">
+            {noiseSectionData.cards.map((card, index) => (
+              <div key={index}>
+                <h3 className="max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
+                  {card.title}
+                </h3>
+                <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
+                  {card.description}
+                </p>
+                <div
+                  className={`h-75 w-full mt-6 max-md:h-44 ${
+                    index === noiseSectionData.cards.length - 1 &&
+                    "max-md:absolute"
+                  }`}
+                  style={{
+                    width: isMobile ? "calc(100% - 3rem)" : "100%",
+                  }}
+                >
+                  <img
+                    src={isMobile ? card.mobileImage : card.tabletImage}
+                    alt={card.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-            </div>
+            ))}
           </div>
         </>
       ) : (
@@ -84,7 +94,9 @@ const NoiseSection = () => {
                   <div
                     key={index}
                     onClick={() => handleCardClick(index)}
-                    className={`py-8 w-78 ${index === 0 && "pt-0"} ${
+                    className={`py-8 w-78 cursor-pointer ${
+                      index === 0 && "pt-0"
+                    } ${
                       index === noiseSectionData.cards.length - 1 && "pb-0"
                     } ${
                       index !== noiseSectionData.cards.length - 1 &&
