@@ -2,6 +2,7 @@ import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import { formSectionData } from "@/data/homepageData";
 import useDeviceType from "@/hooks/useDeviceType";
+import { sendConfirmationEmail } from "@/services/emailNotification";
 import React, { useState } from "react";
 
 const FormSection = () => {
@@ -10,6 +11,7 @@ const FormSection = () => {
   const [response, setResponse] = useState("");
   const [emailError, setEmailError] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,7 +40,7 @@ const FormSection = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate email before submission
@@ -47,9 +49,15 @@ const FormSection = () => {
       setEmailTouched(true);
       return;
     }
-
-    // Handle form submission
-    console.log({ email, response });
+    const res = await sendConfirmationEmail({ email, response });
+    if (res?.ok) {
+      setShowSuccessMessage(true);
+      setEmail("");
+      setResponse("");
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -126,13 +134,36 @@ const FormSection = () => {
             </div>
 
             {/* Submit Button */}
-            <div>
+            <div className="flex items-center gap-8">
               <PrimaryButton
                 variant="primary"
                 onClick={() => console.log("Start one now clicked")}
               >
                 Send response
               </PrimaryButton>
+              {showSuccessMessage && (
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M13.3337 4L6.00033 11.3333L2.66699 8"
+                        stroke="#F6F5F2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <p className="text-neutral-white text-desktop-paragraph-p8 max-lg:text-mobile-paragraph-p4">
+                    Response sent successfully
+                  </p>
+                </div>
+              )}
             </div>
           </form>
         </div>
