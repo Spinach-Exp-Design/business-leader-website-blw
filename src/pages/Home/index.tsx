@@ -5,6 +5,7 @@ import LocalSection from "./LocalSection";
 import useDeviceType from "@/hooks/useDeviceType";
 import SolutionSection from "./SolutionSection";
 import FormSection from "./FormSection";
+import NoiseSection from "./NoiseSection";
 
 const HomePage = () => {
   const { isMobile, isTablet } = useDeviceType();
@@ -34,8 +35,12 @@ const HomePage = () => {
       <section className="-mt-8 max-lg:mt-0">
         <SolutionSection />
       </section>
-      <section>
+      <section className="bg-primary-dark">
         <FormSection />
+      </section>
+      <section className="relative">
+        <div className="w-full h-70 bg-primary-dark absolute top-0 left-0 z-0 max-lg:hidden" />
+        <NoiseSection />
       </section>
     </>
   );
