@@ -18,7 +18,7 @@ const TextAnimation: React.FC<TextAnimationProps> = ({
   tag = "div",
   start = "top 85%",
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!containerRef?.current || !text) return;
@@ -61,14 +61,14 @@ const TextAnimation: React.FC<TextAnimationProps> = ({
 
   if (!text) return null;
 
-  return (
-    <div
-      ref={containerRef}
-      className={`${className} opacity-0`}
-      aria-label={text?.toString() || ""}
-    >
-      {text}
-    </div>
+  return React.createElement(
+    tag,
+    {
+      ref: containerRef,
+      className: `${className} opacity-0`,
+      "aria-label": text?.toString() || "",
+    },
+    text
   );
 };
 
