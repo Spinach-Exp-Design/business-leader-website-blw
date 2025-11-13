@@ -55,3 +55,36 @@ export const formSectionData = {
   description:
     "When was the last time you had the courage to slow down – not for rest, but for clarity?",
 };
+
+export const noiseSectionData = {
+  titleFirst: "Less noise.",
+  titleSecond: "More substance.",
+  description:
+    "Discover how Rajesh’s approach can influence meaningful change and create sustainable impact.",
+  cards: [
+    {
+      title: "Commitment to women-led initiatives",
+      description:
+        "Engage him in a dialogue about women in economy, gender lens investing and how to unlock one more engine for economic growth.",
+      image: "/assets/images/commitment-desktop.png",
+      tabletImage: "/assets/images/Commitment-tablet.png",
+      mobileImage: "/assets/images/Commitment-mobile.png",
+    },
+    {
+      title: "Clarity through collaborative advocacy",
+      description:
+        "Connect with him to learn more about achieving clarity through collaboration, and engaging meaningfully with regulators.",
+      image: "/assets/images/clarity-desktop.png",
+      tabletImage: "/assets/images/Clarity-tablet.png",
+      mobileImage: "/assets/images/Clarity-mobile.png",
+    },
+    {
+      title: "Creative engagement of employees",
+      description:
+        "Get guidance from him on reimagining employee engagement and annual retreats with creative ways of delivering strategic objectives, growth targets and corporate milestones.",
+      image: "/assets/images/creative-desktop.png",
+      tabletImage: "/assets/images/Creative-tablet.png",
+      mobileImage: "/assets/images/Creative-mobile.png",
+    },
+  ],
+};

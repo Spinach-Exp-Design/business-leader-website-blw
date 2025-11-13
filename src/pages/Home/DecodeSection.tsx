@@ -5,7 +5,11 @@ import useDeviceType from "@/hooks/useDeviceType";
 import SwirlIcon from "../About-us/Icons/SwirlIcon";
 import SimpleParallax from "simple-parallax-js";
 
-const DecodeSection = () => {
+interface DecodeSectionProps {
+  onStartNowClick: () => void;
+}
+
+const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
   const { isTablet, isMobile } = useDeviceType();
 
   return (
@@ -61,7 +65,7 @@ const DecodeSection = () => {
             />
             <PrimaryButton
               variant="secondary"
-              onClick={() => console.log("Start one now clicked")}
+              onClick={onStartNowClick}
               className="mt-6"
             >
               Start one now
