@@ -1,7 +1,7 @@
 import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import { localSectionData } from "@/data/homepageData";
-import React from "react";
+import SimpleParallax from "simple-parallax-js";
 
 const LocalSection = () => {
   return (
@@ -34,12 +34,14 @@ const LocalSection = () => {
               Know more about Rajesh
             </PrimaryButton>
           </div>
-          <div className="h-149 w-119 z-1 max-lg:h-108 max-lg:w-md max-md:w-full max-md:h-107.5">
-            <img
-              src={localSectionData.image}
-              alt="Rajesh Krishnamoorthy"
-              className="w-full h-full object-cover"
-            />
+          <div className="h-149 w-119 z-1 max-lg:h-108 max-lg:w-md max-md:w-full max-md:h-107.5 overflow-hidden">
+            <SimpleParallax scale={1.2}>
+              <img
+                src={localSectionData.image}
+                alt="Rajesh Krishnamoorthy"
+                className="w-full h-full object-cover"
+              />
+            </SimpleParallax>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { decodeSectionData } from "../../data/homepageData";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import useDeviceType from "@/hooks/useDeviceType";
 import SwirlIcon from "../About-us/Icons/SwirlIcon";
+import SimpleParallax from "simple-parallax-js";
 
 const DecodeSection = () => {
   const { isTablet, isMobile } = useDeviceType();
@@ -71,14 +71,19 @@ const DecodeSection = () => {
       </div>
 
       {/* Bottom Image Section with Geometric Blocks */}
-      <div className="mt-20 max-lg:mt-16 w-245 h-136 max-lg:w-162 max-lg:h-106 max-md:w-86 max-md:h-56 relative pb-16 max-lg:pb-6 max-md:pb-4">
-        <img
-          src={decodeSectionData.image}
-          alt="Rajesh Krishnamoorthy speaking"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute top-22 max-lg:top-16 -right-36 w-36 max-lg:w-6 max-md:w-4 max-md:-right-4 max-lg:-right-6 max-lg:h-90 max-md:h-40 h-114 bg-primary-yellow z-0" />
-        <div className="absolute bottom-0 right-0 w-full h-16 max-lg:h-6 max-md:h-4 bg-primary-yellow z-0" />
+      <div className="mt-20 max-lg:mt-16 relative pb-16 max-lg:pb-6 max-md:pb-4 overflow-visible">
+        <div className="w-245 h-136 max-lg:w-162 max-lg:h-106 max-md:w-86 max-md:h-56 relative">
+          <div className="bg-primary-yellow lg:h-129.75 lg:w-280.75 max-lg:h-[26.36238rem] max-lg:w-[calc(100%+1.24rem)] max-md:h-56.25 max-md:w-[calc(100%+1rem)] lg:pb-16 max-lg:pb-6 max-md:pb-4 absolute z-0 lg:left-0 lg:mt-22 max-lg:mt-[1.26rem]"></div>
+          <div className="relative z-10 w-full h-full overflow-hidden">
+            <SimpleParallax scale={1.2}>
+              <img
+                src={decodeSectionData.image}
+                alt="Rajesh Krishnamoorthy speaking"
+                className="w-full h-full object-cover"
+              />
+            </SimpleParallax>
+          </div>
+        </div>
       </div>
     </div>
   );

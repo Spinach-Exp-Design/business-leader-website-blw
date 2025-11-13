@@ -5,6 +5,7 @@ import { section4Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import SimpleParallax from "simple-parallax-js";
 
 const Card = ({
   title,
@@ -58,13 +59,17 @@ const Section4 = () => {
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="bg-primary-yellow h-[46.313rem] w-207 max-lg:h-full max-md:h-full max-lg:w-full shrink-0"
       >
-        <div className="">
-          <img
-            src={yellowCardImage}
-            alt=""
-            className="w-full h-118.5 lg:pr-12 max-lg:h-60 max-lg:pr-[7.313rem] max-md:pr-6 max-md:h-[12.688rem] object-cover relative -top-[7.563rem] max-lg:-top-[3.063rem] max-md:-top-[1.813rem]"
-          />
-          <div className="lg:py-14 lg:pr-12 lg:-mt-[7.563rem] flex flex-col items-end max-lg:items-start max-lg:pl-8 max-lg:pr-[7.313rem] max-md:pl-4 max-md:pr-6 max-lg:pb-[3.188rem] max-md:pb-8">
+        <div className="lg:pr-12 max-lg:pr-[7.313rem] max-md:pr-6">
+          <div className="relative -mt-[7.563rem] max-lg:-mt-[3.063rem] max-md:-mt-[1.813rem]">
+            <SimpleParallax scale={1.2}>
+              <img
+                src={yellowCardImage}
+                alt=""
+                className="w-full h-118.5 max-lg:h-60 max-md:h-[12.688rem] object-cover"
+              />
+            </SimpleParallax>
+          </div>
+          <div className="lg:py-14 flex flex-col items-end max-lg:items-start max-lg:pl-8 max-md:pl-4 max-lg:pb-[3.188rem] max-md:pb-8 max-lg:pt-8 max-md:pt-[1.19rem]">
             <div className="flex flex-col max-lg:flex-row max-md:flex-col items-end max-lg:items-start max-lg:gap-2 max-md:gap-0">
               <TextAnimation
                 text={section4Data?.title1 || ""}

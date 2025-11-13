@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import useDeviceType from "@/hooks/useDeviceType";
 import TextAnimation from "@/components/TextAnimation";
 import SpiralIcon from "./icons/SpiralIcon";
+import SimpleParallax from "simple-parallax-js";
 
 const SolutionSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -70,19 +71,23 @@ const SolutionSection = () => {
           </div>
         </div>
         {/* Right Section */}
-        <div className="relative w-164.5 h-205 shrink-0 max-lg:hidden">
-          <img
-            key={activeIndex}
-            src={
-              isMobile
-                ? activeCard?.mobileImage
-                : isTablet
-                ? activeCard?.tabletImage
-                : activeCard?.image
-            }
-            alt={activeCard.title}
-            className="object-cover h-full w-full transition-opacity duration-500 ease-in-out animate-fadeIn"
-          />
+        <div className="relative max-lg:hidden">
+          <div className="w-164.5 h-205 shrink-0 overflow-hidden">
+            <SimpleParallax scale={1.2}>
+              <img
+                key={activeIndex}
+                src={
+                  isMobile
+                    ? activeCard?.mobileImage
+                    : isTablet
+                    ? activeCard?.tabletImage
+                    : activeCard?.image
+                }
+                alt={activeCard.title}
+                className="object-cover h-full w-full transition-opacity duration-500 ease-in-out animate-fadeIn"
+              />
+            </SimpleParallax>
+          </div>
           {/* Description Box */}
           <div className="bg-primary-yellow p-12 absolute -bottom-6 left-10 w-154.5">
             <p
@@ -107,19 +112,23 @@ const SolutionSection = () => {
                   {card?.title}
                 </h3>
               </div>
-              <div className="w-full h-88 max-md:h-106 relative max-lg:mt-6 max-md:mt-4">
-                <img
-                  src={
-                    isMobile
-                      ? card?.mobileImage
-                      : isTablet
-                      ? card?.tabletImage
-                      : card?.image
-                  }
-                  alt={card?.title}
-                  className="object-cover h-full w-full"
-                />
-                <div className="bg-primary-yellow p-6 absolute -bottom-14 left-6 w-136 max-md:w-[95%] max-md:left-1/2 max-md:-translate-x-1/2">
+              <div className="relative">
+                <div className="w-full h-88 max-md:h-106 overflow-hidden max-lg:mt-6 max-md:mt-4">
+                  <SimpleParallax scale={1.2}>
+                    <img
+                      src={
+                        isMobile
+                          ? card?.mobileImage
+                          : isTablet
+                          ? card?.tabletImage
+                          : card?.image
+                      }
+                      alt={card?.title}
+                      className="object-cover h-full w-full"
+                    />
+                  </SimpleParallax>
+                </div>
+                <div className="bg-primary-yellow p-6 absolute -bottom-14 left-6 w-136 max-md:w-[95%] max-md:left-1/2 max-md:-translate-x-1/2 z-10">
                   <p className="text-mobile-paragraph-p2">
                     {card?.description}
                   </p>
