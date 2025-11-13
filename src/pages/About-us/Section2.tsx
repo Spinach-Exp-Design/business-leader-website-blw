@@ -1,5 +1,5 @@
 import { section2Data } from "@/data/aboutpageData";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
@@ -8,10 +8,11 @@ import SimpleParallax from "simple-parallax-js";
 const Section2 = () => {
   const [isLastItemVisible, setIsLastItemVisible] = useState(false);
   const [isOverlayInView, setIsOverlayInView] = useState(false);
-  const [isLastLineInView, setIsLastLineInView] = useState(false);
+  const [isContainerScrolledToBottom, setIsContainerScrolledToBottom] =
+    useState(false);
   const lastItemRef = useRef<HTMLDivElement>(null);
-  const lastLineRef = useRef<HTMLParagraphElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef<number>(0);
   const isLockedRef = useRef<boolean>(false);
   const isScrollingDownRef = useRef<boolean>(true);
@@ -80,65 +81,105 @@ const Section2 = () => {
     };
   }, []);
 
+  // Check if scroll container has scrolled to bottom
   useEffect(() => {
-    const lastLineObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          setIsLastLineInView(entry?.isIntersecting);
-        });
-      },
-      {
-        threshold: 1.0, // Trigger when 100% of the last line is visible
-        rootMargin: "0px",
-      }
-    );
+    const scrollContainer = scrollContainerRef?.current;
+    if (!scrollContainer) return;
 
-    const currentLastLineRef = lastLineRef?.current;
-    if (currentLastLineRef) {
-      lastLineObserver?.observe(currentLastLineRef);
-    }
+    const checkScrollPosition = () => {
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+      const isAtBottom =
+        Math.ceil(scrollTop + clientHeight) >= Math.floor(scrollHeight) - 1; // -1 for rounding tolerance
+      setIsContainerScrolledToBottom(isAtBottom);
+    };
+
+    // Check initial position
+    checkScrollPosition();
+
+    // Listen to scroll events
+    scrollContainer.addEventListener("scroll", checkScrollPosition);
 
     return () => {
-      if (currentLastLineRef) {
-        lastLineObserver?.unobserve(currentLastLineRef);
-      }
+      scrollContainer.removeEventListener("scroll", checkScrollPosition);
     };
   }, []);
 
   // Track scroll direction
+  const unlockScroll = useCallback(() => {
+    const savedScrollPosition = scrollPositionRef?.current;
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    document.documentElement.style.overflow = "";
+    isLockedRef.current = false;
+
+    if (savedScrollPosition > 0) {
+      requestAnimationFrame(() => {
+        window?.scrollTo(0, savedScrollPosition);
+        scrollPositionRef.current = 0;
+      });
+    }
+  }, []);
+
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       const scrollingDown = e?.deltaY > 0;
       isScrollingDownRef.current = scrollingDown;
 
+      const scrollContainer = scrollContainerRef?.current;
+
+      if (isLockedRef.current && scrollContainer) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+        const isAtTop = scrollTop <= 0;
+        const isAtBottom =
+          Math.ceil(scrollTop + clientHeight) >= Math.floor(scrollHeight);
+
+        if (scrollingDown) {
+          if (!isAtBottom) {
+            scrollContainer.scrollBy({
+              top: e?.deltaY,
+              behavior: "auto",
+            });
+            e?.preventDefault();
+            return;
+          }
+
+          if (isAtBottom) {
+            unlockScroll();
+            return;
+          }
+        } else {
+          if (!isAtTop) {
+            scrollContainer.scrollBy({
+              top: e?.deltaY,
+              behavior: "auto",
+            });
+            e?.preventDefault();
+            return;
+          }
+
+          if (isAtTop) {
+            unlockScroll();
+            return;
+          }
+        }
+      }
+
       // If locked and user tries to scroll up, unlock immediately
       if (isLockedRef.current && !scrollingDown) {
-        const savedScrollPosition = scrollPositionRef?.current;
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        document.documentElement.style.overflow = "";
-        isLockedRef.current = false;
-
-        if (savedScrollPosition > 0) {
-          requestAnimationFrame(() => {
-            window?.scrollTo(0, savedScrollPosition);
-            scrollPositionRef.current = 0;
-          });
-        }
+        unlockScroll();
       }
     };
 
-    window?.addEventListener("wheel", handleWheel, { passive: true });
+    window?.addEventListener("wheel", handleWheel, { passive: false });
 
     return () => {
       window?.removeEventListener("wheel", handleWheel);
     };
-  }, []);
+  }, [unlockScroll]);
 
   useEffect(() => {
-    const shouldLock =
-      isOverlayInView && !isLastItemVisible && !isLastLineInView;
+    const shouldLock = isOverlayInView && !isContainerScrolledToBottom;
 
     // Only lock when scrolling down (top to bottom)
     if (shouldLock && !isLockedRef?.current && isScrollingDownRef?.current) {
@@ -151,39 +192,21 @@ const Section2 = () => {
       isLockedRef.current = true;
     } else if (!shouldLock && isLockedRef?.current) {
       // Unlock scroll - transitioning from locked to unlocked
-      const savedScrollPosition = scrollPositionRef?.current;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.documentElement.style.overflow = "";
-      isLockedRef.current = false;
-
-      // Restore scroll position only once when unlocking
-      if (savedScrollPosition > 0) {
-        requestAnimationFrame(() => {
-          window?.scrollTo(0, savedScrollPosition);
-          // Clear the saved position after restoring to prevent future restorations
-          scrollPositionRef.current = 0;
-        });
-      }
+      unlockScroll();
     }
 
     return () => {
       // Cleanup on unmount
       if (isLockedRef?.current) {
-        const savedScrollPosition = scrollPositionRef?.current;
-        document.body.style.position = "";
-        document.body.style.top = "";
-        document.body.style.width = "";
-        document.documentElement.style.overflow = "";
-        if (savedScrollPosition > 0) {
-          requestAnimationFrame(() => {
-            window?.scrollTo(0, savedScrollPosition);
-          });
-        }
+        unlockScroll();
       }
     };
-  }, [isOverlayInView, isLastItemVisible, isLastLineInView]);
+  }, [
+    isOverlayInView,
+    isContainerScrolledToBottom,
+    unlockScroll,
+    isScrollingDownRef,
+  ]);
 
   return (
     <div
@@ -201,17 +224,17 @@ const Section2 = () => {
             <img src="/aboutUS/section2-profile-desktop.png" alt="" />
           </SimpleParallax>
         </div>
-        <div className="w-126 h-98 mt-26 flex flex-col gap-14 overflow-y-scroll no-scrollbar">
+        <div
+          ref={scrollContainerRef}
+          className="w-126 h-98 mt-26 flex flex-col gap-14 overflow-y-scroll no-scrollbar"
+        >
           <>
             {section2Data?.scrollSection?.map((item, index) => {
               const isLastItem =
                 index === section2Data.scrollSection.length - 1;
               return (
                 <div key={index} ref={isLastItem ? lastItemRef : null}>
-                  <p
-                    ref={isLastItem ? lastLineRef : null}
-                    className="text-white text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] "
-                  >
+                  <p className="text-white text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] ">
                     {item}
                   </p>
                 </div>
