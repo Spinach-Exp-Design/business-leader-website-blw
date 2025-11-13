@@ -1,18 +1,42 @@
 import { NextRequest, NextResponse } from "next/server";
-
 import nodemailer from "nodemailer";
+import { z } from "zod";
 
-const SMTP_PORT = Number(process?.env?.SMTP_PORT);
-const SMTP_HOST = process?.env?.SMTP_HOST;
-const SMTP_USERNAME = process?.env?.SMTP_USERNAME;
-const SMTP_PASSWORD = process?.env?.SMTP_PASSWORD;
-const SMTP_MAIL_SENDER = process?.env?.SMTP_MAIL_SENDER;
+const requiredEnv = [
+  "SMTP_PORT",
+  "SMTP_HOST",
+  "SMTP_USERNAME",
+  "SMTP_PASSWORD",
+];
+
+for (const key of requiredEnv) {
+  if (!process.env[key]) {
+    throw new Error(`Missing required environment variable: ${key}`);
+  }
+}
+
+const SMTP_PORT = Number(process.env.SMTP_PORT);
+const SMTP_HOST = process.env.SMTP_HOST!;
+const SMTP_USERNAME = process.env.SMTP_USERNAME!;
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD!;
+const SMTP_MAIL_SENDER = process.env.SMTP_MAIL_SENDER!;
+
+const EmailSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  response: z
+    .string()
+    .min(1, "Response cannot be empty")
+    .max(10000, "Response too long"),
+});
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request?.json();
+    // Parse and validate request body
+    const json = await request.json();
+    const body = EmailSchema.parse(json);
 
-    const transporter = nodemailer?.createTransport({
+    // Create transporter securely
+    const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: SMTP_PORT,
       secure: false,
@@ -21,21 +45,39 @@ export async function POST(request: NextRequest) {
         pass: SMTP_PASSWORD,
       },
     });
-    console.log("transporter created successfully");
 
+    console.log("Transporter created successfully");
+
+    // Construct email safely
     const emailBody = {
-      from: SMTP_MAIL_SENDER as string,
-      to: body?.email,
+      from: SMTP_MAIL_SENDER,
+      to: body.email,
       subject: "Business Leader Website Response",
-      html: body?.response,
+      html: body.response,
     };
 
-    // await transporter?.sendMail(emailBody);
-    console.log("Emails sent successfully");
+    // Send email
+    await transporter.sendMail(emailBody);
+    console.log("Email sent successfully");
 
-    return new NextResponse("Emails sent successfully", { status: 200 });
+    return NextResponse.json(
+      { message: "Email sent successfully" },
+      { status: 200 }
+    );
   } catch (error) {
-    console.log("Error sending emails:", error);
-    return new NextResponse("Error sending emails", { status: 500 });
+    console.error("Error sending email:", error);
+
+    if (error instanceof z.ZodError) {
+      // Return validation errors cleanly
+      return NextResponse.json(
+        { message: "Invalid input", errors: error.issues },
+        { status: 400 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

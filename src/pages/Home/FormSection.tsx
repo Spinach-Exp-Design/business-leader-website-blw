@@ -154,8 +154,8 @@ const FormSection = () => {
                       <path
                         d="M13.3337 4L6.00033 11.3333L2.66699 8"
                         stroke="#F6F5F2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                     </svg>
                   </span>

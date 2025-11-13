@@ -56,9 +56,11 @@ const LocalSection = () => {
             className="w-14 h-22 max-lg:w-8 max-lg:h-14"
           />
         </div>
-        <h2 className="text-desktop-quote-2 max-lg:text-mobile-quote-2 font-playfair-display italic text-primary-dark w-115.5 max-lg:w-full">
-          {localSectionData.quote}
-        </h2>
+        <TextAnimation
+          text={localSectionData.quote}
+          tag="h2"
+          className="text-desktop-quote-2 max-lg:text-mobile-quote-2 font-playfair-display italic text-primary-dark w-115.5 max-lg:w-full"
+        />
       </div>
     </div>
   );
