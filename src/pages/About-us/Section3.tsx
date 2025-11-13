@@ -57,7 +57,7 @@ const Section3 = () => {
           <TextAnimation
             text={section3Data?.description || ""}
             tag="p"
-            className="text-desktop-paragraph-p1 max-lg:text-mobile-paragraph-p1 font-sans tracking-[-0.025rem] text-primary-dark lg:pl-28 lg:pr-21 lg:mb-6 max-lg:w-1/2 max-md:w-full"
+            className="text-desktop-paragraph-p2 max-lg:text-mobile-paragraph-p1 font-sans tracking-[-0.025rem] text-primary-dark lg:pl-28 lg:pr-21 lg:mb-6 max-lg:w-1/2 max-md:w-full"
           />
         </div>
         {/* swirl icon */}
