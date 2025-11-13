@@ -19,7 +19,6 @@ const SMTP_PORT = Number(process.env.SMTP_PORT);
 const SMTP_HOST = process.env.SMTP_HOST!;
 const SMTP_USERNAME = process.env.SMTP_USERNAME!;
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD!;
-const SMTP_MAIL_SENDER = process.env.SMTP_MAIL_SENDER!;
 
 const EmailSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -50,7 +49,7 @@ export async function POST(request: NextRequest) {
 
     // Construct email safely
     const emailBody = {
-      from: SMTP_MAIL_SENDER,
+      from: SMTP_HOST,
       to: body.email,
       subject: "Business Leader Website Response",
       html: body.response,
