@@ -1,16 +1,14 @@
 import { section2Data } from "@/data/aboutpageData";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
 
 const Section2 = () => {
-  const [isLastItemVisible, setIsLastItemVisible] = useState(false);
+  const [isResumeBarVisible, setIsResumeBarVisible] = useState(false);
   const [isOverlayInView, setIsOverlayInView] = useState(false);
-  const [isContainerScrolledToBottom, setIsContainerScrolledToBottom] =
-    useState(false);
-  const lastItemRef = useRef<HTMLDivElement>(null);
+  const resumeBarRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef<number>(0);
@@ -35,16 +33,16 @@ const Section2 = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries?.forEach((entry) => {
-          setIsLastItemVisible(entry?.isIntersecting);
+          setIsResumeBarVisible(entry?.isIntersecting);
         });
       },
       {
-        threshold: 0.1, // Trigger when at least 10% of the element is visible
+        threshold: 0.1,
         rootMargin: "0px",
       }
     );
 
-    const currentRef = lastItemRef?.current;
+    const currentRef = resumeBarRef?.current;
     if (currentRef) {
       observer?.observe(currentRef);
     }
@@ -64,7 +62,7 @@ const Section2 = () => {
         });
       },
       {
-        threshold: 1.0, // Trigger when 100% of the element is visible
+        threshold: 1.0,
         rootMargin: "0px",
       }
     );
@@ -81,30 +79,6 @@ const Section2 = () => {
     };
   }, []);
 
-  // Check if scroll container has scrolled to bottom
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef?.current;
-    if (!scrollContainer) return;
-
-    const checkScrollPosition = () => {
-      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-      const isAtBottom =
-        Math.ceil(scrollTop + clientHeight) >= Math.floor(scrollHeight) - 1; // -1 for rounding tolerance
-      setIsContainerScrolledToBottom(isAtBottom);
-    };
-
-    // Check initial position
-    checkScrollPosition();
-
-    // Listen to scroll events
-    scrollContainer.addEventListener("scroll", checkScrollPosition);
-
-    return () => {
-      scrollContainer.removeEventListener("scroll", checkScrollPosition);
-    };
-  }, []);
-
-  // Track scroll direction
   const unlockScroll = useCallback(() => {
     const savedScrollPosition = scrollPositionRef?.current;
     document.body.style.position = "";
@@ -165,7 +139,6 @@ const Section2 = () => {
         }
       }
 
-      // If locked and user tries to scroll up, unlock immediately
       if (isLockedRef.current && !scrollingDown) {
         unlockScroll();
       }
@@ -179,11 +152,9 @@ const Section2 = () => {
   }, [unlockScroll]);
 
   useEffect(() => {
-    const shouldLock = isOverlayInView && !isContainerScrolledToBottom;
+    const shouldLock = isOverlayInView && !isResumeBarVisible;
 
-    // Only lock when scrolling down (top to bottom)
     if (shouldLock && !isLockedRef?.current && isScrollingDownRef?.current) {
-      // Lock scroll - transitioning from unlocked to locked
       scrollPositionRef.current = window?.scrollY;
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollPositionRef?.current}px`;
@@ -191,22 +162,15 @@ const Section2 = () => {
       document.documentElement.style.overflow = "hidden";
       isLockedRef.current = true;
     } else if (!shouldLock && isLockedRef?.current) {
-      // Unlock scroll - transitioning from locked to unlocked
       unlockScroll();
     }
 
     return () => {
-      // Cleanup on unmount
       if (isLockedRef?.current) {
         unlockScroll();
       }
     };
-  }, [
-    isOverlayInView,
-    isContainerScrolledToBottom,
-    unlockScroll,
-    isScrollingDownRef,
-  ]);
+  }, [isOverlayInView, isResumeBarVisible, unlockScroll, isScrollingDownRef]);
 
   return (
     <div
@@ -226,21 +190,24 @@ const Section2 = () => {
         </div>
         <div
           ref={scrollContainerRef}
-          className="w-126 h-98 mt-26 flex flex-col gap-14 overflow-y-scroll no-scrollbar"
+          className="w-126 h-98 mt-26 flex flex-col overflow-y-scroll no-scrollbar"
         >
           <>
-            {section2Data?.scrollSection?.map((item, index) => {
-              const isLastItem =
-                index === section2Data.scrollSection.length - 1;
-              return (
-                <div key={index} ref={isLastItem ? lastItemRef : null}>
-                  <p className="text-white text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] ">
-                    {item}
-                  </p>
-                </div>
-              );
-            })}
-            {!isLastItemVisible && (
+            {section2Data?.scrollSection?.map((item, index) => (
+              <div key={index}>
+                <p
+                  className={
+                    "text-white text-desktop-paragraph-p1 font-sans tracking-[-0.025rem] mt-14"
+                  }
+                >
+                  {item}
+                </p>
+              </div>
+            ))}
+            <div ref={resumeBarRef} className="w-full">
+              <span className="block w-full h-[10px] bg-transparent"></span>
+            </div>
+            {!isResumeBarVisible && (
               <div
                 ref={overlayRef}
                 className="absolute z-1 bottom-3.5 left-0 w-full h-[18.625em]"
