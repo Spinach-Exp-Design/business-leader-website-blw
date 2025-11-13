@@ -3,6 +3,7 @@
 import TextAnimation from "@/components/TextAnimation";
 import { section5Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
+import SimpleParallax from "simple-parallax-js";
 
 const Section5 = () => {
   const { isTablet, isMobile } = useDeviceType();
@@ -59,11 +60,15 @@ const Section5 = () => {
           ))}
         </div>
       </div>
-      <img
-        src={image}
-        alt=""
-        className="lg:h-156.5 lg:w-[31.563rem] max-lg:h-115 max-lg:w-full max-md:h-[26.563rem] max-md:w-full"
-      />
+      <div className="shrink-0">
+        <SimpleParallax scale={1.2}>
+          <img
+            src={image}
+            alt=""
+            className="lg:h-156.5 lg:w-[31.563rem] max-lg:h-115 max-lg:w-full max-md:h-[26.563rem] max-md:w-full"
+          />
+        </SimpleParallax>
+      </div>
     </div>
   );
 };

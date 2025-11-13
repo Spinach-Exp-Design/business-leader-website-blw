@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion } from "framer-motion";
+import SimpleParallax from "simple-parallax-js";
 
 const Section2 = () => {
   const [isLastItemVisible, setIsLastItemVisible] = useState(false);
@@ -13,6 +14,7 @@ const Section2 = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef<number>(0);
   const isLockedRef = useRef<boolean>(false);
+  const isScrollingDownRef = useRef<boolean>(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,11 +91,43 @@ const Section2 = () => {
     };
   }, []);
 
+  // Track scroll direction
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      const scrollingDown = e?.deltaY > 0;
+      isScrollingDownRef.current = scrollingDown;
+
+      // If locked and user tries to scroll up, unlock immediately
+      if (isLockedRef.current && !scrollingDown) {
+        const savedScrollPosition = scrollPositionRef?.current;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.documentElement.style.overflow = "";
+        isLockedRef.current = false;
+
+        if (savedScrollPosition > 0) {
+          requestAnimationFrame(() => {
+            window?.scrollTo(0, savedScrollPosition);
+            scrollPositionRef.current = 0;
+          });
+        }
+      }
+    };
+
+    window?.addEventListener("wheel", handleWheel, { passive: true });
+
+    return () => {
+      window?.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   useEffect(() => {
     const shouldLock =
       isOverlayInView && !isLastItemVisible && !isLastLineInView;
 
-    if (shouldLock && !isLockedRef.current) {
+    // Only lock when scrolling down (top to bottom)
+    if (shouldLock && !isLockedRef?.current && isScrollingDownRef?.current) {
       // Lock scroll - transitioning from unlocked to locked
       scrollPositionRef.current = window?.scrollY;
       document.body.style.position = "fixed";
@@ -149,7 +183,9 @@ const Section2 = () => {
     >
       <div className="flex gap-16 pr-16 relative z-2">
         <div className="w-137 h-190 -mt-[8.3rem] relative z-3">
-          <img src="/aboutUS/section2-profile-desktop.png" alt="" />
+          <SimpleParallax scale={1.2}>
+            <img src="/aboutUS/section2-profile-desktop.png" alt="" />
+          </SimpleParallax>
         </div>
         <div className="w-126 h-98 mt-26 flex flex-col gap-14 overflow-y-scroll no-scrollbar">
           <>
