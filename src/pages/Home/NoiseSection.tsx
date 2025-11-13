@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import TextAnimation from "@/components/TextAnimation";
 import { noiseSectionData } from "@/data/homepageData";
 import useDeviceType from "@/hooks/useDeviceType";
+import SimpleParallax from "simple-parallax-js";
+import clsx from "clsx";
 
 const NoiseSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -44,19 +46,22 @@ const NoiseSection = () => {
                   {card.description}
                 </p>
                 <div
-                  className={`h-75 w-full mt-6 max-md:h-44 ${
+                  className={clsx(
+                    "h-75 w-full mt-6 max-md:h-44 overflow-hidden",
                     index === noiseSectionData.cards.length - 1 &&
-                    "max-md:absolute"
-                  }`}
+                      "max-md:absolute"
+                  )}
                   style={{
                     width: isMobile ? "calc(100% - 3rem)" : "100%",
                   }}
                 >
-                  <img
-                    src={isMobile ? card.mobileImage : card.tabletImage}
-                    alt={card.title}
-                    className="w-full h-full object-cover"
-                  />
+                  <SimpleParallax scale={1.2}>
+                    <img
+                      src={isMobile ? card.mobileImage : card.tabletImage}
+                      alt={card.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </SimpleParallax>
                 </div>
               </div>
             ))}
@@ -124,17 +129,20 @@ const NoiseSection = () => {
                   {noiseSectionData.cards.map((card, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+                      className={clsx(
+                        "absolute inset-0 transition-all duration-700 ease-in-out",
                         activeIndex === index
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-95"
-                      }`}
+                      )}
                     >
-                      <img
-                        src={card.image}
-                        alt={card.title}
-                        className="w-full h-full object-cover"
-                      />
+                      <SimpleParallax scale={1.2}>
+                        <img
+                          src={card.image}
+                          alt={card.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </SimpleParallax>
                     </div>
                   ))}
                 </div>

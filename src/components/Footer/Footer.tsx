@@ -36,7 +36,7 @@ const Footer = () => {
           |
           <Link
             className="lg:text-desktop-subheading-s5 max-lg:text-mobile-paragraph-p2"
-            href="/about"
+            href="/about-us"
           >
             About
           </Link>

@@ -20,17 +20,17 @@ export const section3Data = {
     "When systems value silence over scrutiny, ethics decay and governance suffers. Hence, Rajesh is on a mission to equip boards with tools that reward moral courage.",
   cards: [
     {
-      title: "Strategy of Patience",
+      title: "Driving Ethics at Scale",
       description:
         "He’s taking ethics out of policy documents and into everyday decisions, shaping cultures, systems and leadership norms.",
     },
     {
-      title: "Systemic clarity over noise",
+      title: "Fostering Heroic Imagination",
       description:
         "He’s priming organisations to encourage employees to step up and take ethical action as an ongoing, daily practice. ",
     },
     {
-      title: "Integrity as Presence",
+      title: "Normalising Ethical Voice",
       description:
         "He’s creating workplace cultures where speaking up about ethical concerns is the norm, rather than the exception; and where retribution is replaced by receptivity.",
     },
@@ -44,17 +44,17 @@ export const section4Data = {
     "Rajesh believes that not all progress is movement and not every answer needs to be fast, and so he approaches complexity with a philosophy of three lenses:",
   cards: [
     {
-      title: "Driving Ethics at Scale",
+      title: "Strategy of Patience",
       description:
         "Instead of rushing decisions, he creates space for reflection - because some of the most important answers need stillness to emerge. ",
     },
     {
-      title: "Fostering Heroic Imagination",
+      title: "Systemic clarity over noise",
       description:
         "He helps leaders zoom out, to see patterns where others see only problems – because clarity isn’t about speed – it’s about perspective.",
     },
     {
-      title: "Normalising Ethical Voice",
+      title: "Integrity as Presence",
       description:
         "He believes that presence speaks louder than posture – because in rooms that matter, it’s often quiet conviction, not volume, that builds trust.",
     },

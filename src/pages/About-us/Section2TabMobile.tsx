@@ -4,6 +4,7 @@ import useDeviceType from "@/hooks/useDeviceType";
 import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import React from "react";
+import SimpleParallax from "simple-parallax-js";
 
 const Section2TabMobile = () => {
   const { isTablet, isMobile } = useDeviceType();
@@ -32,11 +33,13 @@ const Section2TabMobile = () => {
       <div className="flex flex-col">
         <div className=" max-lg:ml-[1.188rem] max-md:ml-2">
           <div className="max-lg:-mt-20 relative z-3 max-lg:pl-[0.813rem] max-lg:pr-8 max-md:pl-2 max-md:pr-4">
-            <img
-              src={profileImage}
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
+            <SimpleParallax scale={1.2}>
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </SimpleParallax>
           </div>
           <div className="bg-white max-lg:pl-[3.063rem] max-lg:pr-8 max-lg:pt-18 max-lg:pb-18 max-md:px-6 max-md:pt-18 max-md:pb-10 relative z-1 max-lg:-mt-8">
             <span className="shrink-0 block w-[4.27rem] h-[4.27rem] mb-4">
