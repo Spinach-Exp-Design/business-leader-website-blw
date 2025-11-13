@@ -2,7 +2,7 @@ import { section2Data } from "@/data/aboutpageData";
 import React, { useState, useEffect, useRef } from "react";
 import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
 
 const Section2 = () => {
@@ -15,6 +15,20 @@ const Section2 = () => {
   const scrollPositionRef = useRef<number>(0);
   const isLockedRef = useRef<boolean>(false);
   const isScrollingDownRef = useRef<boolean>(true);
+
+  const quoteRef = useRef(null);
+
+  const { scrollYProgress: quoteScrollYProgress } = useScroll({
+    target: quoteRef,
+    offset: ["start end", "end start"],
+  });
+
+  const quoteFloatY = useTransform(quoteScrollYProgress, [0, 1], [30, -30]);
+  const quoteFloatYSpring = useSpring(quoteFloatY, {
+    stiffness: 120,
+    damping: 20,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -218,6 +232,7 @@ const Section2 = () => {
       </div>
 
       <motion.div
+        ref={quoteRef}
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -234,7 +249,10 @@ const Section2 = () => {
             className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
           />
         </div>
-        <div className="bg-primary-yellow h-71.75 ml-40 -mt-[15.45rem] p-10"></div>
+        <motion.div
+          style={{ y: quoteFloatYSpring }}
+          className="bg-primary-yellow h-71.75 ml-40 -mt-[15.45rem] p-10"
+        ></motion.div>
       </motion.div>
     </div>
   );

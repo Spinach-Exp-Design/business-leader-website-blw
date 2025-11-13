@@ -4,7 +4,13 @@ import TextAnimation from "@/components/TextAnimation";
 import { section4Data } from "@/data/aboutpageData";
 import useDeviceType from "@/hooks/useDeviceType";
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
 
 const Card = ({
@@ -36,6 +42,18 @@ const Section4 = () => {
 
   const section4Ref = useRef<HTMLDivElement>(null);
 
+  const { scrollYProgress: quoteScrollYProgress } = useScroll({
+    target: section4Ref,
+    offset: ["start end", "end start"],
+  });
+
+  const quoteFloatY = useTransform(quoteScrollYProgress, [0, 1], [30, -30]);
+  const quoteFloatYSpring = useSpring(quoteFloatY, {
+    stiffness: 120,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
   const inView = useInView(section4Ref, {
     once: true,
     amount: 0.25,
@@ -54,6 +72,7 @@ const Section4 = () => {
     >
       {/* yellow card */}
       <motion.div
+        style={{ y: quoteFloatYSpring }}
         initial={{ opacity: 0, y: 70 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 70 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
