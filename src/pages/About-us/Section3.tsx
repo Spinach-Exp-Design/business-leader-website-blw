@@ -34,7 +34,7 @@ export const Card = ({
 
       <TextAnimation
         text={description || ""}
-        tag="p"
+        tag="div"
         className="text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-md:text-mobile-paragraph-p1 max-lg:tracking-[-0.02rem] max-md:tracking-[-0.02rem] lg:w-133.5 lg:mt-4 max-lg:mt-2 text-primary-dark lg:pr-[1.688rem]"
       />
     </div>

@@ -30,7 +30,7 @@ const Card = ({
 
       <TextAnimation
         text={description || ""}
-        tag="p"
+        tag="div"
         className="font-sans text-desktop-paragraph-p3 max-lg:text-mobile-paragraph-p2 max-lg:tracking-[-0.018rem]"
       />
     </div>
