@@ -4,6 +4,8 @@ import TextAnimation from "@/components/TextAnimation";
 import useDeviceType from "@/hooks/useDeviceType";
 import SwirlIcon from "../About-us/Icons/SwirlIcon";
 import SimpleParallax from "simple-parallax-js";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 interface DecodeSectionProps {
   onStartNowClick: () => void;
@@ -11,6 +13,20 @@ interface DecodeSectionProps {
 
 const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
   const { isTablet, isMobile } = useDeviceType();
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress: quoteScrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const quoteFloatY = useTransform(quoteScrollYProgress, [0, 1], [30, -30]);
+  const quoteFloatYSpring = useSpring(quoteFloatY, {
+    stiffness: 120,
+    damping: 20,
+    restDelta: 0.001,
+  });
 
   return (
     <div className="w-full relative">
@@ -75,9 +91,15 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
       </div>
 
       {/* Bottom Image Section with Geometric Blocks */}
-      <div className="mt-20 max-lg:mt-16 relative pb-16 max-lg:pb-6 max-md:pb-4 overflow-visible">
+      <div
+        ref={sectionRef}
+        className="mt-20 max-lg:mt-16 relative pb-16 max-lg:pb-6 max-md:pb-4 overflow-visible"
+      >
         <div className="w-245 h-136 max-lg:w-162 max-lg:h-106 max-md:w-86 max-md:h-56 relative">
-          <div className="bg-primary-yellow lg:h-129.75 lg:w-280.75 max-lg:h-[26.36238rem] max-lg:w-[calc(100%+1.24rem)] max-md:h-56.25 max-md:w-[calc(100%+1rem)] lg:pb-16 max-lg:pb-6 max-md:pb-4 absolute z-0 lg:left-0 lg:mt-22 max-lg:mt-[1.26rem]"></div>
+          <motion.div
+            style={{ y: quoteFloatYSpring }}
+            className="bg-primary-yellow lg:h-129.75 lg:w-280.75 max-lg:h-[26.36238rem] max-lg:w-[calc(100%+1.24rem)] max-md:h-56.25 max-md:w-[calc(100%+1rem)] lg:pb-16 max-lg:pb-6 max-md:pb-4 absolute z-0 lg:left-0 lg:mt-22 max-lg:mt-[1.26rem]"
+          ></motion.div>
           <div className="relative z-10 w-full h-full overflow-hidden">
             <SimpleParallax scale={1.2}>
               <img

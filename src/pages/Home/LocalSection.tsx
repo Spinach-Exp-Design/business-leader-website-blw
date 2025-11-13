@@ -1,11 +1,30 @@
 import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import { localSectionData } from "@/data/homepageData";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef } from "react";
 import SimpleParallax from "simple-parallax-js";
 
 const LocalSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress: quoteScrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const quoteFloatY = useTransform(quoteScrollYProgress, [0, 1], [30, -30]);
+  const quoteFloatYSpring = useSpring(quoteFloatY, {
+    stiffness: 120,
+    damping: 20,
+    restDelta: 0.001,
+  });
+
   return (
-    <div className="pt-120 pl-40 pr-26 pb-64 max-lg:px-8 max-lg:pt-52 max-lg:pb-8 max-md:pt-44 max-md:pb-4 max-md:px-2">
+    <div
+      ref={sectionRef}
+      className="pt-120 pl-40 pr-26 pb-64 max-lg:px-8 max-lg:pt-52 max-lg:pb-8 max-md:pt-44 max-md:pb-4 max-md:px-2"
+    >
       <div className="flex flex-col max-lg:flex-row max-lg:gap-20 max-md:flex-col max-md:gap-4 gap-0">
         <div className="max-md:px-2">
           <TextAnimation
@@ -45,7 +64,10 @@ const LocalSection = () => {
           </div>
         </div>
       </div>
-      <div className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-89 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-end max-md:w-full max-md:h-97 max-md:mx-0">
+      <motion.div
+        style={{ y: quoteFloatYSpring }}
+        className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-89 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-end max-md:w-full max-md:h-97 max-md:mx-0"
+      >
         <div className="flex gap-2 absolute -top-8 left-6 max-lg:top-48 max-md:top-46">
           <img
             src="/assets/icons/white-quote.svg"
@@ -63,7 +85,7 @@ const LocalSection = () => {
           tag="h2"
           className="text-desktop-quote-2 max-lg:text-mobile-quote-2 font-playfair-display italic text-primary-dark w-115.5 max-lg:w-full"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };
