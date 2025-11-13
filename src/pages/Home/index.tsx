@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import DecodeSection from "./DecodeSection";
 import LocalSection from "./LocalSection";
 import useDeviceType from "@/hooks/useDeviceType";
@@ -9,6 +9,14 @@ import NoiseSection from "./NoiseSection";
 
 const HomePage = () => {
   const { isMobile, isTablet } = useDeviceType();
+  const formSectionRef = useRef<HTMLElement>(null);
+
+  const scrollToForm = () => {
+    formSectionRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
   const bgImage = isMobile
     ? "/assets/images/Pattern_Mobile.png"
     : isTablet
@@ -18,7 +26,7 @@ const HomePage = () => {
   return (
     <>
       <section>
-        <DecodeSection />
+        <DecodeSection onStartNowClick={scrollToForm} />
       </section>
       <section
         className="-mt-80 max-lg:-mt-32 max-md:-mt-24"
@@ -35,7 +43,7 @@ const HomePage = () => {
       <section className="-mt-8 max-lg:mt-0">
         <SolutionSection />
       </section>
-      <section className="bg-primary-dark">
+      <section ref={formSectionRef} className="bg-primary-dark">
         <FormSection />
       </section>
       <section className="relative">

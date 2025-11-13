@@ -1,11 +1,14 @@
-import Image from "next/image";
 import { decodeSectionData } from "../../data/homepageData";
 import PrimaryButton from "../../components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import useDeviceType from "@/hooks/useDeviceType";
 import SwirlIcon from "../About-us/Icons/SwirlIcon";
 
-const DecodeSection = () => {
+interface DecodeSectionProps {
+  onStartNowClick: () => void;
+}
+
+const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
   const { isTablet, isMobile } = useDeviceType();
 
   return (
@@ -61,7 +64,7 @@ const DecodeSection = () => {
             />
             <PrimaryButton
               variant="secondary"
-              onClick={() => console.log("Start one now clicked")}
+              onClick={onStartNowClick}
               className="mt-6"
             >
               Start one now
