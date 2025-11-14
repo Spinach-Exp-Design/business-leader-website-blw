@@ -7,9 +7,9 @@ import React, { useRef } from "react";
 import {
   motion,
   useInView,
-  useScroll,
-  useSpring,
-  useTransform,
+  // useScroll,
+  // useSpring,
+  // useTransform,
 } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
 
@@ -42,17 +42,17 @@ const Section4 = () => {
 
   const section4Ref = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress: quoteScrollYProgress } = useScroll({
-    target: section4Ref,
-    offset: ["start end", "end start"],
-  });
+  // const { scrollYProgress: quoteScrollYProgress } = useScroll({
+  //   target: section4Ref,
+  //   offset: ["start end", "end start"],
+  // });
 
-  const quoteFloatY = useTransform(quoteScrollYProgress, [0, 1], [30, -30]);
-  const quoteFloatYSpring = useSpring(quoteFloatY, {
-    stiffness: 120,
-    damping: 20,
-    restDelta: 0.001,
-  });
+  // const quoteFloatY = useTransform(quoteScrollYProgress, [0, 1], [30, -30]);
+  // const quoteFloatYSpring = useSpring(quoteFloatY, {
+  //   stiffness: 120,
+  //   damping: 20,
+  //   restDelta: 0.001,
+  // });
 
   const inView = useInView(section4Ref, {
     once: true,
@@ -72,7 +72,7 @@ const Section4 = () => {
     >
       {/* yellow card */}
       <motion.div
-        style={{ y: quoteFloatYSpring }}
+        // style={{ y: quoteFloatYSpring }}
         initial={{ opacity: 0, y: 70 }}
         animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 70 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
