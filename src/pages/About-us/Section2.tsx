@@ -176,7 +176,7 @@ const Section2 = () => {
     <div
       className="h-full w-full flex flex-col items-end pb-80"
       style={{
-        backgroundImage: "url(/aboutUS/about-pattern-desktop.png)",
+        backgroundImage: "url(/AboutUS/about-pattern-desktop.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -185,7 +185,7 @@ const Section2 = () => {
       <div className="flex gap-16 pr-16 relative z-2">
         <div className="w-137 h-190 -mt-[8.3rem] relative z-3">
           <SimpleParallax scale={1.2}>
-            <img src="/aboutUS/section2-profile-desktop.png" alt="" />
+            <img src="/AboutUS/section2-profile-desktop.png" alt="" />
           </SimpleParallax>
         </div>
         <div
