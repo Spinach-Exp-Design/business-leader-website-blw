@@ -8,8 +8,8 @@ export const footerData = {
   socialIconsLinks: [
     "https://www.facebook.com",
     "https://www.instagram.com",
-    "https://www.x.com",
-    "https://www.linkedin.com",
+    "https://x.com/overtness",
+    "https://www.linkedin.com/in/rajeshkmoorthy",
     "https://www.youtube.com",
   ],
 

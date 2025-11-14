@@ -73,7 +73,7 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
               />
             </span>
           </div>
-          <div className="w-86 max-lg:w-86">
+          <div className="w-86 max-lg:w-86 shrink-0">
             <TextAnimation
               text={decodeSectionData.description}
               tag="p"
