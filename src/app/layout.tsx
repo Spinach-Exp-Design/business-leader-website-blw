@@ -58,7 +58,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${generalSans.variable} ${allison.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${generalSans.variable} ${allison.variable} antialiased overflow-x-hidden`}
         suppressHydrationWarning
       >
         <Navbar />

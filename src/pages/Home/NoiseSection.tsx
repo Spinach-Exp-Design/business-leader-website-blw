@@ -14,7 +14,7 @@ const NoiseSection = () => {
   };
 
   return (
-    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30">
+    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30 bg-[#FFFFFF">
       {isMobile || isTablet ? (
         <>
           <div className="flex gap-4 pr-8 max-md:pr-4 max-md:flex-col">
@@ -52,7 +52,10 @@ const NoiseSection = () => {
                       "max-md:absolute"
                   )}
                   style={{
-                    width: isMobile ? "calc(100% - 3rem)" : "100%",
+                    width:
+                      isMobile && index === noiseSectionData.cards.length - 1
+                        ? "calc(100% - 3rem)"
+                        : "100%",
                   }}
                 >
                   <SimpleParallax scale={1.2}>
@@ -69,7 +72,7 @@ const NoiseSection = () => {
         </>
       ) : (
         <>
-          <div className="pt-26 px-16 shadow-2xl relative z-1 bg-neutral-white -mt-20">
+          <div className="pt-26 px-16 relative z-1 bg-[#F6F5F2] -mt-20">
             {/* Header Section */}
             <div className="flex gap-[4.8rem] pl-12">
               <div>
