@@ -68,7 +68,11 @@ const Footer = () => {
         {/* social icons */}
         <div className="flex items-center justify-center lg:gap-4 max-lg:gap-2 mb-3.5">
           {footerData?.socialIcons?.map((icon, index) => (
-            <Link href={footerData?.socialIconsLinks?.[index]} key={index}>
+            <Link
+              href={footerData?.socialIconsLinks?.[index]}
+              target="_blank"
+              key={index}
+            >
               <SocialButton icon={icon} />
             </Link>
           ))}
