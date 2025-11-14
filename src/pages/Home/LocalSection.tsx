@@ -2,12 +2,13 @@ import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import { localSectionData } from "@/data/homepageData";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import SimpleParallax from "simple-parallax-js";
 
 const LocalSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   const { scrollYProgress: quoteScrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -47,7 +48,9 @@ const LocalSection = () => {
             />
             <PrimaryButton
               variant="primary"
-              onClick={() => console.log("Start one now clicked")}
+              onClick={() => {
+                router?.push("/about-us");
+              }}
               className="mt-10"
             >
               Know more about Rajesh
