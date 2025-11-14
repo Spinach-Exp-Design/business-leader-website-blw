@@ -94,7 +94,7 @@ const Section2 = () => {
       wrapper: scrollContainer,
       content: contentElement,
       duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      easing: (t) => Math?.min(1, 1.001 - Math?.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
@@ -107,14 +107,14 @@ const Section2 = () => {
 
     // Animation loop
     function raf(time: number) {
-      lenis.raf(time);
+      lenis?.raf(time);
       requestAnimationFrame(raf);
     }
 
     requestAnimationFrame(raf);
 
     return () => {
-      lenis.destroy();
+      lenis?.destroy();
       lenisRef.current = null;
     };
   }, []);
@@ -147,16 +147,16 @@ const Section2 = () => {
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
         const isAtTop = scrollTop <= 0;
         const isAtBottom =
-          Math.ceil(scrollTop + clientHeight) >= Math.floor(scrollHeight);
+          Math?.ceil(scrollTop + clientHeight) >= Math?.floor(scrollHeight);
 
         if (scrollingDown) {
           if (!isAtBottom) {
             // Use Lenis for smooth scrolling - calculate target scroll position
             const scrollDelta = e?.deltaY * 0.5; // Reduce sensitivity for smoother scroll
             const maxScroll = scrollHeight - clientHeight;
-            const targetScroll = Math.min(scrollTop + scrollDelta, maxScroll);
+            const targetScroll = Math?.min(scrollTop + scrollDelta, maxScroll);
 
-            lenis.scrollTo(targetScroll, {
+            lenis?.scrollTo(targetScroll, {
               immediate: false,
               lock: false,
               duration: 1.2,
@@ -174,9 +174,9 @@ const Section2 = () => {
           if (!isAtTop) {
             // Use Lenis for smooth scrolling - calculate target scroll position
             const scrollDelta = e?.deltaY * 0.5; // Reduce sensitivity for smoother scroll
-            const targetScroll = Math.max(scrollTop + scrollDelta, 0);
+            const targetScroll = Math?.max(scrollTop + scrollDelta, 0);
 
-            lenis.scrollTo(targetScroll, {
+            lenis?.scrollTo(targetScroll, {
               immediate: false,
               lock: false,
               duration: 1.2,
@@ -193,7 +193,7 @@ const Section2 = () => {
         }
       }
 
-      if (isLockedRef.current && !scrollingDown) {
+      if (isLockedRef?.current && !scrollingDown) {
         unlockScroll();
       }
     };
