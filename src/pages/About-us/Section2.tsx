@@ -4,6 +4,7 @@ import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
+import Lenis from "lenis";
 
 const Section2 = () => {
   const [isResumeBarVisible, setIsResumeBarVisible] = useState(false);
@@ -14,6 +15,7 @@ const Section2 = () => {
   const scrollPositionRef = useRef<number>(0);
   const isLockedRef = useRef<boolean>(false);
   const isScrollingDownRef = useRef<boolean>(true);
+  const lenisRef = useRef<Lenis | null>(null);
 
   const quoteRef = useRef(null);
 
@@ -79,6 +81,44 @@ const Section2 = () => {
     };
   }, []);
 
+  // Initialize Lenis for smooth scrolling on the scroll container
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef?.current;
+    if (!scrollContainer) return;
+
+    // Find the content element (first child div)
+    const contentElement = scrollContainer.firstElementChild as HTMLElement;
+    if (!contentElement) return;
+
+    const lenis = new Lenis({
+      wrapper: scrollContainer,
+      content: contentElement,
+      duration: 1.2,
+      easing: (t) => Math?.min(1, 1.001 - Math?.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    });
+
+    lenisRef.current = lenis;
+
+    // Animation loop
+    function raf(time: number) {
+      lenis?.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis?.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
+
   const unlockScroll = useCallback(() => {
     const savedScrollPosition = scrollPositionRef?.current;
     document.body.style.position = "";
@@ -101,20 +141,28 @@ const Section2 = () => {
       isScrollingDownRef.current = scrollingDown;
 
       const scrollContainer = scrollContainerRef?.current;
+      const lenis = lenisRef?.current;
 
-      if (isLockedRef.current && scrollContainer) {
+      if (isLockedRef.current && scrollContainer && lenis) {
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
         const isAtTop = scrollTop <= 0;
         const isAtBottom =
-          Math.ceil(scrollTop + clientHeight) >= Math.floor(scrollHeight);
+          Math?.ceil(scrollTop + clientHeight) >= Math?.floor(scrollHeight);
 
         if (scrollingDown) {
           if (!isAtBottom) {
-            scrollContainer.scrollBy({
-              top: e?.deltaY,
-              behavior: "auto",
+            // Use Lenis for smooth scrolling - calculate target scroll position
+            const scrollDelta = e?.deltaY * 0.5; // Reduce sensitivity for smoother scroll
+            const maxScroll = scrollHeight - clientHeight;
+            const targetScroll = Math?.min(scrollTop + scrollDelta, maxScroll);
+
+            lenis?.scrollTo(targetScroll, {
+              immediate: false,
+              lock: false,
+              duration: 1.2,
             });
             e?.preventDefault();
+            e?.stopPropagation();
             return;
           }
 
@@ -124,11 +172,17 @@ const Section2 = () => {
           }
         } else {
           if (!isAtTop) {
-            scrollContainer.scrollBy({
-              top: e?.deltaY,
-              behavior: "auto",
+            // Use Lenis for smooth scrolling - calculate target scroll position
+            const scrollDelta = e?.deltaY * 0.5; // Reduce sensitivity for smoother scroll
+            const targetScroll = Math?.max(scrollTop + scrollDelta, 0);
+
+            lenis?.scrollTo(targetScroll, {
+              immediate: false,
+              lock: false,
+              duration: 1.2,
             });
             e?.preventDefault();
+            e?.stopPropagation();
             return;
           }
 
@@ -139,7 +193,7 @@ const Section2 = () => {
         }
       }
 
-      if (isLockedRef.current && !scrollingDown) {
+      if (isLockedRef?.current && !scrollingDown) {
         unlockScroll();
       }
     };
@@ -176,7 +230,7 @@ const Section2 = () => {
     <div
       className="h-full w-full flex flex-col items-end pb-80"
       style={{
-        backgroundImage: "url(/aboutUS/about-pattern-desktop.png)",
+        backgroundImage: "url(/AboutUS/about-pattern-desktop.png)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -185,14 +239,14 @@ const Section2 = () => {
       <div className="flex gap-16 pr-16 relative z-2">
         <div className="w-137 h-190 -mt-[8.3rem] relative z-3">
           <SimpleParallax scale={1.2}>
-            <img src="/aboutUS/section2-profile-desktop.png" alt="" />
+            <img src="/AboutUS/section2-profile-desktop.png" alt="" />
           </SimpleParallax>
         </div>
         <div
           ref={scrollContainerRef}
           className="w-126 h-98 mt-26 flex flex-col overflow-y-scroll no-scrollbar"
         >
-          <>
+          <div className="flex flex-col">
             {section2Data?.scrollSection?.map((item, index) => (
               <div key={index}>
                 <p
@@ -217,7 +271,7 @@ const Section2 = () => {
                 }}
               ></div>
             )}
-          </>
+          </div>
         </div>
       </div>
 

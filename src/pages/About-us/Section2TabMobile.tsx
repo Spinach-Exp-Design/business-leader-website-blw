@@ -9,16 +9,16 @@ import SimpleParallax from "simple-parallax-js";
 const Section2TabMobile = () => {
   const { isTablet, isMobile } = useDeviceType();
   const backgroundImage = isMobile
-    ? "url(/aboutUS/about-pattern-mobile.png)"
+    ? "url(/AboutUS/about-pattern-mobile.png)"
     : isTablet
-    ? "url(/aboutUS/about-pattern-tablet.png)"
-    : "url(/aboutUS/about-pattern-desktop.png)";
+    ? "url(/AboutUS/about-pattern-tablet.png)"
+    : "url(/AboutUS/about-pattern-desktop.png)";
 
   const profileImage = isTablet
-    ? "/aboutUS/section2-profile-tablet.png"
+    ? "/AboutUS/section2-profile-tablet.png"
     : isMobile
-    ? "/aboutUS/section2-profile-mobile.png"
-    : "/aboutUS/section2-profile-desktop.png";
+    ? "/AboutUS/section2-profile-mobile.png"
+    : "/AboutUS/section2-profile-desktop.png";
 
   return (
     <div
