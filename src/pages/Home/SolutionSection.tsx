@@ -89,7 +89,7 @@ const SolutionSection = () => {
             </SimpleParallax>
           </div>
           {/* Description Box */}
-          <div className="bg-primary-yellow p-12 absolute -bottom-6 left-10 w-154.5">
+          <div className="bg-primary-yellow py-12 pl-12 pr-15 absolute -bottom-6 left-10 w-154.5">
             <p
               key={`desc-${activeIndex}`}
               className="text-desktop-paragraph-p3 font-sans animate-fadeIn"
