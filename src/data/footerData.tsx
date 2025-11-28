@@ -4,13 +4,19 @@ export const footerData = {
     email: "rajesh@krishnamoorthy.one",
   },
 
-  socialIcons: ["facebook", "instagram", "x", "linkedin", "youtube"],
+  socialIcons: [
+    // "facebook",
+    // "instagram",
+    "x",
+    "linkedin",
+    // "youtube"
+  ],
   socialIconsLinks: [
-    "https://www.facebook.com",
-    "https://www.instagram.com",
+    // "https://www.facebook.com",
+    // "https://www.instagram.com",
     "https://x.com/overtness",
     "https://www.linkedin.com/in/rajeshkmoorthy",
-    "https://www.youtube.com",
+    // "https://www.youtube.com",
   ],
 
   copyright: "© 2025 logo. All rights reserved.",
