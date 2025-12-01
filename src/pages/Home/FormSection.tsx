@@ -12,6 +12,7 @@ const FormSection = () => {
   const [emailError, setEmailError] = useState("");
   const [emailTouched, setEmailTouched] = useState(false);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,6 +44,8 @@ const FormSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    setIsSubmitting(true);
+
     // Validate email before submission
     if (!validateEmail(email)) {
       setEmailError("Please enter a valid email address");
@@ -52,6 +55,7 @@ const FormSection = () => {
     const res = await sendConfirmationEmail({ email, response });
     if (res?.ok) {
       setShowSuccessMessage(true);
+      setIsSubmitting(false);
       setEmail("");
       setResponse("");
       setTimeout(() => {
@@ -135,11 +139,8 @@ const FormSection = () => {
 
             {/* Submit Button */}
             <div className="flex items-center gap-8">
-              <PrimaryButton
-                variant="primary"
-                onClick={() => console.log("Start one now clicked")}
-              >
-                Send response
+              <PrimaryButton variant="primary" type="submit">
+                {isSubmitting ? "Sending" : "Send Response"}
               </PrimaryButton>
               {showSuccessMessage && (
                 <div className="flex items-center gap-2">

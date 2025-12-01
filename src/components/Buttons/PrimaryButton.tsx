@@ -5,7 +5,7 @@ import ArrowIcon from "./Icons/ArrowIcon";
 interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   variant: "primary" | "secondary";
-  onClick: () => void;
+  onClick?: () => void;
   className?: string;
 }
 
