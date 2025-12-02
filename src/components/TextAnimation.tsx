@@ -45,7 +45,7 @@ const TextAnimation: React.FC<TextAnimationProps> = ({
           opacity: 1,
           duration: duration,
           ease: "power2.out",
-          delay: tag === "p" ? 0.4 : delay,
+          delay: tag === "p" ? 0.1 : delay,
           clearProps: "willChange",
           scrollTrigger: {
             trigger: containerRef?.current,
