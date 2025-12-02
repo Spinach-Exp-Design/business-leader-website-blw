@@ -7,6 +7,7 @@ const requiredEnv = [
   "SMTP_HOST",
   "SMTP_USERNAME",
   "SMTP_PASSWORD",
+  "ADMIN_EMAIL_ID",
 ];
 
 for (const key of requiredEnv) {
@@ -19,6 +20,7 @@ const SMTP_PORT = Number(process.env.SMTP_PORT);
 const SMTP_HOST = process.env.SMTP_HOST!;
 const SMTP_USERNAME = process.env.SMTP_USERNAME!;
 const SMTP_PASSWORD = process.env.SMTP_PASSWORD!;
+const ADMIN_EMAIL_ID = process.env.ADMIN_EMAIL_ID!;
 
 const EmailSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -51,13 +53,42 @@ export async function POST(request: NextRequest) {
     const emailBody = {
       from: SMTP_HOST,
       to: body.email,
-      subject: "Business Leader Website Response",
-      html: body.response,
+      subject: "Thank You for Reaching Out – Looking Forward to Connecting",
+      text: `Hello!!
+
+Thank you so much for reaching out and sharing your details—I truly appreciate your trust. This website is a personal initiative to foster authentic connections and meaningful conversations.
+
+Your information has been received securely and will only be used to ensure a thoughtful, relevant follow-up.
+
+I look forward to connecting with you soon. Thank you for your patience and interest.
+
+Yours truly
+Rajesh Krishnamoorthy
+
+
+This is an automated response to your request.`,
     };
 
-    // Send email
+    const adminEmailBody = {
+      from: body.email,
+      to: ADMIN_EMAIL_ID,
+      subject: `New Response from ${body.email}`,
+      text: `New response received from the Business Leader Website:
+
+Email: ${body.email}
+
+Response:
+${body.response}
+
+---
+This is an automated notification.`,
+    };
+
+    // Send email to user
     await transporter.sendMail(emailBody);
-    console.log("Email sent successfully");
+
+    // Send email to admin
+    await transporter.sendMail(adminEmailBody);
 
     return NextResponse.json(
       { message: "Email sent successfully" },
