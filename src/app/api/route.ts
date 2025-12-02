@@ -86,11 +86,9 @@ This is an automated notification.`,
 
     // Send email to user
     await transporter.sendMail(emailBody);
-    console.log("Confirmation email sent to user successfully");
 
     // Send email to admin
     await transporter.sendMail(adminEmailBody);
-    console.log("Notification email sent to admin successfully");
 
     return NextResponse.json(
       { message: "Email sent successfully" },
