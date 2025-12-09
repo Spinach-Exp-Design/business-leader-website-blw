@@ -77,18 +77,18 @@ const NoiseSection = () => {
             <div className="flex gap-[4.8rem] pl-12">
               <div>
                 <TextAnimation
-                  text={noiseSectionData.titleFirst}
+                  text={noiseSectionData?.titleFirst || ""}
                   tag="h2"
                   className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h2 text-primary-dark"
                 />
                 <TextAnimation
-                  text={noiseSectionData.titleSecond}
+                  text={noiseSectionData?.titleSecond || ""}
                   tag="h2"
                   className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h2 text-primary-dark ml-28 max-lg:ml-0"
                 />
               </div>
               <TextAnimation
-                text={noiseSectionData.description}
+                text={noiseSectionData?.description || ""}
                 tag="p"
                 className="text-desktop-paragraph-p2 font-sans max-lg:text-mobile-paragraph-p1 text-primary-dark w-68 shrink-0 self-end"
               />
@@ -97,52 +97,52 @@ const NoiseSection = () => {
             {/* Main Content: Cards and Image */}
             <div className="mt-14">
               {/* Left Side: Accordion Cards */}
-              <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16">
-                {noiseSectionData.cards.map((card, index) => (
-                  <div
-                    key={index}
-                    onClick={() => handleCardClick(index)}
-                    className={`py-8 w-78 cursor-pointer ${
-                      index === 0 && "pt-0"
-                    } ${
-                      index === noiseSectionData.cards.length - 1 && "pb-0"
-                    } ${
-                      index !== noiseSectionData.cards.length - 1 &&
-                      "border-b border-[#0D1F1]"
-                    }`}
-                  >
-                    <h3 className="text-desktop-subheading-s3 max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
-                      {card.title}
-                    </h3>
-                    <div
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
-                        activeIndex === index
-                          ? "max-h-96 opacity-100"
-                          : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
-                        {card.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-                {/* Right Side: Image */}
-                <div className="overflow-hidden w-210 h-121.25 absolute right-0 -top-18">
-                  {noiseSectionData.cards.map((card, index) => (
+              <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16 flex gap-8">
+                <div>
+                  {noiseSectionData?.cards?.map((card, index) => (
                     <div
                       key={index}
-                      className={clsx(
-                        "absolute inset-0 transition-all duration-700 ease-in-out",
+                      onClick={() => handleCardClick(index)}
+                      className={`py-8 w-78 cursor-pointer ${
+                        index === 0 && "pt-0"
+                      } ${
+                        index === noiseSectionData?.cards?.length - 1 && "pb-0"
+                      } ${
+                        index !== noiseSectionData?.cards?.length - 1 &&
+                        "border-b border-[#0D1F1]"
+                      }`}
+                    >
+                      <h3 className="text-desktop-subheading-s3 max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
+                        {card?.title || ""}
+                      </h3>
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                          activeIndex === index
+                            ? "max-h-96 opacity-100"
+                            : "max-h-0 opacity-0"
+                        }`}
+                      >
+                        <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
+                          {card?.description || ""}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="relative overflow-hidden w-210 h-121.25 -mt-30">
+                  {noiseSectionData?.cards?.map((card, index) => (
+                    <div
+                      key={index}
+                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
                         activeIndex === index
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-95"
-                      )}
+                      }`}
                     >
                       <SimpleParallax scale={1.2}>
                         <img
-                          src={card.image}
-                          alt={card.title}
+                          src={card?.image}
+                          alt={card?.title}
                           className="w-full h-full object-cover"
                         />
                       </SimpleParallax>
