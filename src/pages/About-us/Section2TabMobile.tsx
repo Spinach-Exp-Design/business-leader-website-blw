@@ -46,7 +46,12 @@ const Section2TabMobile = () => {
               <QuoteIcon />
             </span>
             <TextAnimation
-              text={section2Data?.quote || ""}
+              text={section2Data?.quoteTabMobileLine1 || ""}
+              tag="h3"
+              className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
+            />
+            <TextAnimation
+              text={section2Data?.quoteTabMobileLine2 || ""}
               tag="h3"
               className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
             />
