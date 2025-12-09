@@ -6,8 +6,8 @@
   --font-allison: var(--font-allison);
 
   /* Breakpoints */
-  /* Mobile - use max-md (covers 0-767px) */
-  /* Tablet - use max-lg (covers 768-1023px) */
+  --breakpoint-md: 46.5rem; /* use max-md (covers 0-743px) */
+  /* Tablet - use max-lg (covers 744-1023px) */
   /* small laptops - use max-xl (covers 1024-1279px) */
   /* Desktop - use xl (covers 1280px and above) */
 
