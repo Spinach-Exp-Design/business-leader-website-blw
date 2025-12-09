@@ -12,6 +12,8 @@ export const section2Data = {
   ],
   quote:
     "From local roots to global roles, my path has been anchored in purpose – where strategy meets sincerity, and ambition meets authenticity.",
+  quoteTabMobileLine1: "The right question,",
+  quoteTabMobileLine2: "at the right moment, can realign an entire room.",
 };
 
 export const section3Data = {

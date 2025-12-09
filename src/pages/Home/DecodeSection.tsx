@@ -60,7 +60,7 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
           </div>
         </div>
         <div className="pt-8 flex gap-10 pl-[20.8rem] max-lg:pl-0 max-lg:pt-0">
-          <div className="max-lg:hidden">
+          <div className="max-lg:hidden flex items-start">
             <span className="h-18 ">
               <SwirlIcon
                 name={
