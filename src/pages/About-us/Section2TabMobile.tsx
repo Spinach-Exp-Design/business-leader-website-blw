@@ -48,12 +48,12 @@ const Section2TabMobile = () => {
             <TextAnimation
               text={section2Data?.quoteTabMobileLine1 || ""}
               tag="h3"
-              className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
+              className="text-mobile-quote-2 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
             />
             <TextAnimation
               text={section2Data?.quoteTabMobileLine2 || ""}
               tag="h3"
-              className="text-desktop-quote-3 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
+              className="text-mobile-quote-2 font-playfair-display italic text-primary-dark tracking-[-0.04rem]"
             />
           </div>
           <div className="bg-primary-yellow h-74 max-lg:ml-4 max-lg:-mt-69"></div>
