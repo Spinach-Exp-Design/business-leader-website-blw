@@ -72,7 +72,7 @@ const NoiseSection = () => {
         </>
       ) : (
         <>
-          <div className="pt-26 px-16 shadow-2xl relative z-1 bg-neutral-white -mt-20">
+          <div className="pt-26 px-16 relative z-1 bg-[#F6F5F2] -mt-20">
             {/* Header Section */}
             <div className="flex gap-[4.8rem] pl-12">
               <div>
