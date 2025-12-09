@@ -65,7 +65,7 @@ const Section5 = () => {
           <img
             src={image}
             alt=""
-            className="lg:h-156.5 lg:w-[31.563rem] max-lg:h-115 max-lg:w-full max-md:h-[26.563rem] max-md:w-full"
+            className="lg:h-156.5 lg:w-[31.563rem] max-lg:h-115 max-lg:w-full max-md:h-[26.563rem] max-md:w-full object-cover object-top"
           />
         </SimpleParallax>
       </div>
