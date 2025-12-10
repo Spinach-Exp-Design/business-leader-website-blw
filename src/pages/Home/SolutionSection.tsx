@@ -40,12 +40,12 @@ const SolutionSection = () => {
           />
 
           {/* Interactive List */}
-          <div className="ml-12 divide-y divide-neutral-light max-lg:hidden">
+          <div className="ml-13.25 divide-y divide-neutral-light max-lg:hidden">
             {noJorgonSectionData.cards.map((card, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`flex items-center gap-4 text-left transition-all duration-300 py-4 group w-full cursor-pointer ${
+                className={`flex items-center gap-5.5 text-left transition-all duration-300 py-4 group w-full cursor-pointer ${
                   activeIndex === index ? "opacity-100" : "opacity-40"
                 }`}
               >
