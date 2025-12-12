@@ -26,7 +26,7 @@ const LocalSection = () => {
       ref={sectionRef}
       className="pt-120 pl-40 pr-26 pb-64 max-lg:px-8 max-lg:pt-52 max-lg:pb-8 max-md:pt-44 max-md:pb-4 max-md:px-2"
     >
-      <div className="flex flex-col max-lg:flex-row max-lg:gap-20 max-md:flex-col max-md:gap-4 gap-0">
+      <div className="flex flex-col max-lg:flex-row max-lg:gap-20 max-md:flex-col max-md:gap-4 gap-0 max-lg:justify-end">
         <div className="max-md:px-2">
           <TextAnimation
             text={localSectionData.titleFirst}
@@ -69,9 +69,9 @@ const LocalSection = () => {
       </div>
       <motion.div
         style={{ y: quoteFloatYSpring }}
-        className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-89 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-end max-md:w-full max-md:h-97 max-md:mx-0"
+        className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-89 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-start max-md:w-full max-md:h-97 max-md:mx-0 max-lg:justify-self-end max-lg:flex-col max-lg:justify-end max-lg:gap-4"
       >
-        <div className="flex gap-2 absolute -top-8 left-6 max-lg:top-48 max-md:top-46">
+        <div className="flex gap-2 lg:absolute -top-8 left-6 max-lg:top-45 max-md:top-46">
           <img
             src="/assets/icons/white-quote.svg"
             alt="White quote"

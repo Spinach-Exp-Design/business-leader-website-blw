@@ -72,7 +72,7 @@ const NoiseSection = () => {
         </>
       ) : (
         <>
-          <div className="pt-26 px-16 relative z-1 bg-[#F6F5F2] -mt-20">
+          <div className="pt-26 px-16 relative z-1 bg-white -mt-20">
             {/* Header Section */}
             <div className="flex gap-[4.8rem] pl-12">
               <div>
@@ -116,15 +116,17 @@ const NoiseSection = () => {
                         {card?.title || ""}
                       </h3>
                       <div
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        className={`grid transition-all ease-in-out ${
                           activeIndex === index
-                            ? "max-h-96 opacity-100"
-                            : "max-h-0 opacity-0"
+                            ? "grid-rows-[1fr] opacity-100 duration-300"
+                            : "grid-rows-[0fr] opacity-0 duration-300"
                         }`}
                       >
-                        <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
-                          {card?.description || ""}
-                        </p>
+                        <div className="overflow-hidden">
+                          <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
+                            {card?.description || ""}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   ))}

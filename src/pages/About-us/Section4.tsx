@@ -88,7 +88,7 @@ const Section4 = () => {
               />
             </SimpleParallax>
           </div>
-          <div className="lg:py-14 flex flex-col items-end max-lg:items-start max-lg:pl-8 max-md:pl-4 max-lg:pb-[3.188rem] max-md:pb-8 max-lg:pt-8 max-md:pt-[1.19rem]">
+          <div className="lg:py-14 flex flex-col items-end max-lg:items-start max-lg:pl-8 max-md:pl-4 max-lg:pb-[3.188rem] max-md:pb-8 max-lg:pt-8 max-md:pt-[1.19rem] lg:pl-30">
             <div className="flex flex-col max-lg:flex-row max-md:flex-col items-end max-lg:items-start max-lg:gap-2 max-md:gap-0">
               <TextAnimation
                 text={section4Data?.title1 || ""}
@@ -105,7 +105,7 @@ const Section4 = () => {
             <TextAnimation
               text={section4Data?.description || ""}
               tag="p"
-              className="font-sans text-desktop-paragraph-p2 max-lg:text-mobile-paragraph-p2 text-primary-dark tracking-[-0.023rem] max-lg:tracking-[-0.018rem] lg:mt-8 max-lg:mt-4 lg:pl-68 lg:pr-16.5"
+              className="font-sans text-desktop-paragraph-p2 max-lg:text-mobile-paragraph-p2 text-primary-dark tracking-[-0.023rem] max-lg:tracking-[-0.018rem] lg:mt-8 max-lg:mt-4 lg:pl-28 lg:pr-16.5"
             />
           </div>
         </div>
