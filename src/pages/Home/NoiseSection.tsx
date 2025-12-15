@@ -14,7 +14,7 @@ const NoiseSection = () => {
   };
 
   return (
-    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30 bg-[#FFFFFF">
+    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30 bg-[#E3E3E3]">
       {isMobile || isTablet ? (
         <>
           <div className="flex gap-4 pr-8 max-md:pr-4 max-md:flex-col">
@@ -97,7 +97,7 @@ const NoiseSection = () => {
             {/* Main Content: Cards and Image */}
             <div className="mt-14">
               {/* Left Side: Accordion Cards */}
-              <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16 flex gap-8">
+              <div className="bg-primary-yellow pt-10 pl-8 pb-20 mt-6 flex gap-8">
                 <div>
                   {noiseSectionData?.cards?.map((card, index) => (
                     <div
@@ -116,11 +116,12 @@ const NoiseSection = () => {
                         {card?.title || ""}
                       </h3>
                       <div
-                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        className={clsx(
+                          "overflow-hidden transition-all duration-500 ease-in-out",
                           activeIndex === index
-                            ? "max-h-96 opacity-100"
+                            ? "max-h-36 opacity-100"
                             : "max-h-0 opacity-0"
-                        }`}
+                        )}
                       >
                         <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
                           {card?.description || ""}

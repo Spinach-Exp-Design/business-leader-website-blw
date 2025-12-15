@@ -71,7 +71,7 @@ const LocalSection = () => {
         style={{ y: quoteFloatYSpring }}
         className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-89 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-end max-md:w-full max-md:h-97 max-md:mx-0"
       >
-        <div className="flex gap-2 absolute -top-8 left-6 max-lg:top-48 max-md:top-46">
+        <div className="flex gap-2 absolute -top-8 left-6 max-lg:top-46 max-md:top-54 max-sm:top-46">
           <img
             src="/assets/icons/white-quote.svg"
             alt="White quote"
