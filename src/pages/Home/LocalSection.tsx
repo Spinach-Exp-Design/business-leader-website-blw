@@ -26,7 +26,7 @@ const LocalSection = () => {
       ref={sectionRef}
       className="pt-120 pl-40 pr-26 pb-64 max-lg:px-8 max-lg:pt-52 max-lg:pb-8 max-md:pt-44 max-md:pb-4 max-md:px-2"
     >
-      <div className="flex flex-col max-lg:flex-row max-lg:gap-20 max-md:flex-col max-md:gap-4 gap-0">
+      <div className="flex flex-col max-lg:flex-row max-lg:gap-2.5 max-lg:justify-between max-md:flex-col max-md:gap-4 gap-0">
         <div className="max-md:px-2">
           <TextAnimation
             text={localSectionData.titleFirst}
