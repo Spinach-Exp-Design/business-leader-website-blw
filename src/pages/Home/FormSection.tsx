@@ -131,7 +131,7 @@ const FormSection = () => {
                 placeholder="Your response"
                 value={response}
                 onChange={(e) => setResponse(e.target.value)}
-                rows={1}
+                rows={2}
                 className="w-full bg-transparent border-b border-neutral-medium text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors resize-none text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-lg:pb-2"
                 required
               />
@@ -140,7 +140,7 @@ const FormSection = () => {
             {/* Submit Button */}
             <div className="flex items-center gap-8">
               <PrimaryButton variant="primary" type="submit">
-                {isSubmitting ? "Sending" : "Send Response"}
+                {isSubmitting ? "Sending" : "Send response"}
               </PrimaryButton>
               {showSuccessMessage && (
                 <div className="flex items-center gap-2">

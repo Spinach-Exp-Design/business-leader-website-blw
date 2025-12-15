@@ -9,6 +9,7 @@ import SimpleParallax from "simple-parallax-js";
 
 const SolutionSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const { isMobile, isTablet } = useDeviceType();
 
   const activeCard = noJorgonSectionData.cards[activeIndex];
@@ -17,7 +18,7 @@ const SolutionSection = () => {
     <>
       <div className="flex pb-24 max-lg:pb-6 max-lg:flex-col overflow-x-hidden">
         {/* Left Section */}
-        <div className="flex flex-col space-y-8 pl-40 pt-50 pr-18 pb-20 max-lg:px-8 max-lg:pt-20 max-lg:pb-14 max-lg:flex-row max-lg:gap-4 max-lg:space-y-0 max-md:px-4 max-md:flex-col max-lg:justify-between">
+        <div className="flex flex-col space-y-8 pl-40 pt-50 pr-18 pb-20 max-lg:px-8 max-lg:pt-20 max-lg:pb-14 max-lg:flex-row max-lg:gap-12 max-lg:space-y-0 max-md:px-4 max-md:flex-col max-lg:justify-between">
           {/* Title */}
           <div>
             <TextAnimation
@@ -40,28 +41,30 @@ const SolutionSection = () => {
           />
 
           {/* Interactive List */}
-          <div className="ml-13.25 divide-y divide-neutral-light max-lg:hidden">
+          <div className="ml-13.25 divide-y divide-neutral-light border-b border-neutral-light max-lg:hidden">
             {noJorgonSectionData.cards.map((card, index) => (
               <button
                 key={index}
                 onClick={() => setActiveIndex(index)}
-                className={`flex items-center gap-5.5 text-left transition-all duration-300 py-4 group w-full cursor-pointer ${
-                  activeIndex === index ? "opacity-100" : "opacity-40"
-                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`flex items-center gap-5.5 text-left transition-all duration-300 py-4 group w-full cursor-pointer `}
               >
                 {/* Spiral Icon */}
                 <div
                   className={`shrink-0 transition-transform duration-300 h-8 w-8`}
                 >
-                  <SpiralIcon isActive={activeIndex === index} />
+                  <SpiralIcon
+                    isActive={activeIndex === index || hoveredIndex === index}
+                  />
                 </div>
 
                 {/* Title */}
                 <h3
                   className={`transition-all duration-300 ${
                     activeIndex === index
-                      ? "text-desktop-subheading-s1 color-[#0A192A]"
-                      : "text-desktop-subheading-s2 color-[#717782]"
+                      ? "text-desktop-subheading-s1 color-[#0A192A]   "
+                      : "text-desktop-subheading-s2 color-[#717782] hover:text-desktop-subheading-s1 group-hover:color-[#0A192A] opacity-40 hover:opacity-100"
                   }`}
                 >
                   {card.title}
@@ -89,10 +92,10 @@ const SolutionSection = () => {
             </SimpleParallax>
           </div>
           {/* Description Box */}
-          <div className="bg-primary-yellow py-12 pl-12 pr-15 absolute -bottom-6 left-10 w-154.5">
+          <div className="bg-primary-yellow py-12 px-12 absolute -bottom-6 left-10 right-10 max-[1200px]:right-16 min-h-42 max-w-full">
             <p
               key={`desc-${activeIndex}`}
-              className="text-desktop-paragraph-p3 font-sans animate-fadeIn"
+              className="text-desktop-paragraph-p3 font-sans animate-fadeIn wrap-break-word"
             >
               {activeCard.description}
             </p>
@@ -102,7 +105,7 @@ const SolutionSection = () => {
         <div className="max-lg:px-8 max-md:px-4 max-lg:flex max-lg:flex-col max-lg:gap-10 hidden">
           {noJorgonSectionData?.cards?.map((card, index) => (
             <div className="max-lg:pb-18" key={index}>
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3">
                 {/* Spiral Icon */}
                 <div className={"h-7 w-7"}>
                   <SpiralIcon isActive={true} />

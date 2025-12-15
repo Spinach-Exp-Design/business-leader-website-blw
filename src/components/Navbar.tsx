@@ -36,10 +36,10 @@ export const Navbar = () => {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-desktop-subheading-s6 max-lg:text-mobile-subheading-s3 w-22.25 max-md:w-16 max-md:text-mobile-subheading-s3 text-center ${
+                className={`relative text-desktop-subheading-s6 max-lg:text-mobile-subheading-s3 w-22.25 max-md:w-16 max-md:text-mobile-subheading-s3 text-center transition-colors ${
                   isActive
                     ? "text-primary-dark font-medium"
-                    : "text-neutral-medium"
+                    : "text-neutral-medium hover:text-primary-dark"
                 }`}
               >
                 {link.name}
