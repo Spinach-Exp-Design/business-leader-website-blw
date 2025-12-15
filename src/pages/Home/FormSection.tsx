@@ -82,7 +82,7 @@ const FormSection = () => {
       ></div>
       <div className="grid grid-cols-2 gap-52 max-lg:grid-cols-1 max-lg:gap-26">
         {/* Left Content */}
-        <div className="max-lg:gap-8 max-md:flex-col max-md:gap-4 flex flex-col gap-8 max-lg:flex-row">
+        <div className="max-lg:gap-8 max-md:flex-col max-md:gap-4 flex flex-col gap-8 max-lg:flex-row max-lg:justify-between">
           <div>
             <TextAnimation
               text={formSectionData?.titleFirst}
@@ -99,7 +99,7 @@ const FormSection = () => {
           <TextAnimation
             text={formSectionData?.description}
             tag="p"
-            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 text-neutral-white w-97.5 max-lg:w-full max-lg:tracking-[-0.0225rem]"
+            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 text-neutral-white w-97.5 max-lg:w-100 max-md:w-full max-lg:self-end max-lg:tracking-[-0.0225rem]"
           />
         </div>
         {/* Right Form */}

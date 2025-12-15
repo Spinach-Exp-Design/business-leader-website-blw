@@ -33,7 +33,7 @@ const NoiseSection = () => {
             <TextAnimation
               text={noiseSectionData.description}
               tag="p"
-              className="max-lg:text-mobile-paragraph-p2 text-primary-dark self-end"
+              className="max-lg:text-mobile-paragraph-p1 text-primary-dark self-end"
             />
           </div>
           <div className="bg-primary-yellow mt-14 pl-8 py-8 flex flex-col gap-12 max-md:pb-28">
@@ -42,7 +42,7 @@ const NoiseSection = () => {
                 <h3 className="max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
                   {card.title}
                 </h3>
-                <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
+                <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4 max-lg:pr-8 max-md:pr-4">
                   {card.description}
                 </p>
                 <div
