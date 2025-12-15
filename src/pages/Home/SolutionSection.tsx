@@ -36,7 +36,7 @@ const SolutionSection = () => {
           <TextAnimation
             text={noJorgonSectionData.description}
             tag="p"
-            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 ml-28 max-lg:ml-0"
+            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 ml-28 max-lg:ml-0 w-97.5"
           />
 
           {/* Interactive List */}
@@ -73,7 +73,7 @@ const SolutionSection = () => {
         {/* Right Section */}
         <div className="relative max-lg:hidden">
           <div className="w-164.5 h-205 shrink-0 overflow-hidden">
-            <SimpleParallax scale={1.2}>
+            <SimpleParallax scale={1.1}>
               <img
                 key={activeIndex}
                 src={
@@ -114,7 +114,7 @@ const SolutionSection = () => {
               </div>
               <div className="relative">
                 <div className="w-full h-88 max-md:h-106 overflow-hidden max-lg:mt-6 max-md:mt-4">
-                  <SimpleParallax scale={1.2}>
+                  <SimpleParallax scale={1.1}>
                     <img
                       src={
                         isMobile

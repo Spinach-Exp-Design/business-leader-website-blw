@@ -61,7 +61,7 @@ const Section5 = () => {
         </div>
       </div>
       <div className="shrink-0">
-        <SimpleParallax scale={1.2}>
+        <SimpleParallax scale={1.1}>
           <img
             src={image}
             alt=""

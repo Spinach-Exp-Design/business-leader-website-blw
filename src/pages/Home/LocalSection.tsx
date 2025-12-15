@@ -57,7 +57,7 @@ const LocalSection = () => {
             </PrimaryButton>
           </div>
           <div className="h-149 w-119 z-1 max-lg:h-108 max-lg:w-md max-md:w-full max-md:h-107.5 overflow-hidden">
-            <SimpleParallax scale={1.2}>
+            <SimpleParallax scale={1.1}>
               <img
                 src={localSectionData.image}
                 alt="Rajesh Krishnamoorthy"
