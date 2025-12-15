@@ -80,7 +80,7 @@ const Section4 = () => {
       >
         <div className="lg:pr-12 max-lg:pr-[7.313rem] max-md:pr-6">
           <div className="relative -mt-[7.563rem] max-lg:-mt-[3.063rem] max-md:-mt-[1.813rem]">
-            <SimpleParallax scale={1.2}>
+            <SimpleParallax scale={1.1}>
               <img
                 src={yellowCardImage}
                 alt=""

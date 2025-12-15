@@ -33,7 +33,7 @@ const Section2TabMobile = () => {
       <div className="flex flex-col">
         <div className=" max-lg:ml-[1.188rem] max-md:ml-2">
           <div className="max-lg:-mt-20 relative z-3 max-lg:pl-[0.813rem] max-lg:pr-8 max-md:pl-2 max-md:pr-4">
-            <SimpleParallax scale={1.2}>
+            <SimpleParallax scale={1.1}>
               <img
                 src={profileImage}
                 alt="Profile"

@@ -101,7 +101,7 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
             className="bg-primary-yellow lg:h-129.75 lg:w-280.75 max-lg:h-[26.36238rem] max-lg:w-[calc(100%+1.24rem)] max-md:h-56.25 max-md:w-[calc(100%+1rem)] lg:pb-16 max-lg:pb-6 max-md:pb-4 absolute z-0 lg:left-0 lg:mt-22 max-lg:mt-[1.26rem]"
           ></motion.div>
           <div className="relative z-10 w-full h-full overflow-hidden">
-            <SimpleParallax scale={1.2}>
+            <SimpleParallax scale={1.1}>
               <img
                 src={decodeSectionData.image}
                 alt="Rajesh Krishnamoorthy speaking"

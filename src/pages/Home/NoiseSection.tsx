@@ -58,7 +58,7 @@ const NoiseSection = () => {
                         : "100%",
                   }}
                 >
-                  <SimpleParallax scale={1.2}>
+                  <SimpleParallax scale={1.1}>
                     <img
                       src={isMobile ? card.mobileImage : card.tabletImage}
                       alt={card.title}
@@ -139,7 +139,7 @@ const NoiseSection = () => {
                           : "opacity-0 scale-95"
                       }`}
                     >
-                      <SimpleParallax scale={1.2}>
+                      <SimpleParallax scale={1.1}>
                         <img
                           src={card?.image}
                           alt={card?.title}

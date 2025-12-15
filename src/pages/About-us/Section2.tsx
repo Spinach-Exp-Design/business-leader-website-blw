@@ -238,7 +238,7 @@ const Section2 = () => {
     >
       <div className="flex gap-16 pr-16 relative z-2">
         <div className="w-137 h-190 -mt-[8.3rem] relative z-3">
-          <SimpleParallax scale={1.2}>
+          <SimpleParallax scale={1.1}>
             <img src="/AboutUS/section2-profile-desktop.png" alt="" />
           </SimpleParallax>
         </div>
