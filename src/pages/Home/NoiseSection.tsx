@@ -14,7 +14,7 @@ const NoiseSection = () => {
   };
 
   return (
-    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30 bg-[#E3E3E3]">
+    <div className="px-12 pb-36 max-lg:pl-8 max-lg:pr-0 max-lg:pt-20 max-lg:pb-10 max-md:pl-4 max-md:pb-30 bg-[#F6F5F2]">
       {isMobile || isTablet ? (
         <>
           <div className="flex gap-4 pr-8 max-md:pr-4 max-md:flex-col">
@@ -72,7 +72,7 @@ const NoiseSection = () => {
         </>
       ) : (
         <>
-          <div className="pt-26 px-16 relative z-1 bg-[#F6F5F2] -mt-20">
+          <div className="pt-26 px-16 relative z-1 bg-[#FFFFFF] -mt-20">
             {/* Header Section */}
             <div className="flex gap-[4.8rem] pl-12">
               <div>
@@ -97,8 +97,8 @@ const NoiseSection = () => {
             {/* Main Content: Cards and Image */}
             <div className="mt-14">
               {/* Left Side: Accordion Cards */}
-              <div className="bg-primary-yellow pt-10 pl-8 pb-20 mt-6 flex gap-8">
-                <div>
+              <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16 flex gap-8 h-120">
+                <div className="overflow-hidden">
                   {noiseSectionData?.cards?.map((card, index) => (
                     <div
                       key={index}
@@ -116,12 +116,11 @@ const NoiseSection = () => {
                         {card?.title || ""}
                       </h3>
                       <div
-                        className={clsx(
-                          "overflow-hidden transition-all duration-500 ease-in-out",
+                        className={`overflow-hidden transition-all duration-500 ease-in-out ${
                           activeIndex === index
-                            ? "max-h-36 opacity-100"
+                            ? "max-h-96 opacity-100"
                             : "max-h-0 opacity-0"
-                        )}
+                        }`}
                       >
                         <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4">
                           {card?.description || ""}
