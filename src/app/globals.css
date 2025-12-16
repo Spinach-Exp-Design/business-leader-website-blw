@@ -1,26 +1,250 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-general-sans);
+  --font-playfair-display: var(--font-playfair-display);
+  --font-allison: var(--font-allison);
+
+  /* Breakpoints */
+  --breakpoint-md: 46.5rem; /* use max-md (covers 0-743px) */
+  /* Tablet - use max-lg (covers 744-1023px) */
+  /* small laptops - use max-xl (covers 1024-1279px) */
+  /* Desktop - use xl (covers 1280px and above) */
+
+  /* Primary Colors */
+  --color-primary-dark: #0a192a;
+  --color-primary-yellow: #ffbe0b;
+  --color-primary-light: #f6f5f2;
+
+  /* Neutral Colors */
+  --color-neutral-dark: #717782;
+  --color-neutral-medium: #8f8f8f;
+  --color-neutral-light: #e3e3e3;
+  --color-neutral-white: #ffffff;
+
+  /* Desktop/Heading/H1 */
+  --text-desktop-heading-h1: 5rem;
+  --text-desktop-heading-h1--line-height: 5.5rem;
+  --text-desktop-heading-h1--font-weight: 500;
+
+  /* Desktop/Heading/H2 */
+  --text-desktop-heading-h2: 4.5rem;
+  --text-desktop-heading-h2--line-height: 5rem;
+  --text-desktop-heading-h2--font-weight: 500;
+
+  /* Desktop/Heading/H3 */
+  --text-desktop-heading-h3: 4rem;
+  --text-desktop-heading-h3--line-height: 4.5rem;
+  --text-desktop-heading-h3--font-weight: 500;
+
+  /* Desktop/Heading/H4 */
+  --text-desktop-heading-h4: 3.5rem;
+  --text-desktop-heading-h4--line-height: 4rem;
+  --text-desktop-heading-h4--font-weight: 500;
+
+  /* Desktop/Heading/H5 */
+  --text-desktop-heading-h5: 1.5rem;
+  --text-desktop-heading-h5--line-height: 2rem;
+  --text-desktop-heading-h5--font-weight: 500;
+
+  /* Desktop/Sub-Heading/S1 */
+  --text-desktop-subheading-s1: 1.5rem;
+  --text-desktop-subheading-s1--line-height: 2rem;
+  --text-desktop-subheading-s1--font-weight: 500;
+
+  /* Desktop/Sub-Heading/S2 */
+  --text-desktop-subheading-s2: 1.5rem;
+  --text-desktop-subheading-s2--line-height: 2rem;
+  --text-desktop-subheading-s2--font-weight: 400;
+
+  /* Desktop/Sub-Heading/S3 */
+  --text-desktop-subheading-s3: 1.375rem;
+  --text-desktop-subheading-s3--line-height: 1.625rem;
+  --text-desktop-subheading-s3--font-weight: 500;
+
+  /* Desktop/Sub-Heading/S4 */
+  --text-desktop-subheading-s4: 1.375rem;
+  --text-desktop-subheading-s4--line-height: 1.625rem;
+  --text-desktop-subheading-s4--font-weight: 400;
+
+  /* Desktop/Sub-Heading/S5 */
+  --text-desktop-subheading-s5: 1.125rem;
+  --text-desktop-subheading-s5--line-height: 1.5rem;
+  --text-desktop-subheading-s5--font-weight: 400;
+
+  /* Desktop/Sub-Heading/S6 */
+  --text-desktop-subheading-s6: 0.875rem;
+  --text-desktop-subheading-s6--line-height: 1.375rem;
+  --text-desktop-subheading-s6--font-weight: 500;
+
+  /* Desktop/Paragraph/P1 */
+  --text-desktop-paragraph-p1: 1.25rem;
+  --text-desktop-paragraph-p1--line-height: 1.75rem;
+  --text-desktop-paragraph-p1--font-weight: 400;
+
+  /* Desktop/Paragraph/P2 */
+  --text-desktop-paragraph-p2: 1.125rem;
+  --text-desktop-paragraph-p2--line-height: 1.5rem;
+  --text-desktop-paragraph-p2--font-weight: 400;
+
+  /* Desktop/Paragraph/P3 */
+  --text-desktop-paragraph-p3: 1.125rem;
+  --text-desktop-paragraph-p3--line-height: 1.5rem;
+  --text-desktop-paragraph-p3--font-weight: 300;
+
+  /* Desktop/Paragraph/P4 */
+  --text-desktop-paragraph-p4: 1rem;
+  --text-desktop-paragraph-p4--line-height: 1.5rem;
+  --text-desktop-paragraph-p4--font-weight: 400;
+
+  /* Desktop/Paragraph/P5 */
+  --text-desktop-paragraph-p5: 1rem;
+  --text-desktop-paragraph-p5--line-height: 1.25rem;
+  --text-desktop-paragraph-p5--font-weight: 400;
+
+  /* Desktop/Paragraph/P6 */
+  --text-desktop-paragraph-p6: 0.875rem;
+  --text-desktop-paragraph-p6--line-height: 1.375rem;
+  --text-desktop-paragraph-p6--font-weight: 500;
+
+  /* Desktop/Paragraph/P7 */
+  --text-desktop-paragraph-p7: 0.875rem;
+  --text-desktop-paragraph-p7--line-height: 1.125rem;
+  --text-desktop-paragraph-p7--font-weight: 400;
+
+  /* Desktop/Paragraph/P8 */
+  --text-desktop-paragraph-p8: 0.75rem;
+  --text-desktop-paragraph-p8--line-height: 1rem;
+  --text-desktop-paragraph-p8--font-weight: 300;
+
+  /* Desktop/Quote/1 */
+  --text-desktop-quote-1: 4rem;
+  --text-desktop-quote-1--line-height: 5.25rem;
+  --text-desktop-quote-1--font-weight: 500;
+
+  /* Desktop/Quote/2 */
+  --text-desktop-quote-2: 2.5rem;
+  --text-desktop-quote-2--line-height: 3rem;
+  --text-desktop-quote-2--font-weight: 500;
+
+  /* Desktop/Quote/3 */
+  --text-desktop-quote-3: 2rem;
+  --text-desktop-quote-3--line-height: 2.75rem;
+  --text-desktop-quote-3--font-weight: 500;
+
+  /* Desktop/Caption/C1 */
+  --text-desktop-caption-c1: 0.875rem;
+  --text-desktop-caption-c1--line-height: 1.375rem;
+  --text-desktop-caption-c1--font-weight: 600;
+
+  /* Desktop/Functional/F1 */
+  --text-desktop-functional-f1: 0.875rem;
+  --text-desktop-functional-f1--line-height: 1.375rem;
+  --text-desktop-functional-f1--font-weight: 500;
+
+  /* Mobile/Heading/H1 */
+  --text-mobile-heading-h1: 2.5rem;
+  --text-mobile-heading-h1--line-height: 3rem;
+  --text-mobile-heading-h1--font-weight: 500;
+
+  /* Mobile/Heading/H2 */
+  --text-mobile-heading-h2: 2rem;
+  --text-mobile-heading-h2--line-height: 2.5rem;
+  --text-mobile-heading-h2--font-weight: 500;
+
+  /* Mobile/Heading/H3 */
+  --text-mobile-heading-h3: 1.25rem;
+  --text-mobile-heading-h3--line-height: 1.5rem;
+  --text-mobile-heading-h3--font-weight: 500;
+
+  /* Mobile/Sub-Heading/S1 */
+  --text-mobile-subheading-s1: 1.25rem;
+  --text-mobile-subheading-s1--line-height: 1.625rem;
+  --text-mobile-subheading-s1--font-weight: 500;
+
+  /* Mobile/Sub-Heading/S2 */
+  --text-mobile-subheading-s2: 1.125rem;
+  --text-mobile-subheading-s2--line-height: 1.375rem;
+  --text-mobile-subheading-s2--font-weight: 500;
+
+  /* Mobile/Sub-Heading/S3 */
+  --text-mobile-subheading-s3: 0.875rem;
+  --text-mobile-subheading-s3--line-height: 1.25rem;
+  --text-mobile-subheading-s3--font-weight: 400;
+
+  /* Mobile/Paragraph/P1 */
+  --text-mobile-paragraph-p1: 1rem;
+  --text-mobile-paragraph-p1--line-height: 1.375rem;
+  --text-mobile-paragraph-p1--font-weight: 400;
+
+  /* Mobile/Paragraph/P2 */
+  --text-mobile-paragraph-p2: 0.875rem;
+  --text-mobile-paragraph-p2--line-height: 1.25rem;
+  --text-mobile-paragraph-p2--font-weight: 400;
+
+  /* Mobile/Paragraph/P4 */
+  --text-mobile-paragraph-p4: 0.875rem;
+  --text-mobile-paragraph-p4--line-height: 1.25rem;
+  --text-mobile-paragraph-p4--font-weight: 300;
+
+  /* Mobile/Paragraph/P5 */
+  --text-mobile-paragraph-p5: 0.75rem;
+  --text-mobile-paragraph-p5--line-height: 1rem;
+  --text-mobile-paragraph-p5--font-weight: 300;
+
+  /* Mobile/Quote/1 */
+  --text-mobile-quote-1: 2rem;
+  --text-mobile-quote-1--line-height: 2.5rem;
+  --text-mobile-quote-1--font-weight: 500;
+
+  /* Mobile/Quote/2 */
+  --text-mobile-quote-2: 1.75rem;
+  --text-mobile-quote-2--line-height: 2rem;
+  --text-mobile-quote-2--font-weight: 500;
+
+  /* Mobile/Caption/C1 */
+  --text-mobile-caption-c1: 0.75rem;
+  --text-mobile-caption-c1--line-height: 1rem;
+  --text-mobile-caption-c1--font-weight: 600;
+
+  /* Mobile/Functional/F1 */
+  --text-mobile-functional-f1: 0.875rem;
+  --text-mobile-functional-f1--line-height: 1.25rem;
+  --text-mobile-functional-f1--font-weight: 500;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (min-width: 90.0625rem) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    font-size: calc(1vw + 0.125rem) !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 64rem) and (max-width: 89.938rem) {
+  :root {
+    font-size: calc(1vw + 0.125rem) !important;
+  }
+}
+
+/* Animation for smooth fade-in effect */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

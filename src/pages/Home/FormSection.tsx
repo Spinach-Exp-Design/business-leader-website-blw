@@ -1,0 +1,176 @@
+import PrimaryButton from "@/components/Buttons/PrimaryButton";
+import TextAnimation from "@/components/TextAnimation";
+import { formSectionData } from "@/data/homepageData";
+import useDeviceType from "@/hooks/useDeviceType";
+import { sendConfirmationEmail } from "@/services/emailNotification";
+import React, { useState } from "react";
+
+const FormSection = () => {
+  const { isMobile, isTablet } = useDeviceType();
+  const [email, setEmail] = useState("");
+  const [response, setResponse] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [emailTouched, setEmailTouched] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+
+    if (emailTouched && value) {
+      if (!validateEmail(value)) {
+        setEmailError("Please enter a valid email address");
+      } else {
+        setEmailError("");
+      }
+    }
+  };
+
+  const handleEmailBlur = () => {
+    setEmailTouched(true);
+    if (email && !validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+
+    // Validate email before submission
+    if (!validateEmail(email)) {
+      setEmailError("Please enter a valid email address");
+      setEmailTouched(true);
+      return;
+    }
+    const res = await sendConfirmationEmail({ email, response });
+    if (res?.ok) {
+      setShowSuccessMessage(true);
+      setIsSubmitting(false);
+      setEmail("");
+      setResponse("");
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
+    }
+  };
+
+  return (
+    <div className="relative pt-36 pb-[13.37rem] pl-40 pr-42 max-lg:pt-28 max-lg:pb-20 max-lg:px-8 overflow-hidden max-md:pt-30 max-md:pb-8 max-md:px-4">
+      {/* Tabla pattern background */}
+      <div
+        className="absolute top-20 left-20 w-148 h-full max-lg:w-84 max-lg:h-64 max-lg:-left-2 max-lg:-top-[0.2rem] max-md:top-[-0.2rem] max-md:left-4"
+        style={{
+          backgroundImage: isMobile
+            ? `url(/assets/images/tabla-mobile.png)`
+            : isTablet
+            ? `url(/assets/images/tabla-tablet.png)`
+            : `url(/assets/images/tabla-desktop.png)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      ></div>
+      <div className="grid grid-cols-2 gap-52 max-lg:grid-cols-1 max-lg:gap-26">
+        {/* Left Content */}
+        <div className="max-lg:gap-8 max-md:flex-col max-md:gap-4 flex flex-col gap-8 max-lg:flex-row max-lg:justify-between">
+          <div>
+            <TextAnimation
+              text={formSectionData?.titleFirst}
+              tag="h2"
+              className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h2 tracking-[-0.135rem] whitespace-nowrap max-lg:tracking-[-0.06rem] text-neutral-white"
+            />
+            <TextAnimation
+              text={formSectionData?.titleSecond}
+              tag="h2"
+              className="text-desktop-heading-h2 font-playfair-display italic max-lg:text-mobile-heading-h2 tracking-[-0.135rem] whitespace-nowrap max-lg:tracking-[-0.06rem] text-neutral-white"
+            />
+          </div>
+          {/* Description */}
+          <TextAnimation
+            text={formSectionData?.description}
+            tag="p"
+            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 text-neutral-white w-97.5 max-lg:w-100 max-md:w-full max-lg:self-end max-lg:tracking-[-0.0225rem]"
+          />
+        </div>
+        {/* Right Form */}
+        <div>
+          <form onSubmit={handleSubmit} className="space-y-10">
+            {/* Email Input */}
+            <div>
+              <input
+                type="email"
+                placeholder="Email Id"
+                value={email}
+                onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
+                className={`w-full bg-transparent border-b ${
+                  emailError ? "border-[#FF3A3E]" : "border-neutral-medium"
+                } text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-lg:pb-2`}
+                required
+              />
+              {emailError && (
+                <p className="text-[#FF3A3E] text-desktop-paragraph-p8 max-lg:text-mobile-paragraph-p4 mt-2">
+                  {emailError}
+                </p>
+              )}
+            </div>
+
+            {/* Response Textarea */}
+            <div>
+              <textarea
+                placeholder="Your response"
+                value={response}
+                onChange={(e) => setResponse(e.target.value)}
+                rows={2}
+                className="w-full bg-transparent border-b border-neutral-medium text-neutral-white placeholder-neutral-medium pb-4 px-0 focus:outline-none transition-colors resize-none text-desktop-paragraph-p4 max-lg:text-mobile-paragraph-p2 max-lg:pb-2"
+                required
+              />
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex items-center gap-8">
+              <PrimaryButton variant="primary" type="submit">
+                {isSubmitting ? "Sending" : "Send response"}
+              </PrimaryButton>
+              {showSuccessMessage && (
+                <div className="flex items-center gap-2">
+                  <span className="w-4 h-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="100%"
+                      height="100%"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                    >
+                      <path
+                        d="M13.3337 4L6.00033 11.3333L2.66699 8"
+                        stroke="#F6F5F2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </span>
+                  <p className="text-neutral-white text-desktop-paragraph-p8 max-lg:text-mobile-paragraph-p4">
+                    Response sent successfully
+                  </p>
+                </div>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FormSection;
