@@ -221,7 +221,7 @@
 
 @media (min-width: 64rem) and (max-width: 89.938rem) {
   :root {
-    font-size: calc(1vw + 0.125rem) !important;
+    font-size: calc(1vw) !important;
   }
 }
 

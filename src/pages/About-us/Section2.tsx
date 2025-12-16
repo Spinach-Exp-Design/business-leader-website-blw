@@ -237,14 +237,14 @@ const Section2 = () => {
       }}
     >
       <div className="flex gap-16 pr-16 relative z-2">
-        <div className="w-137 h-190 -mt-[8.3rem] relative z-3">
+        <div className="w-137 h-190 -mt-[8.3rem] relative z-3 shrink-0 ml-68">
           <SimpleParallax scale={1.1}>
             <img src="/AboutUS/section2-profile-desktop.png" alt="" />
           </SimpleParallax>
         </div>
         <div
           ref={scrollContainerRef}
-          className="w-126 h-98 mt-26 flex flex-col overflow-y-scroll no-scrollbar"
+          className="h-98 mt-26 flex flex-col overflow-y-scroll no-scrollbar"
         >
           <div className="flex flex-col">
             {section2Data?.scrollSection?.map((item, index) => (
@@ -283,7 +283,7 @@ const Section2 = () => {
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="-mt-[0.89rem] relative"
       >
-        <div className="bg-white lg:py-18 lg:pl-14 lg:pr-47 lg:ml-50 flex items-start gap-14 relative z-1">
+        <div className="bg-white lg:py-18 lg:pl-14 lg:pr-47 lg:ml-54 flex items-start gap-14 relative z-1">
           <span className="w-27 h-27 shrink-0 block">
             <QuoteIcon />
           </span>
