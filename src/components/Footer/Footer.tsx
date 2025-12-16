@@ -28,14 +28,14 @@ const Footer = () => {
         {/* home | about */}
         <div className="flex items-center justify-center gap-2 lg:pt-10 lg:mb-12 max-lg:pt-16 max-lg:mb-6">
           <Link
-            className="lg:text-desktop-subheading-s5 max-lg:text-mobile-paragraph-p2"
+            className="lg:text-desktop-subheading-s5 max-lg:text-mobile-paragraph-p2 hover:text-[#F1A934]"
             href="/"
           >
             Home
           </Link>{" "}
           |
           <Link
-            className="lg:text-desktop-subheading-s5 max-lg:text-mobile-paragraph-p2"
+            className="lg:text-desktop-subheading-s5 max-lg:text-mobile-paragraph-p2 hover:text-[#F1A934]"
             href="/about-us"
           >
             About

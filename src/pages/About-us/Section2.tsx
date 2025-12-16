@@ -93,12 +93,12 @@ const Section2 = () => {
     const lenis = new Lenis({
       wrapper: scrollContainer,
       content: contentElement,
-      duration: 1.2,
+      duration: 0.8,
       easing: (t) => Math?.min(1, 1.001 - Math?.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 1,
+      wheelMultiplier: 1.5,
       touchMultiplier: 2,
       infinite: false,
     });
@@ -152,14 +152,14 @@ const Section2 = () => {
         if (scrollingDown) {
           if (!isAtBottom) {
             // Use Lenis for smooth scrolling - calculate target scroll position
-            const scrollDelta = e?.deltaY * 0.5; // Reduce sensitivity for smoother scroll
+            const scrollDelta = e?.deltaY * 1.2; // Increased sensitivity for faster scroll
             const maxScroll = scrollHeight - clientHeight;
             const targetScroll = Math?.min(scrollTop + scrollDelta, maxScroll);
 
             lenis?.scrollTo(targetScroll, {
               immediate: false,
               lock: false,
-              duration: 1.2,
+              duration: 0.6,
             });
             e?.preventDefault();
             e?.stopPropagation();
@@ -173,13 +173,13 @@ const Section2 = () => {
         } else {
           if (!isAtTop) {
             // Use Lenis for smooth scrolling - calculate target scroll position
-            const scrollDelta = e?.deltaY * 0.5; // Reduce sensitivity for smoother scroll
+            const scrollDelta = e?.deltaY * 1.2; // Increased sensitivity for faster scroll
             const targetScroll = Math?.max(scrollTop + scrollDelta, 0);
 
             lenis?.scrollTo(targetScroll, {
               immediate: false,
               lock: false,
-              duration: 1.2,
+              duration: 0.6,
             });
             e?.preventDefault();
             e?.stopPropagation();
@@ -281,7 +281,7 @@ const Section2 = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="-mt-[0.89rem]"
+        className="-mt-[0.89rem] relative"
       >
         <div className="bg-white lg:py-18 lg:pl-14 lg:pr-47 lg:ml-50 flex items-start gap-14 relative z-1">
           <span className="w-27 h-27 shrink-0 block">
