@@ -4,7 +4,6 @@ import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
-import Lenis from "lenis";
 
 const Section2 = () => {
   const [isResumeBarVisible, setIsResumeBarVisible] = useState(false);
@@ -15,7 +14,6 @@ const Section2 = () => {
   const scrollPositionRef = useRef<number>(0);
   const isLockedRef = useRef<boolean>(false);
   const isScrollingDownRef = useRef<boolean>(true);
-  const lenisRef = useRef<Lenis | null>(null);
 
   const quoteRef = useRef(null);
 
@@ -82,42 +80,6 @@ const Section2 = () => {
   }, []);
 
   // Initialize Lenis for smooth scrolling on the scroll container
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef?.current;
-    if (!scrollContainer) return;
-
-    // Find the content element (first child div)
-    const contentElement = scrollContainer.firstElementChild as HTMLElement;
-    if (!contentElement) return;
-
-    const lenis = new Lenis({
-      wrapper: scrollContainer,
-      content: contentElement,
-      duration: 0.8,
-      easing: (t) => Math?.min(1, 1.001 - Math?.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.5,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    lenisRef.current = lenis;
-
-    // Animation loop
-    function raf(time: number) {
-      lenis?.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis?.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
 
   const unlockScroll = useCallback(() => {
     const savedScrollPosition = scrollPositionRef?.current;
@@ -141,9 +103,8 @@ const Section2 = () => {
       isScrollingDownRef.current = scrollingDown;
 
       const scrollContainer = scrollContainerRef?.current;
-      const lenis = lenisRef?.current;
 
-      if (isLockedRef.current && scrollContainer && lenis) {
+      if (isLockedRef.current && scrollContainer) {
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
         const isAtTop = scrollTop <= 0;
         const isAtBottom =
@@ -156,10 +117,9 @@ const Section2 = () => {
             const maxScroll = scrollHeight - clientHeight;
             const targetScroll = Math?.min(scrollTop + scrollDelta, maxScroll);
 
-            lenis?.scrollTo(targetScroll, {
-              immediate: false,
-              lock: false,
-              duration: 0.6,
+            scrollContainer.scrollTo({
+              top: targetScroll,
+              behavior: "smooth",
             });
             e?.preventDefault();
             e?.stopPropagation();
@@ -176,10 +136,9 @@ const Section2 = () => {
             const scrollDelta = e?.deltaY * 1.2; // Increased sensitivity for faster scroll
             const targetScroll = Math?.max(scrollTop + scrollDelta, 0);
 
-            lenis?.scrollTo(targetScroll, {
-              immediate: false,
-              lock: false,
-              duration: 0.6,
+            scrollContainer.scrollTo({
+              top: targetScroll,
+              behavior: "smooth",
             });
             e?.preventDefault();
             e?.stopPropagation();
