@@ -105,7 +105,7 @@ const Section4 = () => {
             <TextAnimation
               text={section4Data?.description || ""}
               tag="p"
-              className="font-sans text-desktop-paragraph-p2 max-lg:text-mobile-paragraph-p2 text-primary-dark tracking-[-0.023rem] max-lg:tracking-[-0.018rem] lg:mt-8 max-lg:mt-4 lg:pl-68 lg:pr-16.5"
+              className="font-sans text-desktop-paragraph-p2 max-lg:text-mobile-paragraph-p2 text-primary-dark tracking-[-0.023rem] max-lg:tracking-[-0.018rem] lg:mt-8 max-lg:mt-4 lg:pl-60 lg:pr-16.5"
             />
           </div>
         </div>
