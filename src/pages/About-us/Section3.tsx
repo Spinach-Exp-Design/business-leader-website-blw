@@ -17,7 +17,7 @@ export const Card = ({
   return (
     <div
       className={clsx(
-        "lg:py-20 lg:px-12.5 max-lg:px-6 max-lg:py-10 border",
+        "lg:py-20 lg:px-12.5 max-lg:px-6 max-lg:py-10 border w-[41.187rem] max-lg:w-full",
         index === 0
           ? "bg-primary-yellow border-primary-yellow"
           : "border-[#E3E3E3]"
