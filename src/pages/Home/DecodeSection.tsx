@@ -38,12 +38,12 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
           <TextAnimation
             text={decodeSectionData.titleFirst}
             tag="h2"
-            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem]"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem] whitespace-nowrap"
           />
           <TextAnimation
             text={decodeSectionData.titleSecond}
             tag="h2"
-            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem] ml-28 max-lg:ml-0"
+            className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem] ml-28 max-lg:ml-0 whitespace-nowrap"
           />
           <div className="shrink-0 hidden max-lg:flex mt-4">
             <span className="h-18 max-lg:h-10">
@@ -73,7 +73,7 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
               />
             </span>
           </div>
-          <div className="w-86 max-lg:w-86 shrink-0">
+          <div className="w-86 max-lg:w-full shrink-0">
             <TextAnimation
               text={decodeSectionData.description}
               tag="p"

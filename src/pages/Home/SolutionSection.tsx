@@ -18,7 +18,7 @@ const SolutionSection = () => {
     <>
       <div className="flex pb-24 max-lg:pb-6 max-lg:flex-col overflow-x-hidden">
         {/* Left Section */}
-        <div className="flex flex-col space-y-8 pl-40 pt-50 pr-18 pb-20 max-lg:px-8 max-lg:pt-20 max-lg:pb-14 max-lg:flex-row max-lg:gap-12 max-lg:space-y-0 max-md:px-4 max-md:flex-col max-lg:justify-between">
+        <div className="flex flex-col space-y-8 pl-40 pt-50 pr-18 pb-20 max-lg:px-8 max-lg:pt-20 max-lg:pb-14 max-lg:flex-row max-lg:gap-12 max-lg:space-y-0 max-md:px-4 max-md:flex-col">
           {/* Title */}
           <div>
             <TextAnimation
@@ -37,7 +37,7 @@ const SolutionSection = () => {
           <TextAnimation
             text={noJorgonSectionData.description}
             tag="p"
-            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 ml-28 max-lg:ml-0 w-97.5"
+            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 ml-28 max-lg:ml-0 w-97.5 max-lg:w-full"
           />
 
           {/* Interactive List */}
