@@ -4,7 +4,6 @@ import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
-import Lenis from "lenis";
 
 const Section2 = () => {
   const [isResumeBarVisible, setIsResumeBarVisible] = useState(false);
@@ -15,7 +14,7 @@ const Section2 = () => {
   const scrollPositionRef = useRef<number>(0);
   const isLockedRef = useRef<boolean>(false);
   const isScrollingDownRef = useRef<boolean>(true);
-  const lenisRef = useRef<Lenis | null>(null);
+  const scrollAnimationRef = useRef<number | null>(null);
 
   const quoteRef = useRef(null);
 
@@ -39,8 +38,8 @@ const Section2 = () => {
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: "0px",
+        threshold: 0,
+        rootMargin: "50px 0px 0px 0px",
       }
     );
 
@@ -64,7 +63,7 @@ const Section2 = () => {
         });
       },
       {
-        threshold: 1.0,
+        threshold: 0.8,
         rootMargin: "0px",
       }
     );
@@ -82,42 +81,6 @@ const Section2 = () => {
   }, []);
 
   // Initialize Lenis for smooth scrolling on the scroll container
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef?.current;
-    if (!scrollContainer) return;
-
-    // Find the content element (first child div)
-    const contentElement = scrollContainer.firstElementChild as HTMLElement;
-    if (!contentElement) return;
-
-    const lenis = new Lenis({
-      wrapper: scrollContainer,
-      content: contentElement,
-      duration: 0.8,
-      easing: (t) => Math?.min(1, 1.001 - Math?.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.5,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    lenisRef.current = lenis;
-
-    // Animation loop
-    function raf(time: number) {
-      lenis?.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis?.destroy();
-      lenisRef.current = null;
-    };
-  }, []);
 
   const unlockScroll = useCallback(() => {
     const savedScrollPosition = scrollPositionRef?.current;
@@ -141,53 +104,62 @@ const Section2 = () => {
       isScrollingDownRef.current = scrollingDown;
 
       const scrollContainer = scrollContainerRef?.current;
-      const lenis = lenisRef?.current;
 
-      if (isLockedRef.current && scrollContainer && lenis) {
+      if (isLockedRef.current && scrollContainer) {
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-        const isAtTop = scrollTop <= 0;
+        const isAtTop = scrollTop <= 1;
         const isAtBottom =
-          Math?.ceil(scrollTop + clientHeight) >= Math?.floor(scrollHeight);
+          Math?.ceil(scrollTop + clientHeight) >= Math?.floor(scrollHeight) - 1;
 
         if (scrollingDown) {
           if (!isAtBottom) {
-            // Use Lenis for smooth scrolling - calculate target scroll position
-            const scrollDelta = e?.deltaY * 1.2; // Increased sensitivity for faster scroll
+            e?.preventDefault();
+            e?.stopPropagation();
+
+            // Cancel any existing animation
+            if (scrollAnimationRef.current) {
+              cancelAnimationFrame(scrollAnimationRef.current);
+            }
+
+            // Use requestAnimationFrame for smoother scrolling
+            const scrollDelta = e?.deltaY * 1.0;
             const maxScroll = scrollHeight - clientHeight;
             const targetScroll = Math?.min(scrollTop + scrollDelta, maxScroll);
 
-            lenis?.scrollTo(targetScroll, {
-              immediate: false,
-              lock: false,
-              duration: 0.6,
+            scrollAnimationRef.current = requestAnimationFrame(() => {
+              scrollContainer.scrollTop = targetScroll;
+              scrollAnimationRef.current = null;
             });
-            e?.preventDefault();
-            e?.stopPropagation();
             return;
           }
 
           if (isAtBottom) {
-            unlockScroll();
+            setTimeout(() => unlockScroll(), 50);
             return;
           }
         } else {
           if (!isAtTop) {
-            // Use Lenis for smooth scrolling - calculate target scroll position
-            const scrollDelta = e?.deltaY * 1.2; // Increased sensitivity for faster scroll
-            const targetScroll = Math?.max(scrollTop + scrollDelta, 0);
-
-            lenis?.scrollTo(targetScroll, {
-              immediate: false,
-              lock: false,
-              duration: 0.6,
-            });
             e?.preventDefault();
             e?.stopPropagation();
+
+            // Cancel any existing animation
+            if (scrollAnimationRef.current) {
+              cancelAnimationFrame(scrollAnimationRef.current);
+            }
+
+            // Use requestAnimationFrame for smoother scrolling
+            const scrollDelta = e?.deltaY * 1.0;
+            const targetScroll = Math?.max(scrollTop + scrollDelta, 0);
+
+            scrollAnimationRef.current = requestAnimationFrame(() => {
+              scrollContainer.scrollTop = targetScroll;
+              scrollAnimationRef.current = null;
+            });
             return;
           }
 
           if (isAtTop) {
-            unlockScroll();
+            setTimeout(() => unlockScroll(), 50);
             return;
           }
         }
@@ -202,24 +174,31 @@ const Section2 = () => {
 
     return () => {
       window?.removeEventListener("wheel", handleWheel);
+      if (scrollAnimationRef.current) {
+        cancelAnimationFrame(scrollAnimationRef.current);
+      }
     };
   }, [unlockScroll]);
 
   useEffect(() => {
     const shouldLock = isOverlayInView && !isResumeBarVisible;
+    let timeoutId: NodeJS.Timeout;
 
     if (shouldLock && !isLockedRef?.current && isScrollingDownRef?.current) {
-      scrollPositionRef.current = window?.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollPositionRef?.current}px`;
-      document.body.style.width = "100%";
-      document.documentElement.style.overflow = "hidden";
-      isLockedRef.current = true;
+      timeoutId = setTimeout(() => {
+        scrollPositionRef.current = window?.scrollY;
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollPositionRef?.current}px`;
+        document.body.style.width = "100%";
+        document.documentElement.style.overflow = "hidden";
+        isLockedRef.current = true;
+      }, 100);
     } else if (!shouldLock && isLockedRef?.current) {
       unlockScroll();
     }
 
     return () => {
+      clearTimeout(timeoutId);
       if (isLockedRef?.current) {
         unlockScroll();
       }
@@ -245,6 +224,7 @@ const Section2 = () => {
         <div
           ref={scrollContainerRef}
           className="h-98 mt-26 flex flex-col overflow-y-scroll no-scrollbar"
+          style={{ scrollBehavior: "auto" }}
         >
           <div className="flex flex-col">
             {section2Data?.scrollSection?.map((item, index) => (
@@ -264,10 +244,11 @@ const Section2 = () => {
             {!isResumeBarVisible && (
               <div
                 ref={overlayRef}
-                className="absolute z-1 bottom-3.5 left-0 w-full h-[18.625em]"
+                className="absolute z-1 bottom-3.5 left-0 w-full h-[18.625em] transition-opacity duration-300 ease-in-out"
                 style={{
                   background:
                     "linear-gradient(0deg, #071729 35%, rgba(7, 23, 41, 0.60) 66.43%, rgba(7, 23, 41, 0.00) 100%)",
+                  opacity: isOverlayInView ? 1 : 0,
                 }}
               ></div>
             )}

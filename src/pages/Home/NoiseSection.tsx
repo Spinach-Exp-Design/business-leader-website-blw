@@ -133,10 +133,8 @@ const NoiseSection = () => {
                   {noiseSectionData?.cards?.map((card, index) => (
                     <div
                       key={index}
-                      className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                        activeIndex === index
-                          ? "opacity-100 scale-100"
-                          : "opacity-0 scale-95"
+                      className={`absolute inset-0 transition-opacity duration-500 ease-in-out animate-fadeIn ${
+                        activeIndex === index ? "opacity-100" : "opacity-0"
                       }`}
                     >
                       <SimpleParallax scale={1.1}>
