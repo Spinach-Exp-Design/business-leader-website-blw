@@ -99,7 +99,7 @@ const FormSection = () => {
           <TextAnimation
             text={formSectionData?.description}
             tag="p"
-            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 text-neutral-white w-97.5 max-lg:w-100 max-md:w-full max-lg:self-end max-lg:tracking-[-0.0225rem]"
+            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 text-neutral-white w-97.5 max-lg:w-full max-md:w-full max-lg:self-end max-lg:tracking-[-0.0225rem]"
           />
         </div>
         {/* Right Form */}
