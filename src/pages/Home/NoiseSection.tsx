@@ -42,7 +42,7 @@ const NoiseSection = () => {
                 <h3 className="max-lg:text-mobile-subheading-s1 font-sans text-primary-dark">
                   {card.title}
                 </h3>
-                <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4 max-lg:pr-8 max-md:pr-4">
+                <p className="text-desktop-paragraph-p7 max-lg:text-mobile-paragraph-p2 font-sans text-primary-dark pt-4 max-lg:pr-8 max-md:pr-4 max-lg:pt-2">
                   {card.description}
                 </p>
                 <div
