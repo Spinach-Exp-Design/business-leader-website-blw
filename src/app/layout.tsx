@@ -46,8 +46,56 @@ const allison = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "BLW | Business Leader Website",
-  description: "BLW | Business Leader Website",
+  metadataBase: new URL("https://krishnamoorthy.one"),
+  title: {
+    default: "Krishnamoorthy | Transforming Leaders, Building Legacies",
+    template: "%s | Krishnamoorthy",
+  },
+  description:
+    "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact. Transform your leadership journey with proven strategies and insights.",
+  keywords: [
+    "business leadership",
+    "executive coaching",
+    "leadership development",
+    "strategic consulting",
+    "business transformation",
+    "executive leadership",
+  ],
+  authors: [{ name: "Krishnamoorthy" }],
+  creator: "Krishnamoorthy",
+  publisher: "Krishnamoorthy",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://krishnamoorthy.one",
+    siteName: "Krishnamoorthy",
+    title: "Krishnamoorthy | Transforming Leaders, Building Legacies",
+    description:
+      "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact. Transform your leadership journey with proven strategies and insights.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krishnamoorthy | Transforming Leaders, Building Legacies",
+    description:
+      "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact.",
+
+    creator: "@krishnamoorthy", // Update with actual Twitter handle
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // google: "your-google-verification-code", // Add when you have it
+    // yandex: "your-yandex-verification-code",
+  },
 };
 
 export default function RootLayout({
