@@ -1,0 +1,12 @@
+# robots.txt for Business Leader Website
+
+User-agent: *
+Allow: /
+
+# Disallow admin or private paths if any
+# Disallow: /admin/
+# Disallow: /api/
+
+# Sitemap location
+Sitemap: https://krishnamoorthy.one/sitemap.xml
+
