@@ -53,8 +53,8 @@ const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
 export const metadata: Metadata = {
   metadataBase: new URL("https://krishnamoorthy.one"),
   title: {
-    default: "Krishnamoorthy | Transforming Leaders, Building Legacies",
-    template: "%s | Krishnamoorthy",
+    default: "Rajesh Krishnamoorthy | Transforming Leaders, Building Legacies",
+    template: "%s | Rajesh Krishnamoorthy",
   },
   description:
     "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact. Transform your leadership journey with proven strategies and insights.",
@@ -66,21 +66,21 @@ export const metadata: Metadata = {
     "business transformation",
     "executive leadership",
   ],
-  authors: [{ name: "Krishnamoorthy" }],
-  creator: "Krishnamoorthy",
-  publisher: "Krishnamoorthy",
+  authors: [{ name: "Rajesh Krishnamoorthy" }],
+  creator: "Rajesh Krishnamoorthy",
+  publisher: "Rajesh Krishnamoorthy",
   openGraph: {
     type: "website",
     locale: "en_US",
     url: "https://krishnamoorthy.one",
-    siteName: "Krishnamoorthy",
-    title: "Krishnamoorthy | Transforming Leaders, Building Legacies",
+    siteName: "Rajesh Krishnamoorthy",
+    title: "Rajesh Krishnamoorthy | Transforming Leaders, Building Legacies",
     description:
       "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact. Transform your leadership journey with proven strategies and insights.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krishnamoorthy | Transforming Leaders, Building Legacies",
+    title: "Rajesh Krishnamoorthy | Transforming Leaders, Building Legacies",
     description:
       "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact.",
 
@@ -144,10 +144,10 @@ export default function RootLayout({
           type="application/ld+json"
           strategy="afterInteractive"
         >
-          {JSON.stringify({
+          {JSON?.stringify({
             "@context": "https://schema.org",
             "@type": "Person",
-            name: "BLW",
+            name: "Rajesh Krishnamoorthy",
             url: "https://krishnamoorthy.one/",
             description:
               "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact. Transform your leadership journey with proven strategies and insights.",
