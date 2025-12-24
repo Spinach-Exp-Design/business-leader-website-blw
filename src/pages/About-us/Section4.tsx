@@ -62,7 +62,7 @@ const Section4 = () => {
   const yellowCardImage = isTablet
     ? "/AboutUS/section4-Image-tablet.png"
     : isMobile
-    ? "/AboutUS/section4-Image-desktop.png"
+    ? "/AboutUS/section4-Image-mobile.png"
     : "/AboutUS/section4-Image-desktop.png";
 
   return (

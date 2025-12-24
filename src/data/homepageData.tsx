@@ -3,7 +3,9 @@ export const decodeSectionData = {
   titleSecond: "Discover clarity.",
   description:
     "From boardrooms to townhalls, Rajesh Krishnamoorthy brings ethical governance, systems thinking and long-term value into every conversation.",
-  image: "/assets/images/decode.jpg",
+  image: "/assets/images/decode.png",
+  tabletImage: "/assets/images/decode-tablet.png",
+  mobileImage: "/assets/images/decode-mobile.png",
 };
 
 export const localSectionData = {
@@ -13,6 +15,8 @@ export const localSectionData = {
   description:
     "Rajesh Krishnamoorthy is an independent director, mentor and strategic advisor with more than a quarter century of lived experience across financial markets, quasi-regulatory boards, not-for-profits and educational ecosystems.",
   image: "/assets/images/rajesh.png",
+  tabletImage: "/assets/images/rajesh-tablet.png",
+  mobileImage: "/assets/images/rajesh-mobile.png",
 };
 
 export const noJorgonSectionData = {
@@ -20,7 +24,6 @@ export const noJorgonSectionData = {
   secondTitle: "Only solutions.",
   description:
     "Whether for CXOs or board members, employees of mid-to-large enterprises or start-up founders, Rajesh’s versatile offerings help organisations wherever it is needed most.",
-  image: "/assets/images/rajesh.png",
   cards: [
     {
       title: "Boardroom Realignments",
