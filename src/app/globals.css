@@ -248,3 +248,17 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
+
+/* Custom margin for screens between 1280px and 1440px */
+@media (min-width: 80rem) and (max-width: 90rem) {
+  .pattern-margin-custom {
+    margin-right: 19rem !important;
+  }
+}
+
+/* Reset margin back to 16.32rem for screens above 1440px */
+@media (min-width: 90rem) {
+  .pattern-margin-custom {
+    margin-right: 16.32rem !important;
+  }
+}
