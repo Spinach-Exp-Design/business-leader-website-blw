@@ -2,24 +2,24 @@ import AboutUs from "@/pages/About-us";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us",
+  title: "About | Rajesh Krishnamoorthy | Director & Strategic Advisor",
   description:
-    "Learn about our mission to empower business leaders with proven strategies and insights. Discover our approach to transforming leadership and building lasting organizational success.",
+    "Meet Rajesh Krishnamoorthy: Independent ethics proponent and boardroom advisor with 25+ years of experience. Blending practical governance with systems thinking and long-term value creation. From financial markets to educational ecosystems, bringing clarity and integrity to complex decisions.",
   // Canonical URL always points to production domain
   alternates: {
     canonical: "https://krishnamoorthy.one/about-us",
   },
   openGraph: {
-    title: "About Us | Krishnamoorthy",
+    title: "About | Rajesh Krishnamoorthy | Director & Strategic Advisor",
     description:
-      "Learn about our mission to empower business leaders with proven strategies and insights. Discover our approach to transforming leadership and building lasting organizational success.",
+      "Independent ethics proponent and boardroom advisor with 25+ years of experience. Blending practical governance with systems thinking and long-term value creation across financial markets, boards, and educational ecosystems.",
     url: "https://krishnamoorthy.one/about-us",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About Us | Krishnamoorthy",
+    title: "About | Rajesh Krishnamoorthy | Director & Strategic Advisor",
     description:
-      "Learn about our mission to empower business leaders with proven strategies and insights. Discover our approach to transforming leadership.",
+      "Independent ethics proponent and boardroom advisor with 25+ years of experience. Blending practical governance with systems thinking and long-term value creation.",
   },
 };
 

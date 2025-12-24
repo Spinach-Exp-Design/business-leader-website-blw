@@ -84,7 +84,7 @@ const Section4 = () => {
               <img
                 src={yellowCardImage}
                 alt=""
-                className="w-full h-118.5 max-lg:h-60 max-md:h-[12.688rem] object-cover"
+                className="w-full h-118.5 max-lg:h-60 max-md:h-60 object-cover"
               />
             </SimpleParallax>
           </div>

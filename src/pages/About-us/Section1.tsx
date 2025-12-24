@@ -20,7 +20,7 @@ const Section1 = () => {
           "max-md:text-mobile-quote-1 max-md:tracking-[-0.04rem] max-md:px-4 max-md:pt-16 max-md:mb-6"
         )}
       />
-      <span className="block h-21 max-lg:h-12 lg:mr-[16.32rem] lg:ml-auto lg:w-[19.17556rem] lg:h-[5.2065rem] max-lg:w-[11.029rem] max-lg:ml-8 max-md:w-[12.015rem] max-md:ml-4 ">
+      <span className="block h-21 max-lg:h-12 lg:mr-auto lg:ml-[54.5rem] lg:w-[19.17556rem] lg:h-[5.2065rem] max-lg:w-[11.029rem] max-lg:ml-8 max-md:w-[12.015rem] max-md:ml-4">
         <SwirlIcon
           name={
             isTablet
