@@ -211,7 +211,7 @@ const Section2 = () => {
     <div
       className="h-full w-full flex flex-col items-end pb-80"
       style={{
-        backgroundImage: "url(/AboutUS/about-pattern-desktop.png)",
+        backgroundImage: "url(/AboutUS/about-pattern-desktop.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -223,10 +223,10 @@ const Section2 = () => {
             <img
               src={
                 isTablet
-                  ? "/AboutUS/section2-profile-tablet.png"
+                  ? "/AboutUS/section2-profile-tablet.webp"
                   : isMobile
-                  ? "/AboutUS/section2-profile-mobile.png"
-                  : "/AboutUS/section2-profile-desktop.png"
+                  ? "/AboutUS/section2-profile-mobile.webp"
+                  : "/AboutUS/section2-profile-desktop.webp"
               }
               alt=""
             />

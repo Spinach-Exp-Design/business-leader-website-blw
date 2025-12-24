@@ -8,10 +8,10 @@ import SimpleParallax from "simple-parallax-js";
 const Section5 = () => {
   const { isTablet, isMobile } = useDeviceType();
   const image = isTablet
-    ? "/AboutUS/section5-image-tablet.png"
+    ? "/AboutUS/section5-image-tablet.webp"
     : isMobile
-    ? "/AboutUS/section5-image-mobile.png"
-    : "/AboutUS/section5-image-desktop.png";
+    ? "/AboutUS/section5-image-mobile.webp"
+    : "/AboutUS/section5-image-desktop.webp";
 
   const sliceWords = isMobile
     ? section5Data?.words?.slice(0, 1)

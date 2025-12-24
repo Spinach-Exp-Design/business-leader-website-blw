@@ -18,10 +18,10 @@ const HomePage = () => {
     });
   };
   const bgImage = isMobile
-    ? "/assets/images/Pattern_Mobile.png"
+    ? "/assets/images/Pattern_Mobile.webp"
     : isTablet
-    ? "/assets/images/Pattern_Tablet.png"
-    : "/assets/images/Pattern_Desktop.png";
+    ? "/assets/images/Pattern_Tablet.webp"
+    : "/assets/images/Pattern_Desktop.webp";
 
   return (
     <>

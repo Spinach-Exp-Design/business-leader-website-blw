@@ -9,10 +9,10 @@ import TextAnimation from "../TextAnimation";
 const Footer = () => {
   const { isTablet, isMobile } = useDeviceType();
   const backgroundImage = isMobile
-    ? "url(/footerImages/PatternMobile.png)"
+    ? "url(/footerImages/PatternMobile.webp)"
     : isTablet
-    ? "url(/footerImages/PatternTablet.png)"
-    : "url(/footerImages/Pattern.png)";
+    ? "url(/footerImages/PatternTablet.webp)"
+    : "url(/footerImages/Pattern.webp)";
 
   return (
     <div

@@ -71,10 +71,10 @@ const FormSection = () => {
         className="absolute top-20 left-20 w-148 h-full max-lg:w-84 max-lg:h-64 max-lg:-left-2 max-lg:-top-[0.2rem] max-md:top-[-0.2rem] max-md:left-4"
         style={{
           backgroundImage: isMobile
-            ? `url(/assets/images/tabla-mobile.png)`
+            ? `url(/assets/images/tabla-mobile.webp)`
             : isTablet
-            ? `url(/assets/images/tabla-tablet.png)`
-            : `url(/assets/images/tabla-desktop.png)`,
+            ? `url(/assets/images/tabla-tablet.webp)`
+            : `url(/assets/images/tabla-desktop.webp)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
