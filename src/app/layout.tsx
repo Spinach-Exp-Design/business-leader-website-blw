@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer/Footer";
@@ -124,6 +125,39 @@ export default function RootLayout({
         className={`${playfairDisplay.variable} ${generalSans.variable} ${allison.variable} antialiased overflow-x-hidden bg-primary-light`}
         suppressHydrationWarning
       >
+        {/* Google Analytics (GA4) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-B3ZW66GF3Q"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-B3ZW66GF3Q');
+          `}
+        </Script>
+        {/* Structured Data (JSON-LD) */}
+        <Script
+          id="structured-data"
+          type="application/ld+json"
+          strategy="afterInteractive"
+        >
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "BLW",
+            url: "https://krishnamoorthy.one/",
+            description:
+              "Expert business leadership consulting and strategic guidance to help executives and entrepreneurs build lasting impact. Transform your leadership journey with proven strategies and insights.",
+            sameAs: [
+              "https://www.linkedin.com/in/rajeshkmoorthy",
+              "https://x.com/overtness",
+            ],
+          })}
+        </Script>
+
         <Navbar />
         {children}
         <Footer />
