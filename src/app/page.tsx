@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Home",
   description:
     "Discover transformative leadership strategies and insights. Join successful executives and entrepreneurs who have elevated their leadership impact and built thriving organizations.",
+  // Canonical URL always points to production domain
+  alternates: {
+    canonical: "https://krishnamoorthy.one",
+  },
   openGraph: {
     title: "Krishnamoorthy | Transforming Leaders, Building Legacies",
     description:
