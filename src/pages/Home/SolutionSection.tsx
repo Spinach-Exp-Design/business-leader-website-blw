@@ -75,7 +75,7 @@ const SolutionSection = () => {
         </div>
         {/* Right Section */}
         <div className="relative max-lg:hidden">
-          <div className="w-164.5 h-205 shrink-0 overflow-hidden">
+          <div className="w-164.5 h-191.5 shrink-0 overflow-hidden">
             <SimpleParallax scale={1.1}>
               <img
                 key={activeIndex}
