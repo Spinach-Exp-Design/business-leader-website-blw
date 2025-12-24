@@ -97,7 +97,7 @@ const NoiseSection = () => {
             {/* Main Content: Cards and Image */}
             <div className="mt-14">
               {/* Left Side: Accordion Cards */}
-              <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16 flex gap-8 h-120">
+              <div className="bg-primary-yellow pt-10 pl-8 pb-20 relative -bottom-16 flex gap-8 h-124 justify-between">
                 <div className="overflow-hidden">
                   {noiseSectionData?.cards?.map((card, index) => (
                     <div
