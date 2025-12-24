@@ -9,7 +9,8 @@ import useDeviceType from "@/hooks/useDeviceType";
 const Section2 = () => {
   const [isResumeBarVisible, setIsResumeBarVisible] = useState(false);
   const [isOverlayInView, setIsOverlayInView] = useState(false);
-  const resumeBarRef = useRef<HTMLDivElement>(null);
+  const [hasScrolledPastBar, setHasScrolledPastBar] = useState(false);
+  const bottomResumeBarRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const scrollPositionRef = useRef<number>(0);
@@ -36,7 +37,12 @@ const Section2 = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries?.forEach((entry) => {
-          setIsResumeBarVisible(entry?.isIntersecting);
+          const isVisible = entry?.isIntersecting;
+          setIsResumeBarVisible(isVisible);
+          // Track if we've scrolled past the bar
+          if (!isVisible) {
+            setHasScrolledPastBar(true);
+          }
         });
       },
       {
@@ -45,7 +51,7 @@ const Section2 = () => {
       }
     );
 
-    const currentRef = resumeBarRef?.current;
+    const currentRef = bottomResumeBarRef?.current;
     if (currentRef) {
       observer?.observe(currentRef);
     }
@@ -249,20 +255,21 @@ const Section2 = () => {
                 </p>
               </div>
             ))}
-            <div ref={resumeBarRef} className="w-full">
+            <div ref={bottomResumeBarRef} className="w-full">
               <span className="block w-full h-[10px] bg-transparent"></span>
             </div>
-            {!isResumeBarVisible && (
-              <div
-                ref={overlayRef}
-                className="absolute z-1 bottom-3.5 left-0 w-full h-[18.625em] transition-opacity duration-300 ease-in-out"
-                style={{
-                  background:
-                    "linear-gradient(0deg, #071729 35%, rgba(7, 23, 41, 0.60) 66.43%, rgba(7, 23, 41, 0.00) 100%)",
-                  opacity: isOverlayInView ? 1 : 0,
-                }}
-              ></div>
-            )}
+            <div
+              ref={overlayRef}
+              className="absolute z-1 bottom-3.5 right-0 w-[calc(100%-20%)] h-[18.625em] transition-opacity duration-700 ease-out pointer-events-none"
+              style={{
+                background:
+                  "linear-gradient(0deg, #071729 35%, rgba(7, 23, 41, 0.60) 66.43%, rgba(7, 23, 41, 0.00) 100%)",
+                opacity:
+                  !isResumeBarVisible && (isOverlayInView || hasScrolledPastBar)
+                    ? 1
+                    : 0,
+              }}
+            ></div>
           </div>
         </div>
       </div>
