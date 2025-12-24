@@ -60,10 +60,10 @@ const Section4 = () => {
   });
 
   const yellowCardImage = isTablet
-    ? "/AboutUS/section4-Image-tablet.png"
+    ? "/AboutUS/section4-Image-tablet.webp"
     : isMobile
-    ? "/AboutUS/section4-Image-desktop.png"
-    : "/AboutUS/section4-Image-desktop.png";
+    ? "/AboutUS/section4-Image-mobile.webp"
+    : "/AboutUS/section4-Image-desktop.webp";
 
   return (
     <div

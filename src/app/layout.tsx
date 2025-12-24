@@ -45,6 +45,10 @@ const allison = localFont({
   style: "normal",
 });
 
+// Determine if we're in production based on NEXT_PUBLIC_ENV
+// Production: index, follow | Staging/Preview: noindex, nofollow
+const isProduction = process.env.NEXT_PUBLIC_ENV === "production";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://krishnamoorthy.one"),
   title: {
@@ -81,17 +85,28 @@ export const metadata: Metadata = {
 
     creator: "@krishnamoorthy", // Update with actual Twitter handle
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  // Environment-based robots configuration
+  // Production: allow indexing | Staging/Preview: block indexing
+  robots: isProduction
+    ? {
+        index: true,
+        follow: true,
+        googleBot: {
+          index: true,
+          follow: true,
+          "max-video-preview": -1,
+          "max-image-preview": "large",
+          "max-snippet": -1,
+        },
+      }
+    : {
+        index: false,
+        follow: false,
+        googleBot: {
+          index: false,
+          follow: false,
+        },
+      },
   verification: {
     // google: "your-google-verification-code", // Add when you have it
     // yandex: "your-yandex-verification-code",

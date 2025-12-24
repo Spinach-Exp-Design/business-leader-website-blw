@@ -1,6 +1,7 @@
 import PrimaryButton from "@/components/Buttons/PrimaryButton";
 import TextAnimation from "@/components/TextAnimation";
 import { localSectionData } from "@/data/homepageData";
+import useDeviceType from "@/hooks/useDeviceType";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
@@ -9,6 +10,7 @@ import SimpleParallax from "simple-parallax-js";
 const LocalSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const { isTablet, isMobile } = useDeviceType();
   const { scrollYProgress: quoteScrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -77,7 +79,13 @@ const LocalSection = () => {
           <div className="h-149 w-119 z-1 max-lg:h-108 max-lg:w-md max-md:w-full max-md:h-107.5 overflow-hidden max-lg:pt-16 max-md:pt-0 max-lg:ml-auto max-md:ml-0">
             <SimpleParallax scale={1.1}>
               <img
-                src={localSectionData.image}
+                src={
+                  isMobile
+                    ? localSectionData.mobileImage
+                    : isTablet
+                    ? localSectionData.tabletImage
+                    : localSectionData.image
+                }
                 alt="Rajesh Krishnamoorthy"
                 className="w-full h-full object-cover"
               />

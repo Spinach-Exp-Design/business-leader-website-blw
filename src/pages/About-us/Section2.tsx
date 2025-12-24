@@ -4,6 +4,7 @@ import QuoteIcon from "./Icons/QuoteIcon";
 import TextAnimation from "@/components/TextAnimation";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import SimpleParallax from "simple-parallax-js";
+import useDeviceType from "@/hooks/useDeviceType";
 
 const Section2 = () => {
   const [isResumeBarVisible, setIsResumeBarVisible] = useState(false);
@@ -15,6 +16,7 @@ const Section2 = () => {
   const isLockedRef = useRef<boolean>(false);
   const isScrollingDownRef = useRef<boolean>(true);
   const scrollAnimationRef = useRef<number | null>(null);
+  const { isTablet, isMobile } = useDeviceType();
 
   const quoteRef = useRef(null);
 
@@ -209,7 +211,7 @@ const Section2 = () => {
     <div
       className="h-full w-full flex flex-col items-end pb-80"
       style={{
-        backgroundImage: "url(/AboutUS/about-pattern-desktop.png)",
+        backgroundImage: "url(/AboutUS/about-pattern-desktop.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -218,7 +220,16 @@ const Section2 = () => {
       <div className="flex gap-16 pr-16 relative z-2">
         <div className="w-137 h-190 -mt-[8.3rem] relative z-3 shrink-0 ml-68">
           <SimpleParallax scale={1.1}>
-            <img src="/AboutUS/section2-profile-desktop.png" alt="" />
+            <img
+              src={
+                isTablet
+                  ? "/AboutUS/section2-profile-tablet.webp"
+                  : isMobile
+                  ? "/AboutUS/section2-profile-mobile.webp"
+                  : "/AboutUS/section2-profile-desktop.webp"
+              }
+              alt=""
+            />
           </SimpleParallax>
         </div>
         <div
