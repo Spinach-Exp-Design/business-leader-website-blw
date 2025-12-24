@@ -103,7 +103,13 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
           <div className="relative z-10 w-full h-full overflow-hidden">
             <SimpleParallax scale={1.1}>
               <img
-                src={decodeSectionData.image}
+                src={
+                  isMobile
+                    ? decodeSectionData.mobileImage
+                    : isTablet
+                    ? decodeSectionData.tabletImage
+                    : decodeSectionData.image
+                }
                 alt="Rajesh Krishnamoorthy speaking"
                 className="w-full h-full object-cover"
               />
