@@ -95,9 +95,9 @@ const LocalSection = () => {
       </div>
       <motion.div
         style={{ y: quoteFloatYSpring }}
-        className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-93 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-end max-md:w-full max-md:h-97 max-md:mx-0"
+        className="bg-primary-yellow py-14 pl-39 -mt-44 max-md:-mt-36 mr-7 relative z-0 max-lg:w-139 max-lg:h-93 max-lg:py-10 max-lg:px-6 max-lg:mr-6 max-lg:ml-30 max-lg:flex max-lg:items-end max-md:w-full max-md:h-97 max-md:mx-0 max-lg:justify-self-end"
       >
-        <div className="flex gap-2 absolute -top-8 left-6 max-lg:top-52 max-md:top-54 max-sm:top-46">
+        <div className="flex gap-2 absolute -top-8 left-6 max-lg:top-49 max-md:top-52 max-sm:top-45">
           <img
             src="/assets/icons/white-quote.svg"
             alt="White quote"
