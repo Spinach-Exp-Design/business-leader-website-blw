@@ -16,7 +16,7 @@ const SolutionSection = () => {
 
   return (
     <>
-      <div className="flex pb-24 max-lg:pb-6 max-lg:flex-col overflow-x-hidden">
+      <div className="flex lg:justify-between pb-24 max-lg:pb-6 max-lg:flex-col overflow-x-hidden">
         {/* Left Section */}
         <div className="flex flex-col space-y-8 pl-40 pt-50 pr-18 pb-20 max-lg:px-8 max-lg:pt-20 max-lg:pb-14 max-lg:flex-row max-lg:gap-12 max-lg:space-y-0 max-md:px-4 max-md:flex-col max-md:gap-4">
           {/* Title */}
@@ -37,7 +37,7 @@ const SolutionSection = () => {
           <TextAnimation
             text={noJorgonSectionData.description}
             tag="p"
-            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 ml-28 max-lg:ml-0 w-97.5 max-lg:w-full"
+            className="text-desktop-paragraph-p2 font-sans tracking-[-0.025rem] max-lg:text-mobile-paragraph-p1 ml-28 max-lg:ml-0 w-97.5 max-lg:w-full lg:mb-24"
           />
 
           {/* Interactive List */}
@@ -74,7 +74,7 @@ const SolutionSection = () => {
           </div>
         </div>
         {/* Right Section */}
-        <div className="relative max-lg:hidden">
+        <div className="relative flex flex-col items-end max-lg:hidden">
           <div className="w-164.5 h-191.5 shrink-0 overflow-hidden">
             <SimpleParallax scale={1.1}>
               <img
@@ -92,7 +92,7 @@ const SolutionSection = () => {
             </SimpleParallax>
           </div>
           {/* Description Box */}
-          <div className="bg-primary-yellow py-12 px-12 absolute -bottom-6 left-10 right-10 max-[1200px]:right-16 min-h-42 max-w-full">
+          <div className="bg-primary-yellow py-12 px-12 absolute bottom-14 left-10 min-h-42 max-w-full">
             <p
               key={`desc-${activeIndex}`}
               className="text-desktop-paragraph-p3 font-sans animate-fadeIn wrap-break-word"
