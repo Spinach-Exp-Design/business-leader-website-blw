@@ -19,7 +19,7 @@ const Footer = () => {
       className="bg-primary-dark text-white lg:h-139.5 max-lg:h-112.5"
       style={{
         backgroundImage: backgroundImage,
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundPosition: "bottom",
         backgroundRepeat: "no-repeat",
       }}
