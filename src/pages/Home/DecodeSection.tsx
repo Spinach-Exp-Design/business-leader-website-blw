@@ -46,17 +46,11 @@ const DecodeSection = ({ onStartNowClick }: DecodeSectionProps) => {
             className="text-desktop-heading-h1 font-playfair-display italic max-lg:text-mobile-heading-h1 tracking-[-0.075rem] ml-28 max-lg:ml-0 whitespace-nowrap"
           />
           <div className="shrink-0 hidden max-lg:flex mt-4">
-            <span className="h-18 max-lg:h-10">
-              <SwirlIcon
-                name={
-                  isTablet
-                    ? "swirl-tablet"
-                    : isMobile
-                    ? "swirl-mobile"
-                    : "swirl-desktop"
-                }
-              />
-            </span>
+            <img
+              src="/assets/images/spiral-wave.png"
+              alt="spiral wave"
+              className="h-12"
+            />
           </div>
         </div>
         <div className="pt-8 flex gap-10 pl-100 max-lg:pl-0 max-lg:pt-0">
